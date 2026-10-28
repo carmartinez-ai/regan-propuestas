@@ -187,7 +187,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   var CUM=[0];STOPS.forEach(function(s){CUM.push(CUM[CUM.length-1]+(s.w||1))});var TOT=CUM[N]; // fracción final de cada tramo en la que se funde con la siguiente foto
   var cv=document.getElementById('cv'),cx=cv.getContext('2d');
   var imgs=STOPS.map(function(s){
-    if(s.vid){var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=s.vid;v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');document.body.appendChild(v);v.addEventListener('seeked',function(){need=true});v.addEventListener('loadeddata',function(){need=true});v.addEventListener('canplay',function(){need=true});v.load();return v}
+    if(s.vid){var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=s.vid;v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');document.body.appendChild(v);v._c=document.createElement('canvas');var snap=function(){if(v.readyState<2)return;v._c.width=v.videoWidth;v._c.height=v.videoHeight;v._c.getContext('2d').drawImage(v,0,0);v._ok=true;need=true};v.addEventListener('seeked',snap);v.addEventListener('loadeddata',snap);v.addEventListener('canplay',function(){need=true});v.load();return v}
     var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';return i});
   window.__tour={imgs:imgs};var loaded=0,loader=document.getElementById('loader');
   imgs.forEach(function(i){if(i.tagName==='VIDEO')return;var f=function(){loaded++;if(loaded>=3)loader.classList.add('done');need=true};if(i.complete)f();else{i.onload=f;i.onerror=f}});
@@ -210,8 +210,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
   function view(v1,v2,t){return{s:lerp(v1.s,v2.s,t),x:lerp(v1.x,v2.x,t),y:lerp(v1.y,v2.y,t)}}
   function draw(img,v,alpha){
-    var iw=img.naturalWidth||img.videoWidth,ih=img.naturalHeight||img.videoHeight;
-    if(!iw||alpha<=0||(img.tagName==='VIDEO'&&img.readyState<2))return;
+    if(img.tagName==='VIDEO'){if(!img._ok)return;img=img._c}
+    var iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
+    if(!iw||alpha<=0)return;
     var cw=W*dpr,ch=H*dpr;
     var cover=Math.max(cw/iw,ch/ih)*v.s,dw=iw*cover,dh=ih*cover;
     // centra el punto (x,y) de la foto, sin dejar bordes
