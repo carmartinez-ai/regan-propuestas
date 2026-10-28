@@ -219,12 +219,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   function go(k){warm(k);var top=tour.offsetTop+(tour.offsetHeight-innerHeight)*((CUM[k]+.02)/TOT);window.scrollTo({top:top,behavior:'smooth'})}
 
   var dpr=1,W=0,H=0;
-  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);need=true}
+  function size(){dpr=Math.min(window.devicePixelRatio||1,1.5);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);need=true}
   addEventListener('resize',size);size();
+  cx.imageSmoothingEnabled=true;cx.imageSmoothingQuality='high';
   function cover(src,s,alpha){
     var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height;if(!iw||alpha<=0)return false;
     var cw=W*dpr,ch=H*dpr,k=Math.max(cw/iw,ch/ih)*s,dw=iw*k,dh=ih*k;
-    cx.globalAlpha=alpha;cx.drawImage(src,(cw-dw)/2,(ch-dh)/2,dw,dh);cx.globalAlpha=1;return true;
+    cx.imageSmoothingQuality='high';cx.filter='contrast(1.06) saturate(1.08) brightness(1.02)';cx.globalAlpha=alpha;cx.drawImage(src,(cw-dw)/2,(ch-dh)/2,dw,dh);cx.globalAlpha=1;cx.filter='none';return true;
   }
   // Dibuja el tramo k en el momento t (0-1): vídeo si está listo; si no, la foto con un ligero avance
   function paint(k,t,alpha){
