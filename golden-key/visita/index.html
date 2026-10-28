@@ -36,7 +36,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.05;te
 .top .ref{font-family:var(--mono);font-size:12px;color:var(--muted)}
 
 /* Recorrido */
-.tour{position:relative;height:1700vh}
+.tour{position:relative;height:1600vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
 canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 55%,rgba(0,0,0,.65) 100%)}
@@ -164,101 +164,90 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <script>
 (function(){
   var BASE='https://fotos15.apinmo.com/13047/30432096/2-';
-  // Cada parada: foto, vista inicial y final (s=zoom, x/y=punto de la foto al que mira la cámara, 0-1)
-  var STOPS=[
-    {img:31,a:{s:1.05,x:.5,y:.5},b:{s:1.45,x:.30,y:.55},n:'01 · Llegada',h:'Calle Cánovas del Castillo',p:'Zona residencial tranquila de La Garita, en Telde, a minutos de la playa y del aeropuerto.',label:'Calle'},
-    {img:30,a:{s:1.0,x:.5,y:.5},b:{s:2.3,x:.47,y:.6},n:'02 · Edificio',h:'Edificio de 2005 con ascensor',p:'Fachada cuidada y portal a pie de calle.',label:'Edificio'},
-    {img:26,a:{s:1.0,x:.5,y:.55},b:{s:1.9,x:.6,y:.32},n:'03 · Portal',h:'Subimos',p:'Portal luminoso, escalera y ascensor.',label:'Portal'},
-    {img:27,a:{s:1.15,x:.45,y:.5},b:{s:1.0,x:.5,y:.5},n:'04 · Rellano',h:'Esta es la puerta',p:'Puerta blindada de madera maciza.',label:'Puerta'},
-    {vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_025500_3c061411-6be2-44d7-9198-ede1c5abcc4e.mp4',w:2.2,a:{s:1,x:.5,y:.5},b:{s:1,x:.5,y:.5},n:'04 · Entramos',h:'Abrimos la puerta',p:'Y pasamos directamente al salón.',label:null},
-    {img:1,a:{s:1.0,x:.5,y:.5},b:{s:1.2,x:.34,y:.5},n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:'Salón'},
-    {img:2,a:{s:1.0,x:.5,y:.5},b:{s:1.35,x:.45,y:.36},n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:null},
-    {img:4,a:{s:1.0,x:.5,y:.5},b:{s:2.2,x:.58,y:.45},n:'06 · Pasillo',h:'Hacia la zona de noche',p:'Distribución funcional: zona de día delante, dormitorios al fondo.',label:'Pasillo'},
-    {img:5,a:{s:1.0,x:.5,y:.45},b:{s:2.3,x:.5,y:.42},n:'06 · Pasillo',h:'Hacia la zona de noche',p:'Distribución funcional: zona de día delante, dormitorios al fondo.',label:null},
-    {img:7,a:{s:1.0,x:.5,y:.5},b:{s:2.0,x:.18,y:.5},n:'07 · Dormitorio principal',h:'Con baño en suite',p:'Armarios empotrados y baño propio dentro de la habitación.',label:'Suite'},
-    {img:8,a:{s:1.0,x:.5,y:.5},b:{s:1.3,x:.38,y:.45},n:'08 · Baño en suite',h:'Ducha a ras de suelo',p:'Uno de los dos baños completos de la vivienda.',label:'Baño'},
-    {img:17,a:{s:1.0,x:.5,y:.5},b:{s:1.35,x:.6,y:.38},n:'09 · Dormitorios',h:'Dos dormitorios más',p:'Exteriores, amplios y listos para usar.',label:'Dormitorios'},
-    {img:11,a:{s:1.0,x:.5,y:.5},b:{s:1.5,x:.6,y:.5},n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:'Cocina'},
-    {img:13,a:{s:1.0,x:.5,y:.5},b:{s:1.9,x:.39,y:.45},n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:null},
-    {img:15,a:{s:1.0,x:.5,y:.5},b:{s:1.5,x:.5,y:.5},n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:'Patio'},
-    {img:14,a:{s:1.0,x:.5,y:.6},b:{s:1.25,x:.5,y:.45},n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null}
+  // Cada tramo: foto de salida (respaldo) + vídeo generado de esa foto a la siguiente
+  var SEG=[
+    {img:31,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_e51f612c-da73-48dd-8db4-37f440112d64.mp4',n:'01 · Llegada',h:'Calle Cánovas del Castillo',p:'Zona residencial tranquila de La Garita, en Telde, a minutos de la playa y del aeropuerto.',label:'Calle'},
+    {img:30,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_4feb61fe-c3c7-4c5b-b719-b0c8574c58b6.mp4',n:'02 · Edificio',h:'Edificio de 2005 con ascensor',p:'Fachada cuidada y portal a pie de calle.',label:'Edificio'},
+    {img:26,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_cca898c5-6029-4df4-bfc2-46fe68523fac.mp4',n:'03 · Portal',h:'Subimos',p:'Portal luminoso, escalera y ascensor.',label:'Portal'},
+    {img:27,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_ba28d6f1-545b-4db6-9caa-d96b637f29bf.mp4',n:'04 · Entrada',h:'Abrimos la puerta',p:'Puerta blindada de madera maciza.',label:'Puerta'},
+    {img:1,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_fb657e32-69b0-493b-9819-45f8f46cbb6a.mp4',n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:'Salón'},
+    {img:2,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_96637056-0852-466b-99ef-b8d58ae402ae.mp4',n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:null},
+    {img:4,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_aa2f7cc6-5120-44d4-9071-d511b4465f54.mp4',n:'06 · Pasillo',h:'Hacia la zona de noche',p:'Zona de día delante, dormitorios al fondo.',label:'Pasillo'},
+    {img:5,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_441d2130-eabf-425d-a3d8-74f19ad49302.mp4',n:'07 · Dormitorio principal',h:'Con baño en suite',p:'Armarios empotrados y baño propio dentro de la habitación.',label:'Suite'},
+    {img:7,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_25621a8c-62b9-4480-a312-5c5eec322fa8.mp4',n:'08 · Baño en suite',h:'Ducha a ras de suelo',p:'Uno de los dos baños completos de la vivienda.',label:'Baño'},
+    {img:8,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_0567cfe0-7ef0-4480-920c-72ec50a9003d.mp4',n:'09 · Dormitorios',h:'Dos dormitorios más',p:'Exteriores, amplios y listos para usar.',label:'Dormitorios'},
+    {img:17,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_984c8195-de37-46ff-96a0-fb662e8bd2e1.mp4',n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:'Cocina'},
+    {img:11,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_7a84c579-9e4e-4ea1-9b3e-7f7ecd1eea7b.mp4',n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:null},
+    {img:13,vid:'@12',n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:'Patio'},
+    {img:15,vid:'@13',n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null},
+    {img:14,vid:null,n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null,w:.6}
   ];
-  var N=STOPS.length, XF=.24;
-  var CUM=[0];STOPS.forEach(function(s){CUM.push(CUM[CUM.length-1]+(s.w||1))});var TOT=CUM[N]; // fracción final de cada tramo en la que se funde con la siguiente foto
+  var N=SEG.length,XF=.08,need=true;
+  var CUM=[0];SEG.forEach(function(s){CUM.push(CUM[CUM.length-1]+(s.w||1))});var TOT=CUM[N];
   var cv=document.getElementById('cv'),cx=cv.getContext('2d');
-  var imgs=STOPS.map(function(s){
-    if(s.vid){var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=s.vid;v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');document.body.appendChild(v);v._c=document.createElement('canvas');var snap=function(){if(v.readyState<2)return;v._c.width=v.videoWidth;v._c.height=v.videoHeight;v._c.getContext('2d').drawImage(v,0,0);v._ok=true;need=true};v.addEventListener('seeked',snap);v.addEventListener('loadeddata',snap);v.addEventListener('canplay',function(){need=true});v.load();return v}
-    var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';return i});
-  window.__tour={imgs:imgs};var loaded=0,loader=document.getElementById('loader');
-  imgs.forEach(function(i){if(i.tagName==='VIDEO')return;var f=function(){loaded++;if(loaded>=3)loader.classList.add('done');need=true};if(i.complete)f();else{i.onload=f;i.onerror=f}});
+  var loader=document.getElementById('loader');
+  SEG.forEach(function(s,k){
+    var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';i.onload=function(){need=true;if(k===0)loader.classList.add('done')};s.im=i;
+    if(s.vid&&s.vid.charAt(0)!=='@'){
+      var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='none';
+      v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');
+      v._c=document.createElement('canvas');
+      var snap=function(){if(v.readyState<2)return;v._c.width=v.videoWidth;v._c.height=v.videoHeight;v._c.getContext('2d').drawImage(v,0,0);v._ok=true;need=true};
+      v.addEventListener('seeked',snap);v.addEventListener('loadeddata',snap);
+      v._src=s.vid;document.body.appendChild(v);s.v=v;
+    }
+  });
   setTimeout(function(){loader.classList.add('done')},4000);
+  function warm(i){for(var k=Math.max(0,i-1);k<=Math.min(N-1,i+3);k++){var v=SEG[k].v;if(v&&!v._loading){v._loading=true;v.preload='auto';v.src=v._src;v.load()}}}
+  warm(0);
 
-  // Galería
   var gal=document.getElementById('gal');[1,7,11,15,30,4,8,23,17].forEach(function(n){var im=document.createElement('img');im.loading='lazy';im.src=BASE+n+'.jpg';im.alt='';gal.appendChild(im)});
 
-  // Raíl de estancias
-  var rail=document.getElementById('rail'),btns=[];
-  STOPS.forEach(function(s,k){if(!s.label)return;var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+s.label+'</span><i></i>';b.dataset.k=k;b.onclick=function(){go(k)};rail.appendChild(b);btns.push(b)});
-  var tour=document.getElementById('tour');
-  function go(k){var top=tour.offsetTop+(tour.offsetHeight-innerHeight)*((CUM[k]+.02)/TOT);window.scrollTo({top:top,behavior:'smooth'})}
+  var rail=document.getElementById('rail'),btns=[],tour=document.getElementById('tour');
+  SEG.forEach(function(s,k){if(!s.label)return;var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+s.label+'</span><i></i>';b.dataset.k=k;b.onclick=function(){go(k)};rail.appendChild(b);btns.push(b)});
+  function go(k){warm(k);var top=tour.offsetTop+(tour.offsetHeight-innerHeight)*((CUM[k]+.02)/TOT);window.scrollTo({top:top,behavior:'smooth'})}
 
-  var dpr=1,W=0,H=0,need=true;
+  var dpr=1,W=0,H=0;
   function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);need=true}
   addEventListener('resize',size);size();
-
-  function lerp(a,b,t){return a+(b-a)*t}
-  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
-  function view(v1,v2,t){return{s:lerp(v1.s,v2.s,t),x:lerp(v1.x,v2.x,t),y:lerp(v1.y,v2.y,t)}}
-  function draw(img,v,alpha){
-    if(img.tagName==='VIDEO'){if(!img._ok)return;img=img._c}
-    var iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
-    if(!iw||alpha<=0)return;
-    var cw=W*dpr,ch=H*dpr;
-    var cover=Math.max(cw/iw,ch/ih)*v.s,dw=iw*cover,dh=ih*cover;
-    // centra el punto (x,y) de la foto, sin dejar bordes
-    var dx=cw/2-v.x*dw,dy=ch/2-v.y*dh;
-    dx=Math.min(0,Math.max(cw-dw,dx));dy=Math.min(0,Math.max(ch-dh,dy));
-    cx.globalAlpha=alpha;cx.drawImage(img,dx,dy,dw,dh);cx.globalAlpha=1;
+  function cover(src,s,alpha){
+    var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height;if(!iw||alpha<=0)return false;
+    var cw=W*dpr,ch=H*dpr,k=Math.max(cw/iw,ch/ih)*s,dw=iw*k,dh=ih*k;
+    cx.globalAlpha=alpha;cx.drawImage(src,(cw-dw)/2,(ch-dh)/2,dw,dh);cx.globalAlpha=1;return true;
+  }
+  // Dibuja el tramo k en el momento t (0-1): vídeo si está listo; si no, la foto con un ligero avance
+  function paint(k,t,alpha){
+    var s=SEG[k];
+    if(s.v&&s.v._ok){
+      var v=s.v;if(v.duration){var want=Math.min(v.duration-0.04,t*v.duration);if(!v.seeking&&Math.abs(v.currentTime-want)>0.02)v.currentTime=want}
+      return cover(v._c,1,alpha);
+    }
+    if(s.v&&s.v.duration&&!s.v.seeking&&s.v.readyState>=1){var w2=Math.min(s.v.duration-0.04,t*s.v.duration);if(Math.abs(s.v.currentTime-w2)>0.02)s.v.currentTime=w2}
+    return cover(s.im,1+0.25*t,alpha);
   }
 
   var target=0,cur=0;
   function progress(){var r=tour.getBoundingClientRect();var tot=tour.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/tot))}
   addEventListener('scroll',function(){target=progress()},{passive:true});target=cur=progress();
-
   var intro=document.getElementById('intro'),cap=document.getElementById('cap'),capn=document.getElementById('capn'),caph=document.getElementById('caph'),capp=document.getElementById('capp'),bar=document.getElementById('bar');
-  var lastCap=-1;
+  var lastCap=-1,lastSeg=-1;
   function frame(){
-    var d=target-cur;cur+=d*0.12;if(Math.abs(d)<0.00005)cur=target;
+    var d=target-cur;cur+=d*0.14;if(Math.abs(d)<0.00005)cur=target;
     if(Math.abs(d)>0.00005||need){
       need=false;
-      var f=cur*TOT;var i=0;while(i<N-1&&f>=CUM[i+1])i++;var t=Math.min(1,(f-CUM[i])/(STOPS[i].w||1));
-      var s=STOPS[i];
-      if(s.vid){var vv=imgs[i];if(vv.duration){var want=Math.min(vv.duration-0.05,t*vv.duration);if(!vv.seeking&&Math.abs(vv.currentTime-want)>0.02)vv.currentTime=want}}
-      var vidPair=i<N-1&&(s.vid||STOPS[i+1].vid);
+      var f=cur*TOT,i=0;while(i<N-1&&f>=CUM[i+1])i++;var t=Math.min(1,(f-CUM[i])/(SEG[i].w||1));
+      if(i!==lastSeg){warm(i);lastSeg=i}
       cx.fillStyle='#000';cx.fillRect(0,0,cv.width,cv.height);
-      if(i<N-1&&t>1-XF){
-        var u=(t-(1-XF))/XF,ue=ease(u),nx=STOPS[i+1];
-        // la foto actual sigue avanzando mientras aparece la siguiente
-        var va=view(s.a,s.b,1);if(!vidPair)va.s*=1+0.45*ue;
-        var bl=vidPair?0:Math.sin(Math.PI*u)*7*dpr;
-        cx.filter=bl>0.3?'blur('+bl.toFixed(1)+'px)':'none';
-        draw(imgs[i],va,1);
-        var vb=view(nx.a,nx.b,0);if(!vidPair)vb.s*=1+0.18*(1-ue);
-        draw(imgs[i+1],vb,ue);
-        cx.filter='none';
-      }else{
-        var tt=i<N-1?Math.min(1,t/(1-XF)):t;
-        draw(imgs[i],view(s.a,s.b,ease(tt)),1);
-      }
-      intro.style.opacity=Math.max(0,1-cur*TOT*2.2);
+      paint(i,t,1);
+      if(i<N-1&&t>1-XF){paint(i+1,0,(t-(1-XF))/XF)}
+      intro.style.opacity=Math.max(0,1-f*2.2);
       bar.style.width=(cur*100)+'%';
-      var ci=t>1-XF*.5&&i<N-1?i+1:i;
-      var showCap=cur*TOT>0.35;
-      if(ci!==lastCap||cap.classList.contains('on')!==showCap){
-        var c=STOPS[ci];
-        if(capn.textContent!==c.n){cap.classList.remove('on');capn.textContent=c.n;caph.textContent=c.h;capp.textContent=c.p;void cap.offsetWidth}
-        cap.classList.toggle('on',showCap);lastCap=ci;
-        var active=-1;for(var k=ci;k>=0;k--){if(STOPS[k].label){active=k;break}}
+      var showCap=f>0.3;
+      if(i!==lastCap||cap.classList.contains('on')!==showCap){
+        var c=SEG[i];
+        if(caph.textContent!==c.h){cap.classList.remove('on');capn.textContent=c.n;caph.textContent=c.h;capp.textContent=c.p;void cap.offsetWidth}
+        cap.classList.toggle('on',showCap);lastCap=i;
+        var active=-1;for(var k=i;k>=0;k--){if(SEG[k].label){active=k;break}}
         btns.forEach(function(b){b.classList.toggle('on',+b.dataset.k===active)});
       }
     }
@@ -266,6 +255,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   }
   requestAnimationFrame(frame);
 })();
+
 </script>
 </body>
 </html>
