@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Piso con patio y suite en Telde · Golden Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fotos15.apinmo.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ink:#0e0d0b; --panel:#181611; --gold:#c9a438; --gold-hi:#e3c66a;
+  --text:#f2eee4; --muted:#a8a08e; --line:rgba(201,164,56,.28);
+  --display:"Young Serif",Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.05;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font:600 15px var(--body);text-decoration:none;border:1px solid var(--gold);cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-ghost{background:rgba(14,13,11,.4);color:var(--text);backdrop-filter:blur(6px)}
+
+/* Barra superior */
+.top{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top);background:linear-gradient(180deg,rgba(14,13,11,.75),rgba(14,13,11,0))}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+.brand span{color:var(--gold)}
+.top .ref{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* Recorrido */
+.tour{position:relative;height:1600vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 55%,rgba(0,0,0,.65) 100%)}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:max(64px,12vh);pointer-events:none;transition:opacity .4s}
+.intro h1{font-size:clamp(44px,8vw,112px);max-width:12ch;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.intro p{margin:16px 0 0;font-size:18px;max-width:46ch;color:#ece6d8;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.hint{margin-top:26px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi);display:flex;align-items:center;gap:10px}
+.hint i{display:block;width:1px;height:34px;background:var(--gold-hi);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.cap{position:absolute;left:0;right:0;bottom:max(40px,8vh);pointer-events:none}
+.cap .box{max-width:520px;opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.cap .box.on{opacity:1;transform:none}
+.cap .n{font-family:var(--mono);font-size:12px;color:var(--gold-hi);letter-spacing:.16em;text-transform:uppercase}
+.cap h2{font-size:clamp(32px,4.6vw,58px);margin-top:8px;text-shadow:0 3px 30px rgba(0,0,0,.6)}
+.cap p{margin:10px 0 0;font-size:17px;color:#ece6d8;text-shadow:0 2px 16px rgba(0,0,0,.7);max-width:40ch}
+.rail{position:absolute;right:max(18px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:5}
+.rail button{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;gap:10px;font:500 12px var(--body);color:rgba(242,238,228,.55);padding:3px 0}
+.rail button i{width:22px;height:2px;background:rgba(242,238,228,.35);border-radius:2px;transition:all .3s}
+.rail button.on{color:var(--text)}
+.rail button.on i{width:40px;background:var(--gold)}
+.rail button span{opacity:0;transition:opacity .3s}
+.rail:hover button span,.rail button.on span{opacity:1}
+.rail button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--gold);width:0}
+.loader{position:absolute;inset:0;display:grid;place-items:center;background:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted);transition:opacity .6s}
+.loader.done{opacity:0;pointer-events:none}
+
+/* Ficha */
+.ficha{padding-block:96px 40px}
+.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.ficha h2{font-size:clamp(34px,4.4vw,56px)}
+.price{font-family:var(--display);font-size:44px;color:var(--gold-hi);margin-top:18px}
+.lead{color:#d8d1c2;font-size:17px;line-height:1.65;margin-top:18px;max-width:58ch}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.specs div{background:var(--panel);padding:18px 16px;min-width:0}
+.specs b{display:block;font-family:var(--display);font-weight:400;font-size:30px;font-variant-numeric:tabular-nums}
+.specs span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.feat{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.feat li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;color:#d8d1c2}
+.feat li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:7px}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.contact{margin-top:16px;font-size:14px;color:var(--muted)}
+.contact b{color:var(--text);user-select:all}
+.gal{padding-block:30px 90px}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+.gal-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.gal-grid img:first-child{grid-column:span 2;grid-row:span 2;height:100%}
+footer{border-top:1px solid var(--line);padding-block:30px 50px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;gap:34px}
+  .rail button span{display:none}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .cap{bottom:max(28px,6vh)}
+}
+@media (prefers-reduced-motion:reduce){.hint i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="brand">Golden <span>Key</span></div>
+  <div class="ref">REF. P000031 · TELDE</div>
+</div></header>
+
+<section class="tour" id="tour">
+  <div class="stage">
+    <canvas id="cv" aria-label="Recorrido por la vivienda que avanza al hacer scroll"></canvas>
+    <div class="shade"></div>
+    <div class="intro wrap" id="intro">
+      <p class="eyebrow">La Garita · Telde · 240.000 €</p>
+      <h1>Piso con patio y suite en Telde</h1>
+      <p>3 dormitorios, 2 baños, patio interior privado y dos plazas de garaje. Haga la visita sin moverse de casa.</p>
+      <div class="hint"><i></i>Desliza para entrar</div>
+    </div>
+    <div class="cap wrap"><div class="box" id="cap"><div class="n" id="capn"></div><h2 id="caph"></h2><p id="capp"></p></div></div>
+    <nav class="rail" id="rail" aria-label="Estancias"></nav>
+    <div class="bar" id="bar"></div>
+    <div class="loader" id="loader">CARGANDO LA VISITA…</div>
+  </div>
+</section>
+
+<section class="ficha"><div class="wrap grid">
+  <div>
+    <p class="eyebrow">Ref. P000031 · Calle Cánovas del Castillo, Telde</p>
+    <h2>Lista para entrar a vivir, con patio y doble garaje</h2>
+    <div class="price">240.000 €</div>
+    <p class="lead">Vivienda de 84 m² construidos en un edificio de 2005 con ascensor. Tres dormitorios, dos baños completos (uno en suite), patio interior de uso exclusivo y dos plazas de garaje propias, con 36 m² en total. Se entrega semiamueblada y sin necesidad de obras.</p>
+    <div class="cta">
+      <a class="btn btn-gold" href="https://wa.me/34614491619?text=Hola%2C%20me%20interesa%20el%20piso%20P000031%20de%20Telde" target="_blank" rel="noopener">Pedir visita por WhatsApp</a>
+      <a class="btn btn-ghost" href="#tour">Repetir el recorrido</a>
+    </div>
+    <p class="contact">Golden Key Real Estate · <b>614 491 619</b> · goldenkey.inmo@gmail.com</p>
+  </div>
+  <div>
+    <div class="specs">
+      <div><b>84 m²</b><span>Construidos</span></div>
+      <div><b>3</b><span>Dormitorios</span></div>
+      <div><b>2</b><span>Baños</span></div>
+      <div><b>75 m²</b><span>Útiles</span></div>
+      <div><b>2</b><span>Garajes</span></div>
+      <div><b>2005</b><span>Edificio</span></div>
+    </div>
+    <ul class="feat">
+      <li>Dormitorio principal con baño en suite</li>
+      <li>Patio interior de uso exclusivo, con luz natural</li>
+      <li>Cocina equipada con electrodomésticos integrados</li>
+      <li>Ascensor y dos plazas de garaje (36 m²)</li>
+      <li>Comunidad 70 €/mes · IBI 304 €/año</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="gal"><div class="wrap">
+  <p class="eyebrow">Galería</p>
+  <div class="gal-grid" id="gal"></div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Golden Key Real Estate · Pedro Hidalgo, 83 · Las Palmas de Gran Canaria</span>
+  <span>Prototipo de visita virtual preparado por Regan Consulting</span>
+</div></footer>
+
+<script>
+(function(){
+  var BASE='https://fotos15.apinmo.com/13047/30432096/2-';
+  // Cada tramo: foto de salida (respaldo) + vídeo generado de esa foto a la siguiente
+  var SEG=[
+    {img:31,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_e51f612c-da73-48dd-8db4-37f440112d64.mp4',n:'01 · Llegada',h:'Calle Cánovas del Castillo',p:'Zona residencial tranquila de La Garita, en Telde, a minutos de la playa y del aeropuerto.',label:'Calle'},
+    {img:30,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_4feb61fe-c3c7-4c5b-b719-b0c8574c58b6.mp4',n:'02 · Edificio',h:'Edificio de 2005 con ascensor',p:'Fachada cuidada y portal a pie de calle.',label:'Edificio'},
+    {img:26,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_cca898c5-6029-4df4-bfc2-46fe68523fac.mp4',n:'03 · Portal',h:'Subimos',p:'Portal luminoso, escalera y ascensor.',label:'Portal'},
+    {img:27,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_ba28d6f1-545b-4db6-9caa-d96b637f29bf.mp4',n:'04 · Entrada',h:'Abrimos la puerta',p:'Puerta blindada de madera maciza.',label:'Puerta'},
+    {img:1,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_fb657e32-69b0-493b-9819-45f8f46cbb6a.mp4',n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:'Salón'},
+    {img:2,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_96637056-0852-466b-99ef-b8d58ae402ae.mp4',n:'05 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera, techos con moldura y dos ventanales.',label:null},
+    {img:4,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_aa2f7cc6-5120-44d4-9071-d511b4465f54.mp4',n:'06 · Pasillo',h:'Hacia la zona de noche',p:'Zona de día delante, dormitorios al fondo.',label:'Pasillo'},
+    {img:5,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_441d2130-eabf-425d-a3d8-74f19ad49302.mp4',n:'07 · Dormitorio principal',h:'Con baño en suite',p:'Armarios empotrados y baño propio dentro de la habitación.',label:'Suite'},
+    {img:7,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033336_25621a8c-62b9-4480-a312-5c5eec322fa8.mp4',n:'08 · Baño en suite',h:'Ducha a ras de suelo',p:'Uno de los dos baños completos de la vivienda.',label:'Baño'},
+    {img:8,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_0567cfe0-7ef0-4480-920c-72ec50a9003d.mp4',n:'09 · Dormitorios',h:'Dos dormitorios más',p:'Exteriores, amplios y listos para usar.',label:'Dormitorios'},
+    {img:17,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_984c8195-de37-46ff-96a0-fb662e8bd2e1.mp4',n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:'Cocina'},
+    {img:11,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033120_7a84c579-9e4e-4ea1-9b3e-7f7ecd1eea7b.mp4',n:'10 · Cocina',h:'Cocina equipada',p:'Horno y microondas en columna, frigorífico y mucho almacenaje.',label:null},
+    {img:13,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033621_aa1cfa7d-bd13-40a3-a3cd-80dd5498f00b.mp4',n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:'Patio'},
+    {img:15,vid:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_033621_bc6bab7a-40da-4864-98be-fa8bea8f8035.mp4',n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null},
+    {img:14,vid:null,n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null,w:.6}
+  ];
+  var N=SEG.length,XF=.08,need=true;
+  var CUM=[0];SEG.forEach(function(s){CUM.push(CUM[CUM.length-1]+(s.w||1))});var TOT=CUM[N];
+  var cv=document.getElementById('cv'),cx=cv.getContext('2d');
+  var loader=document.getElementById('loader');
+  SEG.forEach(function(s,k){
+    var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';i.onload=function(){need=true;if(k===0)loader.classList.add('done')};s.im=i;
+    if(s.vid&&s.vid.charAt(0)!=='@'){
+      var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='none';
+      v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');
+      v._c=document.createElement('canvas');
+      var snap=function(){if(v.readyState<2)return;v._c.width=v.videoWidth;v._c.height=v.videoHeight;v._c.getContext('2d').drawImage(v,0,0);v._ok=true;need=true};
+      v.addEventListener('seeked',snap);v.addEventListener('loadeddata',snap);
+      v._src=s.vid;document.body.appendChild(v);s.v=v;
+    }
+  });
+  setTimeout(function(){loader.classList.add('done')},4000);
+  function warm(i){for(var k=Math.max(0,i-1);k<=Math.min(N-1,i+3);k++){var v=SEG[k].v;if(v&&!v._loading){v._loading=true;v.preload='auto';v.src=v._src;v.load()}}}
+  warm(0);
+
+  var gal=document.getElementById('gal');[1,7,11,15,30,4,8,23,17].forEach(function(n){var im=document.createElement('img');im.loading='lazy';im.src=BASE+n+'.jpg';im.alt='';gal.appendChild(im)});
+
+  var rail=document.getElementById('rail'),btns=[],tour=document.getElementById('tour');
+  SEG.forEach(function(s,k){if(!s.label)return;var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+s.label+'</span><i></i>';b.dataset.k=k;b.onclick=function(){go(k)};rail.appendChild(b);btns.push(b)});
+  function go(k){warm(k);var top=tour.offsetTop+(tour.offsetHeight-innerHeight)*((CUM[k]+.02)/TOT);window.scrollTo({top:top,behavior:'smooth'})}
+
+  var dpr=1,W=0,H=0;
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);need=true}
+  addEventListener('resize',size);size();
+  function cover(src,s,alpha){
+    var iw=src.naturalWidth||src.width,ih=src.naturalHeight||src.height;if(!iw||alpha<=0)return false;
+    var cw=W*dpr,ch=H*dpr,k=Math.max(cw/iw,ch/ih)*s,dw=iw*k,dh=ih*k;
+    cx.globalAlpha=alpha;cx.drawImage(src,(cw-dw)/2,(ch-dh)/2,dw,dh);cx.globalAlpha=1;return true;
+  }
+  // Dibuja el tramo k en el momento t (0-1): vídeo si está listo; si no, la foto con un ligero avance
+  function paint(k,t,alpha){
+    var s=SEG[k];
+    if(s.v&&s.v._ok){
+      var v=s.v;if(v.duration){var want=Math.min(v.duration-0.04,t*v.duration);if(!v.seeking&&Math.abs(v.currentTime-want)>0.02)v.currentTime=want}
+      return cover(v._c,1,alpha);
+    }
+    if(s.v&&s.v.duration&&!s.v.seeking&&s.v.readyState>=1){var w2=Math.min(s.v.duration-0.04,t*s.v.duration);if(Math.abs(s.v.currentTime-w2)>0.02)s.v.currentTime=w2}
+    return cover(s.im,1+0.25*t,alpha);
+  }
+
+  var target=0,cur=0;
+  function progress(){var r=tour.getBoundingClientRect();var tot=tour.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/tot))}
+  addEventListener('scroll',function(){target=progress()},{passive:true});target=cur=progress();
+  var intro=document.getElementById('intro'),cap=document.getElementById('cap'),capn=document.getElementById('capn'),caph=document.getElementById('caph'),capp=document.getElementById('capp'),bar=document.getElementById('bar');
+  var lastCap=-1,lastSeg=-1;
+  function frame(){
+    var d=target-cur;cur+=d*0.14;if(Math.abs(d)<0.00005)cur=target;
+    if(Math.abs(d)>0.00005||need){
+      need=false;
+      var f=cur*TOT,i=0;while(i<N-1&&f>=CUM[i+1])i++;var t=Math.min(1,(f-CUM[i])/(SEG[i].w||1));
+      if(i!==lastSeg){warm(i);lastSeg=i}
+      cx.fillStyle='#000';cx.fillRect(0,0,cv.width,cv.height);
+      paint(i,t,1);
+      if(i<N-1&&t>1-XF){paint(i+1,0,(t-(1-XF))/XF)}
+      intro.style.opacity=Math.max(0,1-f*2.2);
+      bar.style.width=(cur*100)+'%';
+      var showCap=f>0.3;
+      if(i!==lastCap||cap.classList.contains('on')!==showCap){
+        var c=SEG[i];
+        if(caph.textContent!==c.h){cap.classList.remove('on');capn.textContent=c.n;caph.textContent=c.h;capp.textContent=c.p;void cap.offsetWidth}
+        cap.classList.toggle('on',showCap);lastCap=i;
+        var active=-1;for(var k=i;k>=0;k--){if(SEG[k].label){active=k;break}}
+        btns.forEach(function(b){b.classList.toggle('on',+b.dataset.k===active)});
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>
