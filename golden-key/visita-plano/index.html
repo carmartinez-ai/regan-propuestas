@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Piso con patio y suite en Telde · Golden Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fotos15.apinmo.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ink:#0e0d0b; --panel:#181611; --gold:#c9a438; --gold-hi:#e3c66a;
+  --text:#f2eee4; --muted:#a8a08e; --line:rgba(201,164,56,.28);
+  --display:"Young Serif",Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.05;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font:600 15px var(--body);text-decoration:none;border:1px solid var(--gold);cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-ghost{background:rgba(14,13,11,.4);color:var(--text);backdrop-filter:blur(6px)}
+
+/* Barra superior */
+.top{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top);background:linear-gradient(180deg,rgba(14,13,11,.75),rgba(14,13,11,0))}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+.brand span{color:var(--gold)}
+.top .ref{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* Recorrido */
+.tour{position:relative;height:2600vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 55%,rgba(0,0,0,.65) 100%)}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:max(64px,12vh);pointer-events:none;transition:opacity .4s}
+.intro h1{font-size:clamp(44px,8vw,112px);max-width:12ch;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.intro p{margin:16px 0 0;font-size:18px;max-width:46ch;color:#ece6d8;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.hint{margin-top:26px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi);display:flex;align-items:center;gap:10px}
+.hint i{display:block;width:1px;height:34px;background:var(--gold-hi);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.cap{position:absolute;left:0;right:0;bottom:max(40px,8vh);pointer-events:none}
+.cap .box{max-width:520px;opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.cap .box.on{opacity:1;transform:none}
+.cap .n{font-family:var(--mono);font-size:12px;color:var(--gold-hi);letter-spacing:.16em;text-transform:uppercase}
+.cap h2{font-size:clamp(32px,4.6vw,58px);margin-top:8px;text-shadow:0 3px 30px rgba(0,0,0,.6)}
+.cap p{margin:10px 0 0;font-size:17px;color:#ece6d8;text-shadow:0 2px 16px rgba(0,0,0,.7);max-width:40ch}
+.rail{position:absolute;right:max(18px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:5}
+.rail button{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;gap:10px;font:500 12px var(--body);color:rgba(242,238,228,.55);padding:3px 0}
+.rail button i{width:22px;height:2px;background:rgba(242,238,228,.35);border-radius:2px;transition:all .3s}
+.rail button.on{color:var(--text)}
+.rail button.on i{width:40px;background:var(--gold)}
+.rail button span{opacity:0;transition:opacity .3s}
+.rail:hover button span,.rail button.on span{opacity:1}
+.rail button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--gold);width:0}
+.loader{position:absolute;inset:0;display:grid;place-items:center;background:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted);transition:opacity .6s}
+.loader.done{opacity:0;pointer-events:none}
+
+/* Ficha */
+.ficha{padding-block:96px 40px}
+.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.ficha h2{font-size:clamp(34px,4.4vw,56px)}
+.price{font-family:var(--display);font-size:44px;color:var(--gold-hi);margin-top:18px}
+.lead{color:#d8d1c2;font-size:17px;line-height:1.65;margin-top:18px;max-width:58ch}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.specs div{background:var(--panel);padding:18px 16px;min-width:0}
+.specs b{display:block;font-family:var(--display);font-weight:400;font-size:30px;font-variant-numeric:tabular-nums}
+.specs span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.feat{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.feat li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;color:#d8d1c2}
+.feat li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:7px}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.contact{margin-top:16px;font-size:14px;color:var(--muted)}
+.contact b{color:var(--text);user-select:all}
+.gal{padding-block:30px 90px}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+.gal-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.gal-grid img:first-child{grid-column:span 2;grid-row:span 2;height:100%}
+footer{border-top:1px solid var(--line);padding-block:30px 50px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;gap:34px}
+  .rail button span{display:none}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .cap{bottom:max(28px,6vh)}
+}
+@media (prefers-reduced-motion:reduce){.hint i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="brand">Golden <span>Key</span></div>
+  <div class="ref">REF. P000031 · TELDE</div>
+</div></header>
+
+<section class="tour" id="tour">
+  <div class="stage">
+    <canvas id="cv" aria-label="Recorrido por la vivienda que avanza al hacer scroll"></canvas>
+    <div class="shade"></div>
+    <div class="intro wrap" id="intro">
+      <p class="eyebrow">La Garita – Marpequeña · Telde · 240.000 €</p>
+      <h1>Piso con patio y suite en Telde</h1>
+      <p>3 dormitorios, 2 baños, patio interior privado y dos plazas de garaje. Haga la visita sin moverse de casa.</p>
+      <div class="hint"><i></i>Desliza para entrar</div>
+    </div>
+    <div class="cap wrap"><div class="box" id="cap"><div class="n" id="capn"></div><h2 id="caph"></h2><p id="capp"></p></div></div>
+    <nav class="rail" id="rail" aria-label="Estancias"></nav>
+    <div class="bar" id="bar"></div>
+    <div class="loader" id="loader">CARGANDO LA VISITA…</div>
+  </div>
+</section>
+
+<section class="ficha"><div class="wrap grid">
+  <div>
+    <p class="eyebrow">Ref. P000031 · Calle Cánovas del Castillo, Telde</p>
+    <h2>Lista para entrar a vivir, con patio y doble garaje</h2>
+    <div class="price">240.000 €</div>
+    <p class="lead">Vivienda de 84 m² construidos en un edificio de 2005 con ascensor. Tres dormitorios, dos baños completos (uno en suite), patio interior de uso exclusivo y dos plazas de garaje propias, con 36 m² en total. Se entrega semiamueblada y sin necesidad de obras.</p>
+    <div class="cta">
+      <a class="btn btn-gold" href="https://wa.me/34614491619?text=Hola%2C%20me%20interesa%20el%20piso%20P000031%20de%20Telde" target="_blank" rel="noopener">Pedir visita por WhatsApp</a>
+      <a class="btn btn-ghost" href="#tour">Repetir el recorrido</a>
+    </div>
+    <p class="contact">Golden Key Real Estate · <b>614 491 619</b> · goldenkey.inmo@gmail.com</p>
+  </div>
+  <div>
+    <div class="specs">
+      <div><b>84 m²</b><span>Construidos</span></div>
+      <div><b>3</b><span>Dormitorios</span></div>
+      <div><b>2</b><span>Baños</span></div>
+      <div><b>75 m²</b><span>Útiles</span></div>
+      <div><b>2</b><span>Garajes</span></div>
+      <div><b>2005</b><span>Edificio</span></div>
+    </div>
+    <ul class="feat">
+      <li>Dormitorio principal con baño en suite</li>
+      <li>Patio interior de uso exclusivo, con luz natural</li>
+      <li>Cocina equipada con electrodomésticos integrados</li>
+      <li>Ascensor y dos plazas de garaje (36 m²)</li>
+      <li>Comunidad 70 €/mes · IBI 304 €/año</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="gal"><div class="wrap">
+  <p class="eyebrow">Galería</p>
+  <div class="gal-grid" id="gal"></div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Golden Key Real Estate · Pedro Hidalgo, 83 · Las Palmas de Gran Canaria</span>
+  <span>Prototipo de visita virtual preparado por Regan Consulting</span>
+</div></footer>
+
+<script>
+(function(){
+  var BASE='https://fotos15.apinmo.com/13047/30432096/2-';
+  // Cada parada: foto, vista inicial y final (s=zoom, x/y=punto de la foto al que mira la cámara, 0-1)
+  var STOPS=[
+    {img:31,a:{s:1.0,x:0.5,y:0.5},b:{s:1.4,x:0.3,y:0.55},n:'01 · Llegada',h:'Calle Cánovas del Castillo',p:'La Garita – Marpequeña, Telde.',label:'Calle'},
+    {img:30,a:{s:1.0,x:0.5,y:0.5},b:{s:2.2,x:0.47,y:0.6},n:'02 · Edificio',h:'Edificio de 2005 con ascensor',p:'Entramos por la puerta del portal.',label:null},
+    {src:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_054915_66039d15-45a2-4719-b5b5-73b3a82d9f16.png',a:{s:1.0,x:0.5,y:0.5},b:{s:1.6,x:0.42,y:0.3},n:'03 · Portal',h:'Entramos al portal',p:'Escalera de frente; abajo, acceso al garaje.',label:'Portal'},
+    {img:26,a:{s:1.0,x:0.5,y:0.5},b:{s:1.5,x:0.4,y:0.4},n:'04 · Primer tramo',h:'Subimos',p:'Llegamos al descansillo.',label:null},
+    {img:27,a:{s:1.0,x:0.5,y:0.5},b:{s:1.9,x:0.3,y:0.5},n:'05 · Puerta A',h:'Esta es la puerta',p:'Puerta blindada de madera maciza.',label:'Puerta'},
+    {src:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_060041_c1b56d01-55f6-445e-9740-65b81f3d8658.png',a:{s:1.0,x:0.5,y:0.5},b:{s:1.2,x:0.6,y:0.5},n:'06 · Entrada',h:'Abrimos la puerta',p:'El salón, con el sillón de frente.',label:'Salón'},
+    {img:2,a:{s:1.0,x:0.5,y:0.5},b:{s:1.2,x:0.6,y:0.5},n:'06 · Salón',h:'Un salón largo y luminoso',p:'Ventana a la calle y mueble de televisión.',label:null},
+    {img:1,a:{s:1.0,x:0.5,y:0.5},b:{s:1.2,x:0.4,y:0.5},n:'06 · Salón',h:'Un salón largo y luminoso',p:'Suelo de madera y techos con moldura.',label:null},
+    {img:3,a:{s:1.0,x:0.5,y:0.5},b:{s:1.3,x:0.45,y:0.5},n:'06 · Salón',h:'Hacia el pasillo',p:'La puerta de entrada queda a la izquierda.',label:null},
+    {img:4,a:{s:1.0,x:0.5,y:0.5},b:{s:2.0,x:0.58,y:0.45},n:'07 · Pasillo',h:'Hacia el pasillo',p:'',label:null},
+    {img:5,a:{s:1.0,x:0.5,y:0.5},b:{s:1.6,x:0.42,y:0.5},n:'07 · Pasillo',h:'Zona de día y zona de noche',p:'Al fondo, la habitación azul.',label:'Pasillo'},
+    {src:'https://d8j0ntlcm91z4.cloudfront.net/user_3HDvhkbydVXosXzu30sU7cQeej5/hf_20261028_060620_32644a65-e291-4713-a6c4-5d240187dd0b.png',a:{s:1.0,x:0.5,y:0.5},b:{s:1.3,x:0.55,y:0.5},n:'08 · Cocina',h:'Primera puerta a la izquierda',p:'Puerta corredera de madera y cristal.',label:'Cocina'},
+    {img:11,a:{s:1.0,x:0.5,y:0.5},b:{s:1.25,x:0.6,y:0.5},n:'08 · Cocina',h:'Cocina equipada',p:'Placa de inducción, fregadero doble y mucho almacenaje.',label:null},
+    {img:12,a:{s:1.0,x:0.5,y:0.5},b:{s:1.3,x:0.85,y:0.5},n:'08 · Cocina',h:'Columna de horno y microondas',p:'Frigorífico combi y despensa acristalada.',label:null},
+    {img:14,a:{s:1.0,x:0.5,y:0.5},b:{s:1.25,x:0.5,y:0.5},n:'09 · Patio interior',h:'Un patio solo para usted',p:'Solana con techo acristalado: luz y ventilación.',label:'Patio'},
+    {img:15,a:{s:1.0,x:0.5,y:0.5},b:{s:1.6,x:0.45,y:0.5},n:'09 · Patio interior',h:'Lavadero',p:'Volvemos hacia la cocina.',label:null},
+    {img:13,a:{s:1.0,x:0.5,y:0.5},b:{s:1.7,x:0.42,y:0.5},n:'08 · Cocina',h:'Volvemos por la cocina',p:'Salimos por la corredera al pasillo.',label:null},
+    {img:5,a:{s:1.0,x:0.5,y:0.5},b:{s:1.8,x:0.36,y:0.5},n:'10 · Pasillo',h:'Seguimos por el pasillo',p:'',label:null},
+    {img:19,a:{s:1.0,x:0.5,y:0.5},b:{s:1.2,x:0.5,y:0.5},n:'11 · Cuarto de armarios',h:'Cuarto de armarios',p:'Dos armarios y cómoda bajo la ventana.',label:'Armarios'},
+    {img:5,a:{s:1.0,x:0.5,y:0.5},b:{s:2.3,x:0.5,y:0.45},n:'12 · Pasillo',h:'Hacia la zona de noche',p:'Pasamos la puerta de mitad del pasillo.',label:null},
+    {img:6,a:{s:1.0,x:0.5,y:0.5},b:{s:1.25,x:0.5,y:0.5},n:'13 · Dormitorio principal',h:'Dormitorio principal',p:'Pared de piedra y ventana exterior.',label:'Suite'},
+    {img:7,a:{s:1.0,x:0.5,y:0.5},b:{s:1.6,x:0.18,y:0.5},n:'13 · Dormitorio principal',h:'Con baño en suite',p:'Armarios empotrados y baño propio.',label:null},
+    {img:8,a:{s:1.0,x:0.5,y:0.5},b:{s:1.25,x:0.4,y:0.5},n:'14 · Baño en suite',h:'Ducha a ras de suelo',p:'Uno de los dos baños completos.',label:'Baño'},
+    {img:10,a:{s:1.0,x:0.5,y:0.5},b:{s:1.2,x:0.5,y:0.5},n:'14 · Baño en suite',h:'Ducha a ras de suelo',p:'Mampara y ventana.',label:null},
+    {img:9,a:{s:1.0,x:0.5,y:0.5},b:{s:1.5,x:0.6,y:0.5},n:'14 · Baño en suite',h:'Salimos del baño',p:'',label:null},
+    {img:5,a:{s:1.0,x:0.5,y:0.5},b:{s:2.6,x:0.5,y:0.42},n:'15 · Pasillo',h:'Al fondo del pasillo',p:'Solo queda la habitación azul.',label:null},
+    {img:16,a:{s:1.0,x:0.5,y:0.5},b:{s:1.3,x:0.6,y:0.5},n:'16 · Habitación azul',h:'La habitación azul',p:'Exterior y lista para usar.',label:'Hab. azul'},
+    {img:17,a:{s:1.0,x:0.5,y:0.5},b:{s:1.25,x:0.5,y:0.5},n:'16 · Habitación azul',h:'La habitación azul',p:'Exterior y lista para usar.',label:null},
+    {img:18,a:{s:1.0,x:0.5,y:0.5},b:{s:1.15,x:0.5,y:0.5},n:'16 · Habitación azul',h:'Fin de la visita',p:'240.000 € · Ref. P000031',label:null}
+  ];
+  var N=STOPS.length, XF=.24; // fracción final de cada tramo en la que se funde con la siguiente foto
+  var cv=document.getElementById('cv'),cx=cv.getContext('2d');
+  var imgs=STOPS.map(function(s){var i=new Image();i.decoding='async';i.src=s.src||(BASE+s.img+'.jpg');return i});
+  var loaded=0,loader=document.getElementById('loader');
+  imgs.forEach(function(i){var f=function(){loaded++;if(loaded>=3)loader.classList.add('done');need=true};if(i.complete)f();else{i.onload=f;i.onerror=f}});
+  setTimeout(function(){loader.classList.add('done')},4000);
+
+  // Galería
+  var gal=document.getElementById('gal');[1,7,11,15,30,4,8,23,17].forEach(function(n){var im=document.createElement('img');im.loading='lazy';im.src=BASE+n+'.jpg';im.alt='';gal.appendChild(im)});
+
+  // Raíl de estancias
+  var rail=document.getElementById('rail'),btns=[];
+  STOPS.forEach(function(s,k){if(!s.label)return;var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+s.label+'</span><i></i>';b.dataset.k=k;b.onclick=function(){go(k)};rail.appendChild(b);btns.push(b)});
+  var tour=document.getElementById('tour');
+  function go(k){var top=tour.offsetTop+(tour.offsetHeight-innerHeight)*((k+.02)/N);window.scrollTo({top:top,behavior:'smooth'})}
+
+  var dpr=1,W=0,H=0,need=true;
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);need=true}
+  addEventListener('resize',size);size();
+
+  function lerp(a,b,t){return a+(b-a)*t}
+  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+  function view(v1,v2,t){return{s:lerp(v1.s,v2.s,t),x:lerp(v1.x,v2.x,t),y:lerp(v1.y,v2.y,t)}}
+  function draw(img,v,alpha){
+    if(!img.naturalWidth||alpha<=0)return;
+    var iw=img.naturalWidth,ih=img.naturalHeight,cw=W*dpr,ch=H*dpr;
+    var cover=Math.max(cw/iw,ch/ih)*v.s,dw=iw*cover,dh=ih*cover;
+    // centra el punto (x,y) de la foto, sin dejar bordes
+    var dx=cw/2-v.x*dw,dy=ch/2-v.y*dh;
+    dx=Math.min(0,Math.max(cw-dw,dx));dy=Math.min(0,Math.max(ch-dh,dy));
+    cx.globalAlpha=alpha;cx.drawImage(img,dx,dy,dw,dh);cx.globalAlpha=1;
+  }
+
+  var target=0,cur=0;
+  function progress(){var r=tour.getBoundingClientRect();var tot=tour.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/tot))}
+  addEventListener('scroll',function(){target=progress()},{passive:true});target=cur=progress();
+
+  var intro=document.getElementById('intro'),cap=document.getElementById('cap'),capn=document.getElementById('capn'),caph=document.getElementById('caph'),capp=document.getElementById('capp'),bar=document.getElementById('bar');
+  var lastCap=-1;
+  function frame(){
+    var d=target-cur;cur+=d*0.12;if(Math.abs(d)<0.00005)cur=target;
+    if(Math.abs(d)>0.00005||need){
+      need=false;
+      var f=cur*N;var i=Math.min(N-1,Math.floor(f));var t=f-i;
+      var s=STOPS[i];
+      cx.fillStyle='#000';cx.fillRect(0,0,cv.width,cv.height);
+      if(i<N-1&&t>1-XF){
+        var u=(t-(1-XF))/XF,ue=ease(u),nx=STOPS[i+1];
+        // la foto actual sigue avanzando mientras aparece la siguiente
+        var va=view(s.a,s.b,1);va.s*=1+0.45*ue;
+        var bl=Math.sin(Math.PI*u)*7*dpr;
+        cx.filter=bl>0.3?'blur('+bl.toFixed(1)+'px)':'none';
+        draw(imgs[i],va,1);
+        var vb=view(nx.a,nx.b,0);vb.s*=1+0.18*(1-ue);
+        draw(imgs[i+1],vb,ue);
+        cx.filter='none';
+      }else{
+        var tt=i<N-1?Math.min(1,t/(1-XF)):t;
+        draw(imgs[i],view(s.a,s.b,ease(tt)),1);
+      }
+      intro.style.opacity=Math.max(0,1-cur*N*2.2);
+      bar.style.width=(cur*100)+'%';
+      var ci=t>1-XF*.5&&i<N-1?i+1:i;
+      var showCap=cur*N>0.35;
+      if(ci!==lastCap||cap.classList.contains('on')!==showCap){
+        var c=STOPS[ci];
+        if(capn.textContent!==c.n){cap.classList.remove('on');capn.textContent=c.n;caph.textContent=c.h;capp.textContent=c.p;void cap.offsetWidth}
+        cap.classList.toggle('on',showCap);lastCap=ci;
+        var active=-1;for(var k=ci;k>=0;k--){if(STOPS[k].label){active=k;break}}
+        btns.forEach(function(b){b.classList.toggle('on',+b.dataset.k===active)});
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
