@@ -182,7 +182,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     {img:15,a:{s:1.0,x:.5,y:.5},b:{s:1.5,x:.5,y:.5},n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:'Patio'},
     {img:14,a:{s:1.0,x:.5,y:.6},b:{s:1.25,x:.5,y:.45},n:'11 · Patio interior',h:'Un patio solo para usted',p:'Luz natural y ventilación, un rincón privado sin salir de casa.',label:null}
   ];
-  var N=STOPS.length, XF=.32; // fracción final de cada tramo en la que se funde con la siguiente foto
+  var N=STOPS.length, XF=.24; // fracción final de cada tramo en la que se funde con la siguiente foto
   var cv=document.getElementById('cv'),cx=cv.getContext('2d');
   var imgs=STOPS.map(function(s){var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';return i});
   var loaded=0,loader=document.getElementById('loader');
@@ -231,10 +231,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       if(i<N-1&&t>1-XF){
         var u=(t-(1-XF))/XF,ue=ease(u),nx=STOPS[i+1];
         // la foto actual sigue avanzando mientras aparece la siguiente
-        var va=view(s.a,s.b,1);va.s*=1+0.35*ue;
+        var va=view(s.a,s.b,1);va.s*=1+0.45*ue;
+        var bl=Math.sin(Math.PI*u)*7*dpr;
+        cx.filter=bl>0.3?'blur('+bl.toFixed(1)+'px)':'none';
         draw(imgs[i],va,1);
         var vb=view(nx.a,nx.b,0);vb.s*=1+0.18*(1-ue);
         draw(imgs[i+1],vb,ue);
+        cx.filter='none';
       }else{
         var tt=i<N-1?Math.min(1,t/(1-XF)):t;
         draw(imgs[i],view(s.a,s.b,ease(tt)),1);
