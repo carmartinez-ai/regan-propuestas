@@ -187,9 +187,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   var CUM=[0];STOPS.forEach(function(s){CUM.push(CUM[CUM.length-1]+(s.w||1))});var TOT=CUM[N]; // fracción final de cada tramo en la que se funde con la siguiente foto
   var cv=document.getElementById('cv'),cx=cv.getContext('2d');
   var imgs=STOPS.map(function(s){
-    if(s.vid){var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=s.vid;v.addEventListener('seeked',function(){need=true});v.addEventListener('loadeddata',function(){need=true});v.load();return v}
+    if(s.vid){var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=s.vid;v.setAttribute('style','position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none');document.body.appendChild(v);v.addEventListener('seeked',function(){need=true});v.addEventListener('loadeddata',function(){need=true});v.addEventListener('canplay',function(){need=true});v.load();return v}
     var i=new Image();i.decoding='async';i.src=BASE+s.img+'.jpg';return i});
-  var loaded=0,loader=document.getElementById('loader');
+  window.__tour={imgs:imgs};var loaded=0,loader=document.getElementById('loader');
   imgs.forEach(function(i){if(i.tagName==='VIDEO')return;var f=function(){loaded++;if(loaded>=3)loader.classList.add('done');need=true};if(i.complete)f();else{i.onload=f;i.onerror=f}});
   setTimeout(function(){loader.classList.add('done')},4000);
 
