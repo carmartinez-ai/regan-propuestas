@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="img/logo.png">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Nueva web Dental Tafira</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: dossier vertical con la identidad de Dental Tafira. Portada antracita, capítulos numerados (el orden es el de la propuesta), capturas reales de la web en marcos de navegador y móvil. Aspecto claro único a propósito: es un documento para enviar. */
+:root{
+  --gold:#C9973A; --gold-d:#A86E17; --gold-l:#E0C152;
+  --grad:linear-gradient(100deg,#B5771D 0%,#C9973A 45%,#E0C152 100%);
+  --ink:#3A3C3B; --muted:#6E706E; --dark:#2B2D2C; --dark-2:#363837;
+  --bg:#FFFFFF; --paper:#F7F5F0; --line:#E7E2D6; --cream:#FBF6EA; --red:#A4423A; --red-s:#F6E7E5;
+  --display:"Roboto Slab",Georgia,serif; --body:Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);color:var(--dark);margin:0;line-height:1.15;text-wrap:balance;font-weight:600}
+p{margin:0}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.btn{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding:.9rem 1.45rem;font-weight:600;text-decoration:none;transition:transform .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+.btn-gold{background:var(--grad);color:#fff;box-shadow:0 14px 30px -14px rgba(168,110,23,.9)}
+.btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn-dark{background:var(--dark);color:#fff}
+
+/* Portada */
+.cover{background:var(--dark);color:#fff;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--grad)}
+.cover .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:3.5rem 4.5rem}
+.cover .brand{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.4rem}
+.cover .brand img{width:150px}
+.cover .brand span{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);border-left:1px solid rgba(255,255,255,.2);padding-left:1.2rem;line-height:1.5}
+.kick{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l)}
+.cover h1{color:#fff;font-size:clamp(2.4rem,5vw,3.9rem);margin-top:.9rem;letter-spacing:-.01em}
+.cover h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover .lead{margin-top:1.2rem;color:rgba(255,255,255,.75);font-size:1.15rem;max-width:32rem;font-weight:300}
+.cover .ctas{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12)}
+.meta small{display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.15rem}
+.meta b{font-weight:500}
+.cover .shot{position:relative;min-width:0}
+.browser{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 40px 90px -35px rgba(0,0,0,.75);border:1px solid rgba(0,0,0,.06)}
+.browser .bar{display:flex;align-items:center;gap:7px;padding:9px 12px;background:#EFECE5}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#D5CFC2}
+.browser .bar span{flex:1;min-width:0;margin-left:8px;background:#fff;border-radius:7px;padding:3px 10px;font-size:.76rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phone{width:200px;border-radius:30px;background:#151616;padding:8px;box-shadow:0 30px 60px -25px rgba(0,0,0,.8)}
+.phone img{border-radius:23px}
+.cover .phone{position:absolute;right:-14px;bottom:-40px;width:150px}
+
+/* Índice */
+.toc{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:#fff}
+.toc .wrap{display:flex;gap:.3rem;overflow-x:auto;padding-block:.7rem;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;font-size:.9rem;font-weight:500;color:var(--muted);padding:.4rem .85rem;border-radius:999px}
+.toc a:hover{background:var(--paper);color:var(--gold-d)}
+.toc a b{color:var(--gold-d);font-weight:700;margin-right:.3rem;font-variant-numeric:tabular-nums}
+
+/* Capítulos */
+.ch{padding-block:5rem}
+.ch.alt{background:var(--paper)}
+.ch-head{display:grid;gap:.7rem;max-width:46rem;margin-bottom:2.8rem}
+.ch-head .num{font-family:var(--display);font-size:.95rem;font-weight:600;color:var(--gold-d);display:flex;align-items:center;gap:.8rem}
+.ch-head .num::after{content:"";width:48px;height:3px;border-radius:3px;background:var(--grad)}
+.ch-head h2{font-size:clamp(2rem,3.6vw,2.8rem)}
+.ch-head p{color:var(--muted);font-size:1.1rem}
+
+/* Diagnóstico */
+.diag{display:grid;grid-template-columns:300px 1fr;gap:2.5rem;align-items:start}
+.score{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.8rem;display:grid;gap:.8rem;position:sticky;top:80px}
+.score .n{font-family:var(--display);font-size:4.4rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.score .n small{font-size:1.6rem;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.score p{color:var(--muted);font-size:.97rem}
+.score b{color:var(--dark)}
+.issues{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.issue{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.15rem 1.2rem;display:flex;gap:.9rem;min-width:0}
+.issue .x{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red-s);color:var(--red);display:grid;place-items:center}
+.issue .x svg{width:15px;height:15px}
+.issue b{display:block;color:var(--dark);margin-bottom:.15rem}
+.issue span{font-size:.94rem;color:var(--muted)}
+.keep{grid-column:1/-1;display:flex;gap:.9rem;padding:1.2rem 1.3rem;border-radius:16px;background:var(--cream);border:1px solid #EFE2C2}
+.keep .x{flex:none;width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center}
+.keep .x svg{width:16px;height:16px}
+.keep b{display:block;color:var(--dark)}
+.keep span{color:var(--ink);font-size:.97rem}
+
+/* Web de ejemplo */
+.demo-top{display:grid;grid-template-columns:1fr 220px;gap:2rem;align-items:end;margin-bottom:4.5rem}
+.demo-top .phone{width:220px}
+.demo-link{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1.1rem 1.3rem;border-radius:16px;background:var(--dark);color:#fff}
+.demo-link p{flex:1 1 240px;color:rgba(255,255,255,.8);font-size:.97rem}
+.demo-link p b{color:#fff;display:block;font-family:var(--display);font-size:1.1rem;font-weight:600}
+.feat{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center;padding-block:2.6rem;border-top:1px solid var(--line)}
+.feat.rev{grid-template-columns:1.1fr .9fr}
+.feat.rev .txt{order:2}
+.feat .txt{display:grid;gap:.9rem;min-width:0}
+.feat .tag{justify-self:start;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;background:var(--cream);color:var(--gold-d);border:1px solid #EFE2C2}
+.feat h3{font-size:1.75rem}
+.feat p{color:var(--muted)}
+.feat ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.feat li{padding-left:1.5rem;position:relative;font-size:.98rem}
+.feat li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--grad)}
+.feat .media{min-width:0}
+.feat .media img{border-radius:14px;box-shadow:0 30px 60px -35px rgba(43,45,44,.55);border:1px solid var(--line)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.pair img{width:100%}
+.ai-shot{max-width:340px;margin-left:auto}
+
+/* Incluye */
+.inc{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.inc div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.3rem;display:grid;gap:.4rem;align-content:start}
+.inc svg{width:28px;height:28px;color:var(--gold-d);margin-bottom:.3rem}
+.inc b{color:var(--dark);font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.3}
+.inc span{font-size:.93rem;color:var(--muted)}
+.goal{margin-top:2rem;font-family:var(--display);font-weight:300;font-size:1.35rem;color:var(--dark);border-left:4px solid var(--gold);padding:.4rem 0 .4rem 1.3rem;max-width:52rem}
+
+/* Planes */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;align-items:stretch}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:1rem;position:relative;min-width:0}
+.plan.rec{border:2px solid var(--gold);box-shadow:0 30px 60px -35px rgba(168,110,23,.6)}
+.plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .9rem;border-radius:999px;white-space:nowrap}
+.plan h3{font-size:1.35rem}
+.plan .d{font-size:.94rem;color:var(--muted);min-height:3em}
+.price{font-family:var(--display);font-size:2.4rem;font-weight:700;color:var(--dark);line-height:1;font-variant-numeric:tabular-nums}
+.price.q{font-size:1.25rem;font-weight:600;color:var(--gold-d)}
+.price small{font-family:var(--body);font-size:.9rem;font-weight:400;color:var(--muted)}
+.plan .ln{height:2px;background:var(--grad);border-radius:2px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:.95rem}
+.plan li{display:flex;gap:.55rem}
+.plan li svg{flex:none;width:17px;height:17px;color:var(--gold-d);margin-top:.22em}
+.plan li.all{font-weight:600;color:var(--dark)}
+.note{margin-top:1.3rem;font-size:.88rem;color:var(--muted);max-width:60rem}
+
+/* Mantenimiento */
+.maint{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.maint .plan .price{font-size:2rem}
+.opt{margin-top:2.6rem}
+.opt h3{font-size:1.3rem;margin-bottom:1rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:480px}
+th{text-align:left;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);padding:.9rem 1.1rem;border-bottom:1px solid var(--line);background:var(--paper)}
+td{padding:.85rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;color:var(--dark);white-space:nowrap}
+td:nth-child(2){color:var(--muted)}
+
+/* Fases */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;list-style:none;margin:0;padding:0}
+.phases li{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.3rem;display:grid;gap:.4rem;align-content:start}
+.phases small{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d)}
+.phases b{font-family:var(--display);font-weight:600;color:var(--dark);font-size:1.12rem}
+.phases span{font-size:.93rem;color:var(--muted)}
+.gantt{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.3rem;overflow-x:auto}
+.g{display:grid;grid-template-columns:190px repeat(5,1fr);gap:.4rem .5rem;align-items:center;min-width:600px;font-size:.88rem}
+.g .h{font-size:.74rem;font-weight:700;color:var(--muted);text-align:center;letter-spacing:.08em;text-transform:uppercase}
+.g .l{grid-column:1;color:var(--dark);font-weight:500}
+.g .b{height:14px;border-radius:7px;background:var(--grad)}
+.conds{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2.6rem}
+.conds div{border-top:2px solid var(--gold);padding-top:.8rem;display:grid;gap:.25rem}
+.conds b{color:var(--dark)}
+.conds span{color:var(--muted);font-size:.95rem}
+
+/* Cierre */
+.close{background:var(--dark);color:#fff;padding-block:4.5rem;position:relative}
+.close::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--grad)}
+.close .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.close h2{color:#fff;font-size:clamp(2rem,3.6vw,2.8rem)}
+.close p{color:rgba(255,255,255,.75);margin-top:1rem;font-size:1.08rem;max-width:34rem}
+.steps3{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;gap:.8rem;counter-reset:s}
+.steps3 li{display:flex;gap:.9rem;align-items:flex-start;color:rgba(255,255,255,.85)}
+.steps3 li::before{counter-increment:s;content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font:600 .9rem var(--display);color:#fff}
+.card{background:var(--dark-2);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:1.8rem;display:grid;gap:1rem}
+.card .who{font-family:var(--display);font-size:1.5rem;font-weight:600;color:#fff}
+.card .who small{display:block;font-family:var(--body);font-size:.9rem;font-weight:400;color:rgba(255,255,255,.6);margin-top:.2rem}
+.card .row{display:flex;gap:.7rem;align-items:center;color:rgba(255,255,255,.85);user-select:all}
+.card .row svg{width:19px;height:19px;color:var(--gold-l);flex:none}
+.card .valid{font-size:.86rem;color:rgba(255,255,255,.55);border-top:1px solid rgba(255,255,255,.1);padding-top:1rem}
+.foot{background:var(--dark);color:rgba(255,255,255,.45);font-size:.84rem;padding-block:0 2rem}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem}
+
+@media (max-width:960px){
+  .cover .wrap,.close .wrap,.diag,.feat,.feat.rev,.demo-top{grid-template-columns:1fr}
+  .feat.rev .txt{order:0}
+  .cover .phone{right:10px}
+  .score{position:static}
+  .inc{grid-template-columns:1fr 1fr}
+  .plans{grid-template-columns:1fr;max-width:520px}
+  .phases{grid-template-columns:1fr 1fr}
+  .demo-top .phone{display:none}
+  .ai-shot{margin-left:0}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .ch{padding-block:3.6rem}
+  .issues,.inc,.phases,.maint,.pair{grid-template-columns:1fr}
+  .cover .phone{display:none}
+  .cover .brand img{width:120px}
+  .cover .ctas .btn{flex:1 1 100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ck" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="xx" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ml" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="gl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+
+<header class="cover">
+  <div class="wrap">
+    <div>
+      <div class="brand"><img src="img/logo-white.png" alt="Dental Tafira · Odontología restauradora" width="560" height="378"><span>Propuesta de<br>Regan Consulting</span></div>
+      <span class="kick">Nueva web y visibilidad local</span>
+      <h1>Una web a la altura de <em>la clínica</em></h1>
+      <p class="lead">Que transmita confianza, que se encuentre en Google y que convierta las visitas en citas. Aquí tienen el diagnóstico, la web de ejemplo que hemos preparado y lo que incluye cada opción.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="https://propuestas.reganconsulting.es/tafira/web/" target="_blank" rel="noopener">Ver la web de ejemplo<svg><use href="#ar"/></svg></a>
+        <a class="btn btn-line" href="#inversion">Ver las opciones</a>
+      </div>
+      <div class="meta">
+        <div><small>Preparada para</small><b>Clínica Dental Tafira · Sánchez y Vázquez S.L.</b></div>
+        <div><small>Fecha</small><b>20 de noviembre de 2026</b></div>
+      </div>
+    </div>
+    <div class="shot">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>clinicadentaltafira.com</span></div><img src="img/hero.webp" alt="Página de inicio de la nueva web" width="1600" height="1000"></div>
+      <div class="phone"><img src="img/movil.webp" alt="La nueva web en el móvil" width="780" height="1688"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contenido">
+  <div class="wrap">
+    <a href="#diagnostico"><b>01</b>Diagnóstico</a>
+    <a href="#web"><b>02</b>La web nueva</a>
+    <a href="#incluye"><b>03</b>Qué incluye</a>
+    <a href="#inversion"><b>04</b>Opciones</a>
+    <a href="#mantenimiento"><b>05</b>Mantenimiento</a>
+    <a href="#fases"><b>06</b>Fases y condiciones</a>
+    <a href="#siguiente"><b>07</b>Siguiente paso</a>
+  </div>
+</nav>
+
+<main>
+  <section class="ch" id="diagnostico">
+    <div class="wrap">
+      <div class="ch-head"><span class="num">01 · Diagnóstico</span><h2>Cómo está hoy la web</h2><p>Hemos revisado la web actual, su versión móvil y la presencia de la clínica en directorios. La base es buena, pero la web no refleja la calidad ni la trayectoria de la clínica.</p></div>
+      <div class="diag">
+        <div class="score"><div class="n">4<small>/10</small></div><p><b>Valoración global de la web actual.</b> Cumple lo básico (teléfono, WhatsApp y una oferta de primera visita atractiva), pero falla en lo que más pesa al elegir dentista: la confianza y la facilidad para pedir cita.</p></div>
+        <div class="issues">
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>No aparece el equipo</b><span>Sin nombres, fotos ni número de colegiado. El paciente no sabe quién le va a atender.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>Sin reseñas de pacientes</b><span>La opinión de otros pacientes es lo que más pesa, y no se muestra en ningún sitio.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>Tratamientos sin contenido</b><span>Casi todas las páginas de tratamientos están vacías: ni informan ni posicionan en Google.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>"Nothing Found" en Noticias</b><span>La sección muestra un error en inglés que da imagen de web abandonada.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>Tres horarios distintos</b><span>La web, Google y DocDental muestran horarios diferentes. Genera llamadas perdidas y desconfianza.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>DocDental sin reclamar</b><span>La clínica no controla su ficha: tiene una sola opinión y datos desactualizados.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>Vídeo de inicio de 84 MB</b><span>Hace que la página tarde en cargar, sobre todo en el móvil, que es por donde entra la mayoría.</span></p></div>
+          <div class="issue"><span class="x"><svg><use href="#xx"/></svg></span><p><b>Textos legales incoherentes</b><span>Aviso legal y privacidad no coinciden entre páginas. Conviene unificarlos.</span></p></div>
+          <div class="keep"><span class="x"><svg><use href="#ck"/></svg></span><p><b>Lo que ya funciona y vamos a conservar</b><span>WhatsApp y teléfono a la vista, la oferta de primera consulta y radiografía gratis, la página de implantes y más de 15 años de trayectoria en Tafira.</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch alt" id="web">
+    <div class="wrap">
+      <div class="demo-top">
+        <div>
+          <div class="ch-head" style="margin-bottom:0"><span class="num">02 · La web nueva</span><h2>Así quedaría su web</h2><p>No es un boceto en papel: es una web navegable, hecha con el logo, los colores y las fotos reales de la clínica, que puede convertirse en la web definitiva.</p></div>
+          <div class="demo-link"><p><b>Pruébenla ustedes mismos</b>Ábranla en el móvil o en el ordenador, toquen los tratamientos, hagan una reserva de prueba y pregúntenle al asistente.</p><a class="btn btn-gold" href="https://propuestas.reganconsulting.es/tafira/web/" target="_blank" rel="noopener">Abrir la web<svg><use href="#ar"/></svg></a></div>
+        </div>
+        <div class="phone"><img src="img/movil.webp" alt="Inicio de la nueva web en un móvil" width="780" height="1688" loading="lazy"></div>
+      </div>
+
+      <article class="feat">
+        <div class="txt"><span class="tag">Primera pantalla</span><h3>Lo importante, en los primeros 3 segundos</h3><p>Quien entra sabe al momento qué hace la clínica, dónde está y cómo pedir cita.</p>
+          <ul><li>Titular claro y la oferta de primera visita gratis arriba del todo.</li><li>Botones grandes de WhatsApp y llamada, y un WhatsApp flotante en toda la web.</li><li>Fotos reales de la clínica con movimiento suave. Pesan una fracción del vídeo actual de 84 MB.</li><li>Aviso de "Abierto ahora" según la hora de Canarias.</li></ul></div>
+        <div class="media"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>clinicadentaltafira.com</span></div><img src="img/hero.webp" alt="Primera pantalla de la nueva web" width="1600" height="1000" loading="lazy"></div></div>
+      </article>
+
+      <article class="feat rev">
+        <div class="txt"><span class="tag">Tratamientos</span><h3>Cada tratamiento, explicado</h3><p>Seis especialidades con contenido real en vez de páginas vacías. Informan al paciente y ayudan a salir en Google.</p>
+          <ul><li>Para quién es, opciones disponibles y preguntas frecuentes.</li><li>Botón para consultar por WhatsApp con el mensaje ya escrito.</li><li>Textos prudentes y sin promesas médicas.</li></ul></div>
+        <div class="media pair"><img src="img/tgrid.webp" alt="Rejilla de tratamientos" width="1600" height="1359" loading="lazy"><img src="img/trat.webp" alt="Ficha del tratamiento de implantes" width="1600" height="1000" loading="lazy"></div>
+      </article>
+
+      <article class="feat">
+        <div class="txt"><span class="tag">La clínica</span><h3>Las instalaciones, a la vista</h3><p>Las fotos de recepción, gabinetes y radiografía panorámica transmiten la calidad que hoy no se ve. Destacamos que la clínica está a pie de calle y adaptada para cualquier movilidad.</p>
+          <ul><li>Con la sesión de fotos profesional, este bloque gana todavía más.</li></ul></div>
+        <div class="media"><img src="img/clinica.webp" alt="Sección de instalaciones de la clínica" width="1600" height="1402" loading="lazy"></div>
+      </article>
+
+      <article class="feat rev">
+        <div class="txt"><span class="tag">Primera visita</span><h3>Sin dudas antes de llamar</h3><p>Explicamos paso a paso cómo es la primera cita y recordamos que la consulta y la radiografía son gratis para pacientes nuevos.</p></div>
+        <div class="media"><img src="img/visita.webp" alt="Sección de primera visita" width="1600" height="893" loading="lazy"></div>
+      </article>
+
+      <article class="feat">
+        <div class="txt"><span class="tag">Reserva y WhatsApp</span><h3>Cita online y confirmación automática</h3><p>El paciente elige día y hora entre los huecos libres. Al confirmar le llega un WhatsApp con su cita, un recordatorio el día antes y, tras la visita, la petición de reseña en Google.</p>
+          <ul><li>Menos llamadas en recepción y menos pacientes que no se presentan.</li><li>Más reseñas reales sin tener que pedirlas una a una.</li><li>En el plan Web Esencial funciona como formulario de cita; la reserva con WhatsApp automático va en Captación Completa.</li></ul></div>
+        <div class="media pair"><img src="img/form.webp" alt="Formulario de reserva con días y horas" width="846" height="1500" loading="lazy"><img src="img/ok.webp" alt="Reserva confirmada con el mensaje de WhatsApp" width="846" height="1119" loading="lazy"></div>
+      </article>
+
+      <article class="feat rev">
+        <div class="txt"><span class="tag">Asistente 24 h</span><h3>Respuestas al momento, también de noche</h3><p>Un asistente en la web resuelve las dudas más frecuentes: horario, precio de la primera visita, implantes, urgencias, niños o cómo llegar. Si no sabe algo, deriva al WhatsApp de la clínica.</p>
+          <ul><li>Responde con la información de la clínica, sin inventar precios ni diagnósticos.</li><li>Lleva al paciente a reservar.</li></ul></div>
+        <div class="media"><img class="ai-shot" src="img/ai.webp" alt="Asistente virtual respondiendo a un paciente" width="570" height="810" loading="lazy"></div>
+      </article>
+
+      <article class="feat">
+        <div class="txt"><span class="tag">Con sus datos reales</span><h3>Equipo y reseñas</h3><p>En cuanto nos pasen fotos y datos del equipo, cada profesional tendrá su ficha con foto, especialidad y número de colegiado. Las reseñas de Google se mostrarán en la web, conectadas a su ficha. En la web de ejemplo no aparecen porque no publicamos nombres ni opiniones inventadas.</p></div>
+        <div class="media"><div class="inc" style="grid-template-columns:1fr 1fr">
+          <div><b>Página de equipo</b><span>Foto, nombre, especialidad y nº de colegiado de cada profesional.</span></div>
+          <div><b>Reseñas de Google</b><span>Opiniones reales de pacientes, siempre actualizadas.</span></div>
+          <div><b>Horario único</b><span>El mismo en la web, Google y DocDental.</span></div>
+          <div><b>Textos legales al día</b><span>Aviso legal, privacidad y cookies unificados.</span></div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="ch" id="incluye">
+    <div class="wrap">
+      <div class="ch-head"><span class="num">03 · Qué incluye</span><h2>La web completa, resumida</h2></div>
+      <div class="inc">
+        <div><b>Primera pantalla que convence</b><span>Cabecera animada, ligera y rápida, con titular claro y botones directos para pedir cita.</span></div>
+        <div><b>Página de equipo</b><span>Fichas con foto, nombre, especialidad y nº de colegiado.</span></div>
+        <div><b>Reseñas reales</b><span>Opiniones de Google integradas para que la confianza se vea a primera vista.</span></div>
+        <div><b>Tratamientos con contenido</b><span>Qué es, para quién, cómo es el proceso y preguntas frecuentes.</span></div>
+        <div><b>Promociones destacadas</b><span>La primera visita gratis y otras campañas, fáciles de actualizar.</span></div>
+        <div><b>Contacto y cita en un clic</b><span>Formulario o reserva, mapa, horario único y WhatsApp flotante.</span></div>
+        <div><b>Pensada para el móvil</b><span>Adaptada a teléfono, tablet y ordenador, con carga rápida.</span></div>
+        <div><b>Datos coherentes y legales</b><span>Un solo horario en todas partes y textos legales unificados.</span></div>
+      </div>
+      <p class="goal">El objetivo no es solo una web más bonita: es que quien busque dentista en Tafira o en Las Palmas encuentre la clínica, confíe en ella y pida cita.</p>
+    </div>
+  </section>
+
+  <section class="ch alt" id="inversion">
+    <div class="wrap">
+      <div class="ch-head"><span class="num">04 · Opciones</span><h2>Elijan el alcance</h2><p>Tres opciones según hasta dónde quieran llegar. Cada una incluye todo lo de la anterior. El presupuesto lo preparamos a medida tras reunirnos con ustedes.</p></div>
+      <div class="plans">
+        <div class="plan"><h3>Web Esencial</h3><p class="d">La nueva web lista para funcionar, con todo lo que hoy falla resuelto.</p><div class="price q">Presupuesto a medida</div><div class="ln"></div>
+          <ul><li><svg><use href="#ck"/></svg>Diseño a medida con la imagen de la clínica</li><li><svg><use href="#ck"/></svg>Hasta 8 páginas (inicio, clínica, equipo, tratamientos, promociones, contacto…)</li><li><svg><use href="#ck"/></svg>Página de equipo y reseñas integradas</li><li><svg><use href="#ck"/></svg>Cabecera animada ligera y web rápida</li><li><svg><use href="#ck"/></svg>WhatsApp flotante y formulario de cita</li><li><svg><use href="#ck"/></svg>Textos legales y cookies unificados</li><li><svg><use href="#ck"/></svg>SEO técnico básico</li><li><svg><use href="#ck"/></svg>Formación para editar la web</li><li><svg><use href="#ck"/></svg>1 mes de soporte tras el lanzamiento</li></ul></div>
+        <div class="plan rec"><span class="badge">Recomendado</span><h3>Web + Visibilidad Local</h3><p class="d">La web nueva y la clínica bien posicionada en Google en su zona.</p><div class="price q">Presupuesto a medida</div><div class="ln"></div>
+          <ul><li class="all"><svg><use href="#ck"/></svg>Todo lo de Web Esencial, más:</li><li><svg><use href="#ck"/></svg>8 páginas de tratamientos con SEO local (Tafira y Las Palmas)</li><li><svg><use href="#ck"/></svg>Optimización completa de la ficha de Google Business</li><li><svg><use href="#ck"/></svg>Reclamar y corregir DocDental y los principales directorios</li><li><svg><use href="#ck"/></svg>Horario, dirección y teléfono unificados en todas partes</li><li><svg><use href="#ck"/></svg>Display QR/NFC en recepción para pedir reseñas</li><li><svg><use href="#ck"/></svg>Estadísticas de visitas y contactos</li><li><svg><use href="#ck"/></svg>2 meses de soporte tras el lanzamiento</li></ul></div>
+        <div class="plan"><h3>Captación Completa</h3><p class="d">Además de atraer pacientes, automatiza el seguimiento y ahorra tiempo en recepción.</p><div class="price q">Presupuesto a medida</div><div class="ln"></div>
+          <ul><li class="all"><svg><use href="#ck"/></svg>Todo lo de Visibilidad Local, más:</li><li><svg><use href="#ck"/></svg>Reserva online con confirmación y recordatorio por WhatsApp</li><li><svg><use href="#ck"/></svg>Mensaje automático tras la visita para pedir reseña</li><li><svg><use href="#ck"/></svg>Asistente con IA en la web para dudas frecuentes 24 h</li><li><svg><use href="#ck"/></svg>Blog con 4 artículos iniciales</li><li><svg><use href="#ck"/></svg>Sesión de fotos profesional del equipo y la clínica</li><li><svg><use href="#ck"/></svg>3 meses de soporte tras el lanzamiento</li></ul></div>
+      </div>
+      <p class="note">El dominio y el alojamiento del primer año están incluidos en cualquier plan de mantenimiento. Las automatizaciones de WhatsApp pueden tener un pequeño coste de uso de Meta según el volumen de mensajes, que se factura aparte y al coste. Les presentaremos el presupuesto detallado en la reunión.</p>
+    </div>
+  </section>
+
+  <section class="ch" id="mantenimiento">
+    <div class="wrap">
+      <div class="ch-head"><span class="num">05 · Después del lanzamiento</span><h2>Mantenimiento mensual</h2><p>Una web necesita cuidados para seguir rápida, segura y actualizada. Dos modalidades sin permanencia: se puede cancelar con un mes de aviso.</p></div>
+      <div class="maint">
+        <div class="plan"><h3>Mantenimiento Básico</h3><div class="price q">Presupuesto a medida</div><div class="ln"></div>
+          <ul><li><svg><use href="#ck"/></svg>Alojamiento, dominio y certificado de seguridad</li><li><svg><use href="#ck"/></svg>Actualizaciones y copias de seguridad semanales</li><li><svg><use href="#ck"/></svg>Vigilancia de caídas y seguridad</li><li><svg><use href="#ck"/></svg>Hasta 1 hora al mes de cambios (textos, fotos, promociones)</li><li><svg><use href="#ck"/></svg>Atención por correo y WhatsApp en horario laboral</li></ul></div>
+        <div class="plan"><h3>Mantenimiento + Crecimiento</h3><div class="price q">Presupuesto a medida</div><div class="ln"></div>
+          <ul><li class="all"><svg><use href="#ck"/></svg>Todo lo del Básico, más:</li><li><svg><use href="#ck"/></svg>4 publicaciones al mes en Google Business</li><li><svg><use href="#ck"/></svg>1 artículo de blog al mes orientado a SEO local</li><li><svg><use href="#ck"/></svg>Seguimiento y respuesta sugerida a reseñas</li><li><svg><use href="#ck"/></svg>Hasta 3 horas al mes de cambios</li><li><svg><use href="#ck"/></svg>Informe mensual de visitas, llamadas y contactos</li></ul></div>
+      </div>
+      <div class="opt"><h3>Servicios opcionales</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>Servicio</th><th>Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Vídeo de cabecera con IA</td><td>Imagen animada de la clínica generada a medida para la portada.</td></tr>
+            <tr><td>Sesión de fotos profesional</td><td>Equipo, instalaciones y detalles (incluida en Captación Completa).</td></tr>
+            <tr><td>Página de tratamiento adicional</td><td>Redacción y maquetación con SEO local.</td></tr>
+            <tr><td>Display QR/NFC de reseñas extra</td><td>Para gabinetes o una segunda recepción.</td></tr>
+            <tr><td>Versión en inglés</td><td>Traducción y adaptación de toda la web para pacientes extranjeros.</td></tr>
+            <tr><td>Asistente telefónico con IA</td><td>Atiende llamadas fuera de horario y recoge solicitudes de cita.</td></tr>
+          </tbody>
+        </table></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="ch alt" id="fases">
+    <div class="wrap">
+      <div class="ch-head"><span class="num">06 · Cómo trabajaremos</span><h2>Fases, calendario y condiciones</h2><p>La web puede estar publicada en unas 5 semanas desde la aceptación, siempre que tengamos a tiempo los contenidos de la clínica: fotos, datos del equipo y horario definitivo.</p></div>
+      <ol class="phases">
+        <li><small>Fase 1 · Semana 1</small><b>Arranque y contenidos</b><span>Reunión inicial, datos del equipo, horario único, tratamientos prioritarios y accesos a dominio, Google Business y DocDental.</span></li>
+        <li><small>Fase 2 · Semanas 2 y 3</small><b>Diseño y desarrollo</b><span>Partimos de la web de ejemplo. Construimos todas las páginas, la cabecera, el formulario y WhatsApp. Una ronda de revisión con la clínica.</span></li>
+        <li><small>Fase 3 · Semanas 3 y 4</small><b>Contenido y visibilidad local</b><span>Redacción de tratamientos, textos legales, Google Business y directorios, según el plan elegido.</span></li>
+        <li><small>Fase 4 · Semana 5</small><b>Revisión y lanzamiento</b><span>Pruebas en móvil y ordenador, segunda ronda de cambios, publicación y formación al equipo.</span></li>
+      </ol>
+      <div class="gantt" role="img" aria-label="Calendario de 5 semanas: arranque en la semana 1, diseño en las semanas 2 y 3, contenido en las semanas 3 y 4, lanzamiento en la semana 5">
+        <div class="g">
+          <span></span><span class="h">Sem. 1</span><span class="h">Sem. 2</span><span class="h">Sem. 3</span><span class="h">Sem. 4</span><span class="h">Sem. 5</span>
+          <span class="l">Arranque y contenidos</span><span class="b" style="grid-column:2/3"></span>
+          <span class="l">Diseño y desarrollo</span><span class="b" style="grid-column:3/5"></span>
+          <span class="l">Contenido y SEO local</span><span class="b" style="grid-column:4/6"></span>
+          <span class="l">Revisión y lanzamiento</span><span class="b" style="grid-column:6/7"></span>
+        </div>
+      </div>
+      <div class="conds">
+        <div><b>Forma de pago</b><span>50 % a la aceptación y 50 % en el lanzamiento de la web, por transferencia.</span></div>
+        <div><b>Mantenimiento</b><span>Cuota mensual domiciliada desde el mes siguiente al lanzamiento. Sin permanencia.</span></div>
+        <div><b>Revisiones</b><span>Dos rondas de cambios incluidas en el diseño. Después, entran en el soporte o mantenimiento.</span></div>
+        <div><b>Propiedad</b><span>La web, el dominio y los contenidos son de la clínica desde el pago final.</span></div>
+        <div><b>Validez</b><span>Esta propuesta es válida durante 30 días desde su fecha.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="siguiente">
+    <div class="wrap">
+      <div>
+        <span class="kick">07 · Siguiente paso</span>
+        <h2 style="margin-top:.8rem">¿Empezamos?</h2>
+        <p>Nos encantará verles para resolver dudas y prepararles el presupuesto según la opción que más les encaje. Para arrancar necesitaremos:</p>
+        <ol class="steps3">
+          <li>Una reunión para elegir la opción de proyecto y de mantenimiento.</li>
+          <li>Fotos y datos del equipo: nombre, especialidad y número de colegiado.</li>
+          <li>El horario definitivo y el acceso a Google Business y DocDental.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="who">Regan Consulting<small>Soluciones digitales para negocios de Canarias</small></div>
+        <div class="row"><svg><use href="#ml"/></svg>carla@reganconsulting.es</div>
+        <div class="row"><svg><use href="#gl"/></svg>reganconsulting.es</div>
+        <a class="btn btn-gold" style="justify-self:start" href="https://propuestas.reganconsulting.es/tafira/web/" target="_blank" rel="noopener">Volver a ver la web de ejemplo<svg><use href="#ar"/></svg></a>
+        <p class="valid">Propuesta del 20 de noviembre de 2026, válida 30 días.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>Regan Consulting · Propuesta para Clínica Dental Tafira</span><span>reganconsulting.es</span></div></footer>
+
+</body>
+</html>
