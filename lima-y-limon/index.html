@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Lima y Limón × Regan Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: cercano y directo, de socio a socio; ni ñoño ni corporativo.
+   IDEA: la página es el "zumo" que sale de la agencia: ellos atraen, nosotros convertimos.
+   PICTURE: un móvil con la conversación de WhatsApp que recibe un lead de sus anuncios, con su marca.
+   COLOUR and TYPE: turquesa del logo, amarillo limón, rosa y verde lima; Archivo 800/900 + Inter.
+   LAYOUT: bandas de color a sangre; hero con móvil, recorrido del cliente, catálogo, forma de trabajo, piloto. */
+:root{color-scheme:light dark;
+--tq:#7cc4c9;--tq-d:#2f7f86;--lm:#f4d85a;--pk:#ee93bf;--gr:#a9d17c;
+--bg:light-dark(#fffdf4,#12201f);--ink:light-dark(#1b2a2b,#f3f1e6);--soft:light-dark(#4b5c5d,#b9c7c6);
+--card:light-dark(#ffffff,#1b2e2d);--line:light-dark(#e6e1cc,#2c4443)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,54px);font-weight:900}
+h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin-bottom:14px}
+h3{font-size:19px;font-weight:800;margin-bottom:6px}
+p{margin:0 0 12px;max-width:66ch}
+.band{padding:clamp(36px,5vw,72px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.lead{font-size:17px;color:var(--soft)}
+/* hero */
+.hero{background:var(--tq);color:#10292b}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);align-items:center}
+.duo{display:flex;align-items:center;gap:10px;font:800 15px Archivo,sans-serif;margin-bottom:22px}
+.duo i{width:34px;height:34px;border-radius:50%;background:var(--lm);display:grid;place-items:center;font-style:normal;color:#10292b}
+.duo b{opacity:.6;font-weight:700}
+.hero p{color:#183b3e;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{background:#fff7c9;border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px}
+.chip:nth-child(2){background:#fbd3e6}.chip:nth-child(3){background:#dcefc6}
+/* phone */
+.phone{justify-self:center;width:min(330px,100%);background:#0f1d1e;border-radius:38px;padding:12px;box-shadow:0 30px 60px -20px rgba(10,40,42,.55),0 0 0 6px rgba(255,255,255,.25)}
+.screen{background:#efe9dc;border-radius:28px;overflow:hidden}
+.bar{background:#1f5f63;color:#fff;padding:14px 16px;display:flex;gap:10px;align-items:center}
+.av{width:36px;height:36px;border-radius:50%;background:var(--lm);display:grid;place-items:center;font:900 15px Archivo;color:#1f5f63}
+.bar small{display:block;opacity:.75;font-size:12px}
+.chat{padding:14px 12px 18px;display:flex;flex-direction:column;gap:8px;min-height:390px}
+.m{max-width:84%;padding:8px 11px;border-radius:12px;font-size:14px;line-height:1.4;color:#1b2a2b;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06);opacity:0;transform:translateY(6px);animation:in .45s ease forwards}
+.m.me{align-self:flex-end;background:#d7f5c8}
+.m small{display:block;font-size:11px;color:#6b7b7b;text-align:right;margin-top:2px}
+.m.sys{align-self:center;background:#fff7c9;font-size:12px;font-weight:600}
+.m:nth-child(1){animation-delay:.2s}.m:nth-child(2){animation-delay:.9s}.m:nth-child(3){animation-delay:1.7s}.m:nth-child(4){animation-delay:2.5s}.m:nth-child(5){animation-delay:3.3s}.m:nth-child(6){animation-delay:4.1s}
+.slots{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}.slots span{border:1.5px solid #1f5f63;color:#1f5f63;border-radius:8px;padding:3px 8px;font-weight:700;font-size:13px}
+@keyframes in{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.m{animation:none;opacity:1;transform:none}}
+.cap{font-size:13px;color:#183b3e;text-align:center;margin-top:12px}
+/* journey */
+.road{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:26px}
+.st{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:18px 16px}
+.st .who{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;margin-bottom:10px}
+.st.them .who{background:#fbd3e6;color:#6b1e45}.st.us .who{background:#cfeeee;color:#1f5f63}
+.st p{font-size:15px;color:var(--soft);margin:0}
+.st h3{font-size:17px}
+/* catalog */
+.yellow{background:var(--lm);color:#22281a}
+.yellow .lead{color:#3b4128}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+.it{background:#fffbe6;border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.it .ic{width:46px;height:46px;border-radius:14px;margin-bottom:14px;display:grid;place-items:center}
+.it p{font-size:15px;color:#454a33;margin:0}
+.it ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:#454a33}
+.it li{margin-bottom:3px}
+/* how */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.box{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:24px}
+.box ul{margin:8px 0 0;padding-left:18px;color:var(--soft)}.box li{margin-bottom:6px}
+.box.them{border-color:var(--pk)}.box.us{border-color:var(--tq)}
+.note{margin-top:18px;background:light-dark(#eef7f2,#1b3330);border-radius:16px;padding:16px 20px;font-size:15px}
+/* internal */
+.pink{background:var(--pk);color:#3a1027}
+.pink .lead{color:#5a1f3d}
+.mini{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.mini div{background:#fde6f1;border-radius:16px;padding:16px;font-size:15px}
+.mini b{display:block;font-family:Archivo;font-size:16px;margin-bottom:4px}
+/* pilot */
+.pilot .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:start}
+.steps{counter-reset:s;display:grid;gap:12px}
+.steps div{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px 16px 62px;position:relative}
+.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--gr);color:#1e3310;font:900 16px Archivo;display:grid;place-items:center}
+.steps b{display:block;font-family:Archivo;font-size:17px}
+.steps span{color:var(--soft);font-size:15px}
+.case{margin-top:18px;border-left:4px solid var(--gr);padding:4px 0 4px 16px;color:var(--soft);font-size:15px}
+/* contact */
+.dark{background:#173b3e;color:#f3f1e6}
+.dark .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+.dark p{color:#cfe2e0}
+.ways{display:flex;flex-wrap:wrap;gap:10px}
+.ways a,.ways span{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:15px}
+.ways a{background:var(--lm);color:#22281a}.ways span{background:rgba(255,255,255,.1);color:#f3f1e6}
+.ways a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+footer{padding:18px max(5vw,16px);font-size:13px;color:var(--soft);text-align:center}
+@media(max-width:980px){.road{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mini{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.hero .wrap,.pilot .wrap,.cols{grid-template-columns:minmax(0,1fr)}.grid,.road,.mini{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="band hero">
+  <div class="wrap">
+    <div>
+      <div class="duo"><i>L</i> Lima y Limón <b>×</b> Regan Consulting</div>
+      <h1>Ustedes llenan el buzón de sus clientes. Nosotros hacemos que nadie se quede sin respuesta.</h1>
+      <p>Una propuesta de colaboración en marca blanca: automatizaciones e inteligencia artificial para los negocios con los que ya trabajan, vendidas como servicio de Lima y Limón y montadas por nosotros.</p>
+      <div class="chips"><span class="chip">WhatsApp automatizado</span><span class="chip">Recepcionista con IA</span><span class="chip">Reservas, CRM y fidelización</span></div>
+    </div>
+    <div>
+      <div class="phone" aria-label="Ejemplo de conversación automática por WhatsApp">
+        <div class="screen">
+          <div class="bar"><div class="av">C</div><div><b>Clínica de un cliente suyo</b><small>en línea · responde al momento</small></div></div>
+          <div class="chat">
+            <div class="m sys">Nuevo contacto desde el anuncio de Instagram</div>
+            <div class="m me">Hola, vi el anuncio del blanqueamiento. ¿Tenéis cita esta semana?<small>21:47</small></div>
+            <div class="m">¡Hola, Laura! Sí. Te dejo los huecos libres de esta semana:<div class="slots"><span>Jue 10:30</span><span>Vie 17:00</span><span>Sáb 11:00</span></div><small>21:47</small></div>
+            <div class="m me">El viernes a las 17:00 👍<small>21:48</small></div>
+            <div class="m">Hecho. Te escribo el jueves para recordártelo. Si no puedes venir, contesta aquí y la cambiamos.<small>21:48</small></div>
+            <div class="m sys">Cita guardada en la agenda · ficha creada en el CRM</div>
+          </div>
+        </div>
+      </div>
+      <p class="cap">Ejemplo ilustrativo. El mensaje llega a las 21:47 y no hace falta nadie en el negocio para contestarlo.</p>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Del anuncio a la reseña, sin huecos</h2>
+    <p class="lead">Su trabajo atrae a la gente. El problema suele venir después: mensajes que se contestan tarde, citas que se olvidan, clientes que no vuelven. Ahí es donde encajamos.</p>
+    <div class="road">
+      <div class="st them"><span class="who">Lima y Limón</span><h3>Marca, contenido y anuncios</h3><p>Atraen al cliente con la estrategia, las redes y los Ads de siempre.</p></div>
+      <div class="st us"><span class="who">Automatización</span><h3>Respuesta inmediata</h3><p>WhatsApp, Instagram o teléfono contestan en segundos, a cualquier hora.</p></div>
+      <div class="st us"><span class="who">Automatización</span><h3>Cita o pedido cerrado</h3><p>Agenda, recordatorios y avisos de huecos libres, sin llamadas.</p></div>
+      <div class="st us"><span class="who">Automatización</span><h3>Seguimiento</h3><p>Ficha en un CRM, campañas a clientes dormidos y programa de puntos.</p></div>
+      <div class="st them"><span class="who">Lima y Limón</span><h3>Resultados que se ven</h3><p>Más reseñas en Google y datos reales para su informe al cliente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band yellow">
+  <div class="wrap">
+    <h2>Lo que podrían ofrecer a partir de mañana</h2>
+    <p class="lead">En su web ya aparecen «Gestión de clientes» y «Gestión de procesos». Esto es lo que podría haber dentro de esas dos líneas, listo para vender.</p>
+    <div class="grid">
+      <div class="it"><div class="ic" style="background:#cfeeee"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5f63" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/></svg></div><h3>WhatsApp automatizado</h3><p>Respuesta a los contactos que llegan de los anuncios, confirmación de citas, recordatorios y aviso automático cuando se libera un hueco.</p></div>
+      <div class="it"><div class="ic" style="background:#fbd3e6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a2a5a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><h3>Recepcionista con IA</h3><p>Atiende el teléfono y los mensajes cuando el negocio no puede: responde dudas, da cita y pasa el aviso al equipo.</p></div>
+      <div class="it"><div class="ic" style="background:#dcefc6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3e6a1d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div><h3>Reservas y pedidos</h3><p>Sistema propio de reservas o pedidos integrado en la web del cliente, para negocios que hoy lo hacen todo a mano.</p></div>
+      <div class="it"><div class="ic" style="background:#fff0a8"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b5a10" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M17 11h5M19.5 8.5v5"/></svg></div><h3>CRM sencillo</h3><p>Todos los clientes en un sitio: historial, etiquetas y campañas para recuperar a los que hace tiempo que no vuelven.</p></div>
+      <div class="it"><div class="ic" style="background:#cfeeee"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5f63" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>Fidelización</h3><p>Tarjeta de puntos digital y ofertas automáticas por cumpleaños o por visitas, con la imagen de marca que ustedes ya han creado.</p></div>
+      <div class="it"><div class="ic" style="background:#fbd3e6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a2a5a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM18 14h2M14 18v2"/></svg></div><h3>Displays de reseñas QR/NFC</h3><p>Expositores en el mostrador para pedir la reseña en Google en el momento justo. Se diseñan con la marca del cliente, y esa parte la pueden hacer ustedes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Cómo trabajaríamos</h2>
+    <p class="lead">El cliente es suyo y la marca también. Nosotros trabajamos detrás.</p>
+    <div class="cols">
+      <div class="box them"><h3>Lima y Limón</h3><ul><li>Detecta la necesidad en sus clientes y la vende como servicio propio.</li><li>Sigue siendo el único contacto del cliente.</li><li>Pone el diseño: textos, imagen y tono de cada automatización.</li><li>Fija su precio y su margen.</li></ul></div>
+      <div class="box us"><h3>Regan Consulting</h3><ul><li>Hace una auditoría del negocio y propone qué automatizar.</li><li>Lo monta, lo prueba y lo deja funcionando.</li><li>Se encarga del mantenimiento y del soporte técnico, por detrás.</li><li>Les pasa datos de cada automatización para sus informes.</li></ul></div>
+    </div>
+    <div class="note"><b>Lo que no hacemos:</b> marca, diseño, redes ni publicidad. No competimos con ustedes en nada de lo que ya hacen.</div>
+  </div>
+</section>
+
+<section class="band pink">
+  <div class="wrap">
+    <h2>Y también para la propia agencia</h2>
+    <p class="lead">Las mismas herramientas pueden quitarles trabajo repetitivo en el día a día del equipo.</p>
+    <div class="mini">
+      <div><b>Altas de clientes</b>Formulario, contrato y carpeta creados solos cuando se firma un pack.</div>
+      <div><b>Aprobación de contenidos</b>El cliente recibe las piezas y da el visto bueno por WhatsApp, sin perseguirle.</div>
+      <div><b>Informes mensuales</b>Datos de redes y Ads reunidos en un informe que se prepara solo.</div>
+      <div><b>Contactos de su web</b>Respuesta inmediata a quien escribe a «¡Nos encanta hablar!» y aviso a la isla que corresponda.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band pilot">
+  <div class="wrap">
+    <div>
+      <h2>Empezar con un solo cliente</h2>
+      <p class="lead">Sin acuerdos largos de entrada. Elegimos juntos un negocio de su cartera, lo ponemos en marcha y vemos cómo responde antes de ampliar.</p>
+      <p class="case">Un caso real: en Nirvana Nail Studio hemos montado gestión de reservas, CRM interno, display de reseñas, asistente telefónico y WhatsApp automatizado. Es el tipo de paquete que se puede adaptar a cualquier centro de estética, clínica o restaurante.</p>
+    </div>
+    <div class="steps">
+      <div><b>Reunión</b><span>Nos cuentan qué piden sus clientes y en qué fallan hoy.</span></div>
+      <div><b>Auditoría del cliente piloto</b><span>Vemos su forma de trabajar y proponemos qué automatizar.</span></div>
+      <div><b>Puesta en marcha</b><span>Lo montamos con su marca y ustedes se lo presentan al cliente.</span></div>
+      <div><b>Revisión</b><span>Miramos los resultados juntos y decidimos cómo seguir.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="wrap">
+    <div>
+      <h2>¿Lo hablamos?</h2>
+      <p>Podemos vernos en Vecindario o en Las Palmas, por videollamada o por WhatsApp, como les venga mejor.</p>
+    </div>
+    <div class="ways">
+      <a href="https://wa.me/34614262545">WhatsApp +34 614 26 25 45</a>
+      <span>carla@reganconsulting.es</span>
+      <a href="https://reganconsulting.es/">reganconsulting.es</a>
+    </div>
+  </div>
+</section>
+
+<footer>Propuesta preparada por Regan Consulting para Lima y Limón · Gran Canaria</footer>
+</body>
+</html>
