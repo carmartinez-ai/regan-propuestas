@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Jaira · Portal Hostelería</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* VOICE: cercano y canario, con seguridad de fábrica; frases cortas, de usted.
+   IDEA: el albarán de reparto de la cervecera hecho pantalla: barriles, cajas, rutas.
+   PICTURE: el portal de pedidos funcionando, grande, con barriles y cajas dibujados.
+   COLOUR and TYPE: verde botella Jaira dominante, crema de apoyo, rojo del logo como acento; Archivo 800 sólida.
+   LAYOUT: banda verde a sangre con el portal; panel de fábrica en crema; extras en rejilla; cierre verde. */
+:root{color-scheme:light dark;
+--bg:light-dark(#F3F0E9,#141b17);--ink:light-dark(#202B25,#F3F0E9);--soft:light-dark(#5b665f,#b9c0b8);
+--card:light-dark(#ffffff,#1d2621);--line:light-dark(#ddd7ca,#2f3a33);
+--green:#202B25;--cream:#F3F0E9;--red:#AB3B32;--yellow:#F2C230;--ok:#2f7d4f}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Archivo,Helvetica,Arial,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{font-weight:800;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,4.6vw,52px)}h2{font-size:clamp(28px,3.4vw,40px)}h3{font-size:20px;line-height:1.2}
+p{margin:0}
+.top{background:var(--green);color:var(--cream);padding:14px max(5vw,16px);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
+.top b{font-weight:800;letter-spacing:.02em}
+.hero{background:var(--green);color:var(--cream);padding-top:24px}
+.hgrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero .lead{font-size:18px;color:#d6dbd3;margin-top:18px;max-width:34em}
+.hero h1 em{font-style:normal;color:var(--cream);background:linear-gradient(transparent 62%,var(--red) 62%)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pills span{border:1.5px solid #4b5a51;border-radius:99px;padding:6px 12px;font-size:14px;font-weight:600}
+/* portal mock */
+.app{background:var(--card);color:var(--ink);border-radius:18px;box-shadow:0 30px 60px -20px #000a,0 0 0 1px #0002;overflow:hidden}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:light-dark(#ece7dc,#252f29);font-size:13px;color:var(--soft)}
+.bar i{width:10px;height:10px;border-radius:50%;background:#c9c2b4;display:block}
+.bar .url{margin-left:8px;background:var(--card);border-radius:6px;padding:3px 10px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.apphead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{font-weight:900;font-size:22px;color:var(--red);letter-spacing:.01em}
+.brand small{display:block;font-size:12px;color:var(--soft);font-weight:600;letter-spacing:0}
+.who{font-size:14px;text-align:right}.who b{display:block}
+.acts{display:flex;gap:8px;padding:14px 18px 4px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;font-size:15px;border:0;border-radius:10px;min-height:44px;padding:0 16px;cursor:pointer}
+.btn:focus-visible,.q button:focus-visible,.sw:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.b1{background:var(--green);color:var(--cream)}
+.b2{background:light-dark(#efe9dd,#28322c);color:var(--ink)}
+.b3{background:var(--red);color:#fff;width:100%}
+.list{padding:6px 18px}
+.row{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .n{font-weight:700;font-size:15px;line-height:1.25}.row .d{font-size:13px;color:var(--soft)}
+.q{display:flex;align-items:center;gap:4px}
+.q button{width:36px;height:36px;border-radius:9px;border:1.5px solid var(--line);background:transparent;color:var(--ink);font:700 18px Archivo,sans-serif;cursor:pointer}
+.q output{width:28px;text-align:center;font-weight:800;font-size:17px}
+.foot{padding:12px 18px 18px;display:grid;gap:12px;border-top:1px solid var(--line);background:light-dark(#faf8f3,#19211d)}
+.fixed{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
+.sw{width:50px;height:28px;border-radius:99px;border:0;background:#c9c2b4;position:relative;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s}
+.sw[aria-pressed=true]{background:var(--ok)}.sw[aria-pressed=true]::after{left:25px}
+.sum{display:flex;justify-content:space-between;font-size:14px;color:var(--soft);gap:10px;flex-wrap:wrap}.sum b{color:var(--ink)}
+.done{display:none;padding:22px 18px;text-align:center}
+.done .tick{width:56px;height:56px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 10px}
+.done p{color:var(--soft);font-size:14px;margin-top:6px}
+.app.sent .done{display:block}.app.sent .list,.app.sent .acts,.app.sent .foot{display:none}
+.note{font-size:13px;color:#aab3ab;margin-top:12px}
+/* fabrica */
+.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:start}
+.sub{color:var(--soft);font-size:17px;margin-top:14px;max-width:34em}
+.checks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.checks li{padding-left:30px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:5px;background:var(--red);
+mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Crect width='18' height='18' rx='5'/%3E%3C/svg%3E")}
+.checks li::after{content:"";position:absolute;left:5px;top:8px;width:8px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
+.panel{background:var(--card);border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.kpi{padding:16px 18px;border-right:1px solid var(--line)}.kpi:last-child{border-right:0}
+.kpi b{display:block;font-size:clamp(26px,3vw,34px);font-weight:900;line-height:1}
+.kpi span{font-size:13px;color:var(--soft)}
+.tabs{display:flex;gap:6px;padding:12px 14px 0;flex-wrap:wrap}
+.tabs button{font:600 14px Archivo,sans-serif;border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;min-height:36px;padding:0 14px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--green);color:var(--cream);border-color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:700;color:var(--soft);font-size:13px;padding:12px 14px 8px}
+td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+td.r,th.r{text-align:right;white-space:nowrap}
+.st{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.s1{background:#f6e3a6;color:#5a4300}.s2{background:#d9e9f2;color:#1d4a63}.s3{background:#d5ecdc;color:#1f5a36}
+.pnote{font-size:13px;color:var(--soft);padding:10px 14px 14px}
+/* extras */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:12px;align-content:start}
+.card p{color:var(--soft);font-size:15px}
+.vis{height:130px;border-radius:12px;background:light-dark(#efe9dd,#253029);display:grid;place-items:center;overflow:hidden;position:relative}
+.chat{width:86%;display:grid;gap:6px;font-size:13px}
+.msg{padding:7px 10px;border-radius:12px;max-width:82%;line-height:1.3}
+.in{background:var(--card);justify-self:start;border-bottom-left-radius:3px}
+.out{background:#d4f2c9;color:#173b12;justify-self:end;border-bottom-right-radius:3px}
+.close{background:var(--green);color:var(--cream)}
+.close .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;align-items:center}
+.close p{color:#d6dbd3;font-size:17px;margin-top:14px;max-width:34em}
+.contact{background:#2a3730;border-radius:16px;padding:22px;display:grid;gap:10px;font-size:16px}
+.contact a{color:var(--cream);font-weight:700}
+.contact small{color:#aab3ab;font-size:13px}
+@media(max-width:900px){.hgrid,.split,.close .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.kpis{grid-template-columns:minmax(0,1fr)}.kpi{border-right:0;border-bottom:1px solid var(--line)}.who{text-align:left}td.hide,th.hide{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><span><b>JAIRA</b> · Propuesta de portal de pedidos para hostelería</span><span>Preparada por Regan Consulting · Gran Canaria</span></div>
+
+<section class="hero band">
+<div class="wrap hgrid">
+  <div>
+    <h1>Que cada bar de la isla pida su Jaira <em>en un minuto</em>.</h1>
+    <p class="lead">Un portal propio para sus clientes de hostelería: cada local entra con su usuario, ve su tarifa, repite el pedido de siempre o lo deja fijo cada semana. Sin llamadas, sin audios de WhatsApp, sin pedidos que se pierden en el correo.</p>
+    <div class="pills"><span>Barriles y cajas</span><span>Pedido fijo semanal</span><span>Rutas de reparto</span><span>Barriles retornables</span><span>Albaranes</span></div>
+  </div>
+
+  <div class="app" id="app" aria-label="Maqueta del portal de pedidos">
+    <div class="bar"><i></i><i></i><i></i><span class="url">hosteleria.jaira.beer</span></div>
+    <div class="apphead">
+      <div class="brand">Jaira<small>Portal Hostelería</small></div>
+      <div class="who"><b>Bar La Marea</b>Arinaga · Ruta Sur</div>
+    </div>
+    <div class="acts">
+      <button class="btn b1" id="repeat" type="button">Repetir último pedido</button>
+      <button class="btn b2" id="clear" type="button">Vaciar</button>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="foot">
+      <div class="fixed"><span><b>Pedido fijo cada martes</b><br>Se prepara solo; puede cambiarlo hasta el lunes.</span><button class="sw" id="fixed" type="button" aria-pressed="false" aria-label="Activar pedido fijo semanal"></button></div>
+      <div class="sum"><span id="sum">Pedido vacío</span><span>Tarifa hostelería aplicada</span></div>
+      <button class="btn b3" id="send" type="button">Enviar pedido</button>
+    </div>
+    <div class="done" role="status">
+      <div class="tick">✓</div>
+      <h3>Pedido recibido</h3>
+      <p id="doneTxt"></p>
+      <button class="btn b2" id="again" type="button" style="margin-top:14px">Volver al portal</button>
+    </div>
+  </div>
+</div>
+<div class="wrap"><p class="note">Maqueta interactiva con datos de ejemplo: pruebe a sumar barriles, repetir el pedido o activar el pedido fijo.</p></div>
+</section>
+
+<section class="band">
+<div class="wrap split">
+  <div>
+    <h2>Y en la fábrica, todo el día ordenado de un vistazo.</h2>
+    <p class="sub">Los pedidos de bares, restaurantes y tiendas llegan a un solo panel, agrupados por ruta y día de reparto. Nada de apuntar a mano lo que entra por teléfono, WhatsApp o correo.</p>
+    <ul class="checks">
+      <li>Pedidos del día por ruta: Sur, Telde, Las Palmas, Norte.</li>
+      <li>Estado de cada pedido, y aviso automático al bar cuando sale el reparto.</li>
+      <li>Control de barriles: cuántos hay en cada local y cuáles toca recoger.</li>
+      <li>Albarán y factura generados con cada entrega.</li>
+      <li>Qué pide cada cliente y quién lleva semanas sin pedir.</li>
+    </ul>
+  </div>
+  <div class="panel" aria-label="Maqueta del panel de la fábrica">
+    <div class="kpis">
+      <div class="kpi"><b id="kOrd">14</b><span>pedidos para mañana</span></div>
+      <div class="kpi"><b id="kKeg">38</b><span>barriles a repartir</span></div>
+      <div class="kpi"><b id="kRet">21</b><span>barriles vacíos a recoger</span></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <table><thead><tr><th>Cliente y pedido</th><th class="r">Estado</th></tr></thead><tbody id="orders"></tbody></table>
+    <p class="pnote">Datos de ejemplo.</p>
+  </div>
+</div>
+</section>
+
+<section class="band" style="padding-top:0">
+<div class="wrap">
+  <h2>Lo que se puede sumar después</h2>
+  <p class="sub">El portal es la base. Sobre él se pueden ir añadiendo piezas según lo que Jaira necesite.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="vis"><div class="chat"><div class="msg in">Hola! Lo de siempre para el jueves 🙌</div><div class="msg out">Hecho: 2 barriles Arinaga + 1 caja LA VARÁ. Reparto jueves, ruta Sur.</div></div></div>
+      <h3>Pedidos por WhatsApp, automáticos</h3>
+      <p>El bar escribe como siempre y el pedido entra solo en el portal, confirmado. Ideal para el cliente que no quiere entrar en ninguna web.</p>
+    </div>
+    <div class="card">
+      <div class="vis"><svg viewBox="0 0 200 110" width="190" height="105" aria-hidden="true"><rect x="40" y="38" width="120" height="62" rx="6" fill="#AB3B32"/><rect x="40" y="38" width="120" height="14" fill="#8e2f28"/><g fill="#202B25"><rect x="58" y="12" width="14" height="40" rx="4"/><rect x="82" y="8" width="14" height="44" rx="4"/><rect x="106" y="12" width="14" height="40" rx="4"/><rect x="130" y="8" width="14" height="44" rx="4"/></g><text x="100" y="80" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="15" fill="#F3F0E9">CLUB JAIRA</text></svg></div>
+      <h3>Club Jaira: una caja al mes</h3>
+      <p>Suscripción para particulares con las de temporada y las ediciones especiales. Ingresos fijos cada mes y clientes que no se van.</p>
+    </div>
+    <div class="card">
+      <div class="vis"><svg viewBox="0 0 200 110" width="190" height="105" aria-hidden="true"><path d="M60 20 Q100 4 140 22 Q168 44 150 80 Q120 104 80 96 Q40 86 38 56 Q38 32 60 20Z" fill="#cfc6b3"/><g fill="#AB3B32"><circle cx="120" cy="82" r="6"/><circle cx="132" cy="66" r="5"/><circle cx="96" cy="34" r="5"/><circle cx="70" cy="52" r="5"/><circle cx="108" cy="58" r="5"/><circle cx="142" cy="44" r="5"/></g></svg></div>
+      <h3>Dónde tomar Jaira</h3>
+      <p>Un mapa en la web con los bares y tiendas que la tienen. Se alimenta solo desde el portal, y a los locales les interesa salir en él.</p>
+    </div>
+    <div class="card">
+      <div class="vis"><svg viewBox="0 0 200 110" width="190" height="105" aria-hidden="true"><rect x="62" y="8" width="76" height="94" rx="10" fill="#202B25"/><rect x="76" y="22" width="48" height="48" rx="4" fill="#F3F0E9"/><g fill="#202B25"><rect x="80" y="26" width="12" height="12"/><rect x="108" y="26" width="12" height="12"/><rect x="80" y="54" width="12" height="12"/><rect x="96" y="40" width="8" height="8"/><rect x="108" y="56" width="6" height="6"/><rect x="114" y="48" width="6" height="6"/></g><text x="100" y="88" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="700" font-size="10" fill="#F2C230">★★★★★</text></svg></div>
+      <h3>Reseñas en el taproom</h3>
+      <p>Un display QR/NFC en la barra: el cliente acerca el móvil y deja su reseña en Google en segundos, justo después de la cata.</p>
+    </div>
+    <div class="card">
+      <div class="vis"><div class="chat"><div class="msg out" style="justify-self:start;background:var(--card);color:var(--ink)">🎤 Este viernes, monólogos en el taproom. ¿Le guardamos sitio?</div></div></div>
+      <h3>Avisos de eventos</h3>
+      <p>Quien viene a una cata o a un concierto queda guardado y recibe el aviso del próximo monólogo, pódcast o música en vivo.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="band close">
+<div class="wrap">
+  <div>
+    <h2>Se lo enseñamos funcionando, con sus cervezas y sus rutas.</h2>
+    <p>Empezamos con una revisión gratuita de cómo les llegan hoy los pedidos de hostelería, y a partir de ahí adaptamos el portal a su forma de trabajar.</p>
+  </div>
+  <div class="contact">
+    <b style="font-size:20px">Regan Consulting</b>
+    <span>Carla Martínez Medina</span>
+    <span>Teléfono y WhatsApp: +34 614 262 545</span>
+    <span>Correo: <a href="mailto:carla@reganconsulting.es">carla@reganconsulting.es</a></span>
+    <span>Web: <a href="https://reganconsulting.es">reganconsulting.es</a></span>
+    <small>Reunión presencial de lunes a viernes, 10:00–13:00 y 16:00–19:00, videollamada o WhatsApp.</small>
+  </div>
+</div>
+</section>
+
+<script>
+{
+const keg=c=>`<svg viewBox="0 0 46 46" width="46" height="46" aria-hidden="true"><rect x="9" y="5" width="28" height="36" rx="5" fill="#9aa39b"/><rect x="9" y="5" width="28" height="36" rx="5" fill="url(#g)"/><rect x="9" y="12" width="28" height="3" fill="${c}"/><rect x="9" y="31" width="28" height="3" fill="${c}"/><rect x="19" y="2" width="8" height="4" rx="1" fill="#6b746d"/><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".35" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient></defs></svg>`;
+const box=c=>`<svg viewBox="0 0 46 46" width="46" height="46" aria-hidden="true"><path d="M6 16 L23 9 L40 16 L40 36 L23 43 L6 36Z" fill="#c9a877"/><path d="M6 16 L23 23 L40 16 L23 9Z" fill="#dcc192"/><path d="M23 23 L23 43 L40 36 L40 16Z" fill="#b08f5f"/><rect x="10" y="25" width="9" height="9" rx="2" fill="${c}"/></svg>`;
+const P=[
+ {id:'ka',n:'Barril Arinaga 30 L',d:'German Helles · 5 %',i:keg('#202B25'),last:2},
+ {id:'ks',n:'Barril Seaclouds 30 L',d:'Vienna · 5 %',i:keg('#3c6e8f'),last:1},
+ {id:'kv',n:'Barril LA VARÁ 20 L',d:'Maibock · 6,7 %',i:keg('#F2C230'),last:0},
+ {id:'ca',n:'Caja Arinaga',d:'12 botellas',i:box('#202B25'),last:1},
+ {id:'cs',n:'Caja Seaclouds',d:'12 botellas',i:box('#3c6e8f'),last:0},
+ {id:'cv',n:'Caja LA VARÁ',d:'12 botellas',i:box('#F2C230'),last:1}
+];
+const q={};P.forEach(p=>q[p.id]=0);
+const list=document.getElementById('list'),sum=document.getElementById('sum'),app=document.getElementById('app');
+list.innerHTML=P.map(p=>`<div class="row">${p.i}<div><div class="n">${p.n}</div><div class="d">${p.d}</div></div><div class="q"><button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar ${p.n}">−</button><output id="o-${p.id}">0</output><button type="button" data-id="${p.id}" data-d="1" aria-label="Añadir ${p.n}">+</button></div></div>`).join('');
+const render=()=>{let k=0,c=0;P.forEach(p=>{document.getElementById('o-'+p.id).textContent=q[p.id];if(p.id[0]==='k')k+=q[p.id];else c+=q[p.id]});
+ sum.innerHTML=k+c?`<b>${k} barril${k===1?'':'es'} · ${c} caja${c===1?'':'s'}</b>`:'Pedido vacío';};
+list.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.id;q[id]=Math.max(0,Math.min(20,q[id]+Number(b.dataset.d)));render();});
+document.getElementById('repeat').addEventListener('click',()=>{P.forEach(p=>q[p.id]=p.last);render();});
+document.getElementById('clear').addEventListener('click',()=>{P.forEach(p=>q[p.id]=0);render();});
+const fx=document.getElementById('fixed');
+fx.addEventListener('click',()=>fx.setAttribute('aria-pressed',fx.getAttribute('aria-pressed')==='true'?'false':'true'));
+document.getElementById('send').addEventListener('click',()=>{
+ const tot=Object.values(q).reduce((a,b)=>a+b,0);
+ if(!tot){sum.innerHTML='<b style="color:#AB3B32">Añada al menos un producto</b>';return;}
+ const fijo=fx.getAttribute('aria-pressed')==='true';
+ document.getElementById('doneTxt').textContent=`Pedido nº 0482 · Reparto el miércoles por la mañana, ruta Sur. Le avisaremos por WhatsApp cuando salga el camión.${fijo?' Queda guardado como pedido fijo de cada martes.':''}`;
+ app.classList.add('sent');});
+document.getElementById('again').addEventListener('click',()=>app.classList.remove('sent'));
+render();
+
+const O={
+ 'Sur':[['Bar La Marea, Arinaga','2 barriles Arinaga · 1 caja LA VARÁ','s1','Preparando'],['Terraza El Muelle, Arinaga','1 barril Seaclouds','s1','Preparando'],['Restaurante Vargas, Agüimes','2 cajas Arinaga','s2','En reparto'],['Kiosco Playa de Arinaga','3 cajas Seaclouds','s3','Entregado']],
+ 'Telde':[['Cervecería La Garita','2 barriles Arinaga · 1 barril LA VARÁ','s1','Preparando'],['Bar San Gregorio','1 caja LA VARÁ','s2','En reparto'],['Tasca El Cruce','1 barril Seaclouds','s3','Entregado']],
+ 'Las Palmas':[['Gastrobar Triana','2 barriles Seaclouds','s1','Preparando'],['Bar Las Canteras','3 barriles Arinaga','s2','En reparto'],['Tienda Gourmet Vegueta','4 cajas variadas','s3','Entregado']],
+ 'Norte':[['Bar Agaete Puerto','1 barril Arinaga · 2 cajas','s1','Preparando'],['Restaurante Gáldar','1 caja LA VARÁ','s3','Entregado']]
+};
+const tabs=document.getElementById('tabs'),tb=document.getElementById('orders');
+const zones=Object.keys(O);
+tabs.innerHTML=zones.map((z,i)=>`<button type="button" data-z="${z}" aria-pressed="${i===0}">${z}</button>`).join('');
+const show=z=>{tb.innerHTML=O[z].map(r=>`<tr><td><b>${r[0]}</b><div class="d" style="font-size:13px;color:var(--soft)">${r[1]}</div></td><td class="r"><span class="st ${r[2]}">${r[3]}</span></td></tr>`).join('');
+ tabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.z===z));};
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.z);});
+show('Sur');
+}
+</script>
+</body>
+</html>
