@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klawter × Regan Consulting</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: directo, de agencia a agencia, sin adornos.
+   IDEA: una conversación de WhatsApp: Klawter la abre con sus campañas, Regan hace que no se quede a medias.
+   PICTURE: chat real de un lead que llega de noche y sale con cita, con el recorrido debajo.
+   COLOUR and TYPE: blanco, negro y bermellón en bloque; Sofia Sans Condensed 800 + Instrument Sans.
+   LAYOUT: portada partida texto/chat en bloque bermellón, bandas a todo el ancho, tarjetas planas. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f4efec);--soft:light-dark(#4a4644,#b9b0ab);
+--ver:#ff4a1c;--ver-ink:#ffffff;--card:light-dark(#f5f2f0,#1d1613);--line:light-dark(#e3dedb,#33281f);
+--chat:light-dark(#efe9e4,#0c0807);--in:light-dark(#ffffff,#2a201b);--out:light-dark(#ffe0d6,#5a2312)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(38px,6vw,64px)}h2{font-size:clamp(32px,4.4vw,48px)}h3{font-size:24px;font-weight:700}
+p{margin:0}.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(36px,5vw,80px) max(5vw,16px)}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:18px max(5vw,16px);font-weight:700}
+nav span{color:var(--soft);font-weight:500;font-size:15px}
+.hero{background:var(--ver);color:var(--ver-ink)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero p.lead{font-size:20px;margin-top:22px;max-width:34ch;font-weight:500}
+.hero .who{margin-top:28px;font-size:15px;font-weight:600;opacity:.92}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#111;color:#fff;font-weight:700;text-decoration:none;margin-top:28px}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.phone{background:var(--chat);border-radius:28px;padding:0;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);overflow:hidden;color:var(--ink);max-width:460px;justify-self:end;width:100%}
+.ph-top{display:flex;gap:12px;align-items:center;padding:14px 18px;background:#111;color:#fff}
+.av{width:40px;height:40px;border-radius:50%;background:var(--ver);display:grid;place-items:center;font-weight:800;color:#fff;flex:none}
+.ph-top b{display:block;font-size:16px}.ph-top small{font-size:13px;opacity:.75}
+.msgs{padding:18px 14px 20px;display:flex;flex-direction:column;gap:10px;min-height:400px}
+.m{max-width:84%;padding:10px 14px;border-radius:16px;font-size:15px;line-height:1.45;opacity:0;transform:translateY(8px);animation:in .4s ease forwards}
+.m small{display:block;text-align:right;font-size:13px;color:var(--soft);margin-top:4px}
+.m.c{background:var(--in);align-self:flex-start;border-top-left-radius:4px}
+.m.a{background:var(--out);align-self:flex-end;border-top-right-radius:4px}
+.tag{align-self:center;font-size:13px;background:var(--in);color:var(--soft);padding:4px 12px;border-radius:999px;opacity:0;animation:in .4s ease forwards}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.m,.tag{animation:none;opacity:1;transform:none}}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:start}
+.intro p{color:var(--soft);font-size:18px}.intro p+p{margin-top:14px}
+.flow{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;align-items:center}
+.step{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px 16px;font-weight:700;font-size:16px}
+.step.r{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.arr{font-weight:800;color:var(--ver);font-size:22px}
+.legend{margin-top:14px;font-size:14px;color:var(--soft)}
+.legend b{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--ink);vertical-align:-2px;margin-right:6px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.card{background:var(--card);border-radius:20px;padding:26px}
+.card h3{margin-bottom:10px}.card p{color:var(--soft);font-size:16px}
+.ic{width:46px;height:46px;border-radius:14px;background:var(--ver);margin-bottom:18px;display:grid;place-items:center}
+.ic svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.dark{background:#111;color:#f4efec}.dark .card{background:#1f1f1f}.dark .card p{color:#bdb6b2}
+.dark .sub{color:#bdb6b2}
+.sub{color:var(--soft);font-size:18px;margin-top:14px;max-width:62ch}
+.sect{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:36px}
+.sect .card ul{margin:12px 0 0;padding-left:20px;color:var(--soft);font-size:16px}
+.sect .card li+li{margin-top:6px}
+.models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.model{border:3px solid var(--ink);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.model.hl{background:var(--ver);border-color:var(--ver);color:#fff}.model.hl p{color:#fff}
+.model p{color:var(--soft);font-size:16px}
+.pill{align-self:flex-start;font-size:13px;font-weight:700;background:#111;color:#fff;padding:4px 12px;border-radius:999px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.steps div{border-top:4px solid var(--ver);padding-top:18px}
+.steps p{color:var(--soft);font-size:16px;margin-top:8px}
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,72px);align-items:center}
+.about p{color:var(--soft);font-size:18px;margin-top:14px}
+.contact{background:var(--card);border-radius:20px;padding:28px}
+.contact a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--ver)}
+.contact div+div{margin-top:12px}
+.contact small{display:block;color:var(--soft);font-size:14px}
+.cta{background:var(--ver);color:#fff;text-align:center}
+.cta p{font-size:19px;margin:16px auto 0;max-width:56ch}
+.cta .btn{margin-top:26px}
+footer{padding:24px max(5vw,16px);font-size:14px;color:var(--soft);text-align:center}
+@media(max-width:900px){.grid,.models,.steps{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:760px){.hero .wrap,.intro,.about,.sect{grid-template-columns:minmax(0,1fr)}.phone{justify-self:stretch;max-width:none}}
+@media(max-width:600px){.grid,.models,.steps{grid-template-columns:minmax(0,1fr)}.arr{transform:rotate(90deg)}.flow{flex-direction:column;align-items:stretch}.arr{align-self:center}}
+</style>
+</head>
+<body>
+
+<nav><div>Regan Consulting</div><span>Propuesta de colaboración para Klawter</span></nav>
+
+<section class="band hero">
+  <div class="wrap">
+    <div>
+      <h1>Sus campañas abren la conversación. Nosotros hacemos que ningún lead se quede sin respuesta.</h1>
+      <p class="lead">Una línea de IA y automatización que Klawter puede ofrecer a sus clientes sin montar un equipo técnico propio.</p>
+      <p class="who">Regan Consulting · Empresa canaria de soluciones digitales e IA</p>
+      <a class="btn" href="#colaborar">Ver cómo colaboraríamos</a>
+    </div>
+    <div class="phone" aria-label="Ejemplo de conversación atendida por un asistente con IA">
+      <div class="ph-top"><div class="av">R</div><div><b>Despacho de abogados</b><small>Asistente con IA · en línea</small></div></div>
+      <div class="msgs">
+        <div class="tag" style="animation-delay:.1s">Ejemplo · Lead desde campaña de Google Ads · 23:14</div>
+        <div class="m c" style="animation-delay:.4s">Hola, he visto su anuncio. Tengo un problema con la herencia de mi padre y no sé por dónde empezar.<small>23:14</small></div>
+        <div class="m a" style="animation-delay:1.1s">Buenas noches. Siento lo de su padre. Para orientarle bien: ¿la herencia está en Canarias y hay testamento?<small>23:14</small></div>
+        <div class="m c" style="animation-delay:1.8s">Sí, en Telde. Hay testamento pero mis hermanos no se ponen de acuerdo.<small>23:15</small></div>
+        <div class="m a" style="animation-delay:2.5s">Entendido. Es justo lo que lleva el área de sucesiones. ¿Le viene bien una primera consulta el jueves a las 10:00 o a las 17:30?<small>23:15</small></div>
+        <div class="m c" style="animation-delay:3.2s">El jueves a las 10:00.<small>23:16</small></div>
+        <div class="m a" style="animation-delay:3.9s">Hecho. Le llegará la confirmación por WhatsApp y un recordatorio el día antes.<small>23:16</small></div>
+        <div class="tag" style="animation-delay:4.5s">Cita en agenda · ficha creada en el CRM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="intro">
+      <h2>El resultado de una campaña se juega después del clic</h2>
+      <div>
+        <p>Ustedes consiguen que el contacto llegue. Pero si entra un domingo o a las once de la noche, y el cliente contesta al día siguiente, ese lead muchas veces ya se ha ido a otro sitio.</p>
+        <p>Ahí entramos nosotros: respuesta en segundos, cualificación, cita y seguimiento automático. El cliente lo nota en su agenda, y las campañas de Klawter rinden más.</p>
+      </div>
+    </div>
+    <div class="flow" aria-label="Recorrido de un lead">
+      <div class="step">Anuncio, SEO o redes</div><div class="arr">→</div>
+      <div class="step">Llega el lead</div><div class="arr">→</div>
+      <div class="step r">Respuesta con IA al momento</div><div class="arr">→</div>
+      <div class="step r">Cualifica y agenda</div><div class="arr">→</div>
+      <div class="step r">CRM y seguimiento</div><div class="arr">→</div>
+      <div class="step r">Informe para la agencia</div>
+    </div>
+    <p class="legend"><b></b>La parte que ponemos nosotros</p>
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="wrap">
+    <h2>Lo que Klawter podría sumar a su catálogo</h2>
+    <p class="sub">Todo a medida de cada cliente y conectado con lo que ya usan: su web, WhatsApp, Google, Meta, su agenda o su CRM.</p>
+    <div class="grid">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><h3>Asistente con IA en web y WhatsApp</h3><p>Atiende las 24 horas, responde dudas, pide los datos que hacen falta y deja la cita reservada.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><h3>Asistente telefónico</h3><p>Coge las llamadas que hoy se pierden fuera de horario o con la línea ocupada, y pasa el resumen al equipo.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18" cy="6" r="2"/><circle cx="15" cy="18" r="2"/></svg></div><h3>Automatización de leads</h3><p>Formularios, Lead Ads y llamadas entran solos al CRM, con aviso al comercial y secuencia de seguimiento.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Reseñas en Google</h3><p>Displays QR/NFC en el local y petición automática de reseña después de cada servicio. Suma directamente al SEO local.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3>Asistentes de turismo multilingües</h3><p>Información de destino, eventos y recursos en varios idiomas, para entidades públicas y empresas turísticas.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Automatizaciones para la propia agencia</h3><p>Informes de campaña que se generan solos, alta de clientes nuevos, aprobación de contenidos. Menos horas internas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Encaja con el tipo de clientes con el que ya trabajan</h2>
+    <div class="sect">
+      <div class="card"><h3>Despachos y servicios profesionales</h3><ul><li>Primera consulta cualificada y agendada desde el anuncio</li><li>Recordatorios para reducir las citas que no se presentan</li><li>Seguimiento de presupuestos sin respuesta</li></ul></div>
+      <div class="card"><h3>Turismo e instituciones</h3><ul><li>Asistente del destino en varios idiomas</li><li>Respuestas a consultas frecuentes en redes y web</li><li>Recogida de datos para medir campañas</li></ul></div>
+      <div class="card"><h3>Comercio y tiendas online</h3><ul><li>Atención de pedidos y dudas por WhatsApp</li><li>Recuperación de carritos y avisos de reposición</li><li>Programas de fidelización</li></ul></div>
+      <div class="card"><h3>Estética, salud y restauración</h3><ul><li>Reservas y huecos libres rellenados por WhatsApp</li><li>Asistente telefónico para no perder llamadas</li><li>Reseñas después de cada visita</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="colaborar" style="padding-top:0">
+  <div class="wrap">
+    <h2>Tres formas de trabajar juntos</h2>
+    <p class="sub">La que mejor les encaje, o una mezcla según el cliente. Nosotros no hacemos marketing ni campañas: no competimos con Klawter.</p>
+    <div class="models">
+      <div class="model hl"><span class="pill">La más habitual</span><h3>Marca blanca</h3><p>Klawter lo ofrece como servicio propio. Nosotros lo diseñamos, lo montamos y lo mantenemos en segundo plano. El cliente sigue tratando con ustedes.</p></div>
+      <div class="model"><h3>Cliente referido</h3><p>Ustedes nos presentan al cliente y nosotros nos encargamos del proyecto. Klawter recibe una comisión por cada cliente que sale adelante.</p></div>
+      <div class="model"><h3>Proyecto conjunto</h3><p>Para propuestas grandes o concursos: Klawter lleva marketing y contenido, nosotros la parte de IA y automatización. Una sola propuesta para el cliente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <h2>Cómo empezaríamos</h2>
+    <div class="steps">
+      <div><h3>Una conversación</h3><p>Nos sentamos, vemos qué clientes podrían sacarle partido y qué modelo prefieren.</p></div>
+      <div><h3>Un piloto</h3><p>Elegimos un cliente suyo y montamos una solución concreta para que vean el resultado con datos reales.</p></div>
+      <div><h3>Un servicio estable</h3><p>Si funciona, lo convertimos en una línea más de Klawter, con condiciones claras para los dos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap about">
+    <div>
+      <h2>Quiénes somos</h2>
+      <p>Regan Consulting es una empresa canaria que desarrolla soluciones digitales e IA para negocios: asistentes con IA, asistentes telefónicos, automatizaciones con WhatsApp y n8n, CRM, sistemas de reservas y fidelización.</p>
+      <p>Tenemos proyectos en marcha en Gran Canaria, como Nirvana Nail Studio (reservas, CRM, asistente telefónico y WhatsApp) o Taller Lidai (CRM con asistente telefónico). Estamos en Las Palmas, a pocos minutos de su oficina.</p>
+    </div>
+    <div class="contact">
+      <div><small>Contacto</small><b>Carla Martínez Medina</b></div>
+      <div><small>Teléfono y WhatsApp</small><a href="https://wa.me/34614262545">+34 614 26 25 45</a></div>
+      <div><small>Correo</small><a href="mailto:carla@reganconsulting.es">carla@reganconsulting.es</a></div>
+      <div><small>Web</small><a href="https://reganconsulting.es">reganconsulting.es</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band cta">
+  <div class="wrap">
+    <h2>¿Lo hablamos con un café?</h2>
+    <p>Podemos pasarnos por su oficina de Luis Antúnez cuando les venga bien, hacer una videollamada o hablarlo por WhatsApp.</p>
+    <a class="btn" href="https://wa.me/34614262545">Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<footer>Propuesta preparada por Regan Consulting para Klawter · Noviembre de 2026</footer>
+</body>
+</html>
