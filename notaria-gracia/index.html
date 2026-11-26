@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta Notaría David Gracia Fuentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formal, sereno, preciso: una notaría de Triana que se entiende a la primera.
+   IDEA: la placa de latón en la fachada de piedra; la web como ventanilla abierta 24 h.
+   COLOUR and TYPE: piedra #ece6dc, azul noche #15213a, latón #a8823f; Manrope 800/500, trazo sólido. */
+:root{color-scheme:light dark;
+--bg:light-dark(#f3efe8,#11161f);--stone:light-dark(#e7e0d4,#1a2130);--card:light-dark(#fffdf9,#182030);
+--ink:light-dark(#15213a,#eef0f4);--soft:light-dark(#5d6577,#b4bac6);--brass:light-dark(#94712f,#d6b06a);
+--navy:#15213a;--line:light-dark(#dcd4c6,#2c3547)}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-weight:800;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,52px)}h2{font-size:clamp(27px,3.5vw,40px)}h3{font-size:19px;line-height:1.25}
+p{margin:0}
+.band{padding:clamp(36px,5vw,72px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.kick{color:var(--brass);font-weight:700;font-size:15px;margin-bottom:12px}
+.lead{font-size:17px;color:var(--soft);max-width:62ch;margin-top:16px}
+.hero{background:var(--navy);color:#f3efe8}
+.hero .kick{color:#d6b06a}.hero .lead{color:#c9cfdb}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
+.stat{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.stat div{background:#22304d;border-radius:14px;padding:14px 18px}
+.stat b{display:block;font-size:26px;color:#e6c47f;white-space:nowrap}
+.stat span{font-size:13px;color:#c2c9d6}
+.diag{background:#f3efe8;color:#15213a;border-radius:18px;padding:24px;box-shadow:0 20px 50px #0007}
+.diag h3{margin-bottom:12px}
+.diag ul{list-style:none;margin:0;padding:0}
+.diag li{margin:11px 0;padding-left:28px;position:relative;font-size:15px}
+.diag li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;border:3px solid #a8823f}
+/* maqueta */
+.frame{margin-top:32px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px #15213a33;background:#faf8f4;color:#15213a}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#e4ddd0}
+.bar i{width:11px;height:11px;border-radius:50%;background:#c5baa8}
+.url{flex:1;background:#faf8f4;border-radius:8px;padding:5px 12px;font-size:13px;color:#5d6577;margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px clamp(16px,3vw,36px);flex-wrap:wrap;border-bottom:1px solid #e4ddd0}
+.logo{display:flex;gap:12px;align-items:center;font-weight:800;font-size:17px;line-height:1.2}
+.plate{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#c9a45c,#8e6b2c);color:#15213a;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.logo small{display:block;font-weight:600;font-size:12px;color:#94712f}
+.nav nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;font-weight:600;color:#5d6577}
+.lang{display:flex;border:1.5px solid #15213a;border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;font:700 13px Manrope,sans-serif;padding:7px 12px;cursor:pointer;color:#15213a;min-height:36px}
+.lang button[aria-pressed=true]{background:#15213a;color:#f3efe8}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:0;font:700 15px Manrope,sans-serif;cursor:pointer;text-decoration:none}
+.btn.dark{background:#15213a;color:#f3efe8}.btn.brass{background:#a8823f;color:#fff}.btn.line{background:transparent;border:2px solid #15213a;color:#15213a}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a8823f;outline-offset:2px}
+.mh{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;padding:clamp(22px,3vw,44px) clamp(16px,3vw,36px) 36px;align-items:center}
+.mh h2{font-size:clamp(30px,4vw,46px)}
+.mh p{color:#5d6577;margin:14px 0 22px;font-size:17px}
+.facade{aspect-ratio:4/5;border-radius:18px;background:repeating-linear-gradient(0deg,#d9d2c5 0 58px,#cfc7b8 58px 60px),#d9d2c5;position:relative;overflow:hidden;box-shadow:0 24px 50px #15213a30}
+.facade::after{content:"";position:absolute;right:0;top:0;bottom:0;width:22%;background:#6e2a22}
+.brassplate{position:absolute;left:12%;top:20%;width:56%;padding:18px 14px;border-radius:6px;background:linear-gradient(135deg,#e0c27f,#a8823f 60%,#c9a45c);color:#2a2112;text-align:center;box-shadow:0 8px 18px #0004}
+.brassplate b{display:block;font-size:13px;letter-spacing:3px}
+.brassplate span{display:block;font-size:17px;font-weight:800;margin-top:6px;line-height:1.2}
+.brassplate small{display:block;font-size:11px;margin-top:8px;font-weight:700}
+.info{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:#5d6577}
+.info span{background:#fff;border:1px solid #e4ddd0;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.sec{padding:28px clamp(16px,3vw,36px);border-top:1px solid #e4ddd0}
+.sec h3{font-size:22px;margin-bottom:6px}
+.sec .sub{color:#5d6577;font-size:15px;margin-bottom:16px}
+.tram{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid #d4cab9;background:#fff;font:600 15px Manrope,sans-serif;color:#15213a;cursor:pointer}
+.chip[aria-pressed=true]{background:#15213a;color:#f3efe8;border-color:#15213a}
+.docs{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:20px}
+.list{background:#fff;border:1px solid #e4ddd0;border-radius:16px;padding:20px}
+.list label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eee7dc;cursor:pointer;font-size:15px}
+.list label:last-child{border-bottom:0}
+.list input{width:20px;height:20px;margin-top:2px;accent-color:#15213a;flex:none}
+.side{background:#15213a;color:#f3efe8;border-radius:16px;padding:20px;align-self:start}
+.side h4{margin:0 0 8px;font-size:17px}
+.side p{color:#c9cfdb;font-size:14px}
+.prog{height:8px;border-radius:9px;background:#2c3a5a;margin:16px 0 8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:#d6b06a;transition:width .3s}
+.side .btn{margin-top:14px;width:100%}
+.wa{margin-top:14px;background:#e6f0e9;border-radius:14px 14px 14px 4px;padding:14px;font-size:14px;color:#1d3a2a;display:none}
+.wa.on{display:block}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.form label{font-weight:700;font-size:14px;display:block;margin-bottom:6px}
+input[type=text],select{width:100%;min-height:46px;border-radius:12px;border:1.5px solid #d4cab9;padding:0 14px;font:16px Manrope,sans-serif;background:#fff;color:#15213a}
+.drop{border:2px dashed #b9ad98;border-radius:14px;padding:18px;text-align:center;color:#5d6577;font-size:14px;margin-top:12px;background:#fff}
+.drop b{color:#15213a}
+.foot{background:#15213a;color:#c9cfdb;padding:22px clamp(16px,3vw,36px);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
+.note{font-size:13px;color:var(--soft);margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card svg{width:40px;height:40px;margin-bottom:14px}
+.card p{color:var(--soft);margin-top:8px;font-size:15px}
+.cmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:28px}
+.cmp > div{border-radius:18px;padding:22px;border:1px solid var(--line);background:var(--card)}
+.cmp h3{margin-bottom:12px}
+.cmp ul{margin:0;padding-left:20px;color:var(--soft)}
+.cmp li{margin:8px 0}
+.cmp .now h3{color:#a3332a}.cmp .then h3{color:var(--brass)}
+.cta{background:var(--stone)}
+.ctabox{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:28px;align-items:center}
+.contact{background:var(--card);border-radius:18px;padding:22px;border:1px solid var(--line);font-size:15px}
+.contact a{color:var(--ink);font-weight:700}
+@media(max-width:860px){.hgrid,.mh,.docs,.ctabox,.cmp{grid-template-columns:minmax(0,1fr)}.facade{max-width:320px;margin:0 auto;width:100%}}
+@media(max-width:640px){.nav nav{display:none}}
+@media(prefers-reduced-motion:no-preference){.frame{animation:up .7s ease-out both}@keyframes up{from{opacity:0;transform:translateY(24px)}}}
+</style>
+</head>
+<body>
+
+<header class="band hero">
+  <div class="wrap hgrid">
+    <div>
+      <p class="kick">Propuesta para la Notaría David Gracia Fuentes · Regan Consulting</p>
+      <h1>Quien busca su notaría debería encontrar sus datos correctos a la primera.</h1>
+      <p class="lead">Sus clientes destacan el trato cercano, la rapidez y lo bien que se les explica cada documento. Hoy, quien les busca por internet solo encuentra directorios con datos que no cuadran. Les proponemos una web propia, en español e inglés, que informe de cada trámite, diga qué documentación traer y permita pedir cita y enviar los papeles antes de venir.</p>
+      <div class="stat">
+        <div><b>4,5 ★</b><span>en Google</span></div>
+        <div><b>36</b><span>reseñas</span></div>
+        <div><b>ES · EN</b><span>atención en dos idiomas</span></div>
+      </div>
+    </div>
+    <aside class="diag">
+      <h3>Lo que hemos visto al buscarles</h3>
+      <ul>
+        <li>No tienen web propia, así que quien les busca en internet acaba en directorios de terceros.</li>
+        <li>En uno de ellos aparecen dos direcciones distintas: C. Torres, 2 y calle Triana, 22.</li>
+        <li>La tabla de horario sale vacía todos los días, y el correo «aparece en su página web», que no existe.</li>
+        <li>Al lado de su ficha se anuncian otras seis notarías de la zona.</li>
+        <li>Hay reseñas sin responder, entre ellas una que pide precisamente eso: que se contesten.</li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <p class="kick">Así podría verse</p>
+    <h2>Una web sobria, clara y útil desde el primer clic</h2>
+    <p class="lead">Pruébela como lo haría un cliente: elija un trámite, marque la documentación que ya tiene y pida cita.</p>
+
+    <div class="frame" role="region" aria-label="Maqueta de la web de la notaría">
+      <div class="bar"><i></i><i></i><i></i><div class="url">notariagraciafuentes.es</div></div>
+      <div class="nav">
+        <div class="logo"><span class="plate">DG</span><span>Notaría David Gracia Fuentes<small data-es="Las Palmas de Gran Canaria · Triana" data-en="Las Palmas de Gran Canaria · Triana">Las Palmas de Gran Canaria · Triana</small></span></div>
+        <nav><span data-es="Trámites" data-en="Services">Trámites</span><span data-es="Documentación" data-en="Documents">Documentación</span><span data-es="La notaría" data-en="About us">La notaría</span><span data-es="Contacto" data-en="Contact">Contacto</span></nav>
+        <div class="lang" role="group" aria-label="Idioma"><button type="button" aria-pressed="true" data-l="es">ES</button><button type="button" aria-pressed="false" data-l="en">EN</button></div>
+      </div>
+      <div class="mh">
+        <div>
+          <h2 data-es="Seguridad jurídica, explicada con claridad." data-en="Legal certainty, clearly explained.">Seguridad jurídica, explicada con claridad.</h2>
+          <p data-es="Compraventas, herencias, testamentos, poderes y sociedades. Le explicamos qué necesita, revisamos su documentación antes de la firma y le atendemos en español o en inglés." data-en="Property purchases, inheritances, wills, powers of attorney and companies. We tell you what you need, review your documents before signing and assist you in Spanish or English.">Compraventas, herencias, testamentos, poderes y sociedades. Le explicamos qué necesita, revisamos su documentación antes de la firma y le atendemos en español o en inglés.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn brass" href="#cita" data-es="Solicitar cita" data-en="Book an appointment">Solicitar cita</a>
+            <a class="btn line" href="#docs" data-es="¿Qué documentación traigo?" data-en="What should I bring?">¿Qué documentación traigo?</a>
+          </div>
+          <div class="info">
+            <span>C. Torres, 2 · 35002</span>
+            <span data-es="L–V · 9:00–14:00 y 16:00–19:00" data-en="Mon–Fri · 9:00–14:00 & 16:00–19:00">L–V · 9:00–14:00 y 16:00–19:00</span>
+            <span>928 09 09 90</span>
+          </div>
+        </div>
+        <div class="facade" aria-hidden="true">
+          <div class="brassplate"><b>NOTARÍA</b><span>David Gracia Fuentes</span><small>NOTARIO</small></div>
+        </div>
+      </div>
+
+      <div class="sec" id="docs">
+        <h3 data-es="¿Qué documentación necesito?" data-en="Which documents do I need?">¿Qué documentación necesito?</h3>
+        <p class="sub" data-es="Elija su trámite y marque lo que ya tiene. Así llega a la firma sin sorpresas." data-en="Choose your procedure and tick what you already have, so there are no surprises on signing day.">Elija su trámite y marque lo que ya tiene. Así llega a la firma sin sorpresas.</p>
+        <div class="tram" role="group" aria-label="Trámite" id="tram"></div>
+        <div class="docs">
+          <div class="list" id="list"></div>
+          <div class="side">
+            <h4 id="sideT">Compraventa de vivienda</h4>
+            <p id="sideP">Marque los documentos que ya tiene.</p>
+            <div class="prog"><i id="bar"></i></div>
+            <p id="cnt">0 de 0 listos</p>
+            <button class="btn brass" type="button" id="send" data-es="Enviar documentación a la notaría" data-en="Send documents to the office">Enviar documentación a la notaría</button>
+            <div class="wa" id="wa" role="status"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec" id="cita">
+        <h3 data-es="Solicitar cita" data-en="Book an appointment">Solicitar cita</h3>
+        <p class="sub" data-es="La notaría le confirma el día y la hora, y le avisa por WhatsApp si falta algún documento." data-en="The office confirms the date and time and lets you know on WhatsApp if anything is missing.">La notaría le confirma el día y la hora, y le avisa por WhatsApp si falta algún documento.</p>
+        <div class="form">
+          <div><label for="n" data-es="Nombre" data-en="Name">Nombre</label><input id="n" type="text" placeholder="María Santana"></div>
+          <div><label for="t" data-es="Trámite" data-en="Procedure">Trámite</label><select id="t"></select></div>
+          <div><label for="p" data-es="Preferencia" data-en="Preference">Preferencia</label><select id="p"><option>Mañana · 9:00–14:00</option><option>Tarde · 16:00–19:00</option></select></div>
+        </div>
+        <div class="drop"><b data-es="Arrastre aquí sus documentos" data-en="Drop your documents here">Arrastre aquí sus documentos</b><br><span data-es="DNI, nota simple, escrituras… Se envían cifrados y solo los ve la notaría." data-en="ID, land registry extract, deeds… Sent encrypted and only seen by the office.">DNI, nota simple, escrituras… Se envían cifrados y solo los ve la notaría.</span></div>
+      </div>
+
+      <div class="foot"><span>Notaría David Gracia Fuentes · C. Torres, 2 · 35002 Las Palmas de Gran Canaria</span><span>928 09 09 90</span></div>
+    </div>
+    <p style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn brass" href="web/index.html" style="text-decoration:none">Ver la web completa</a><span style="color:var(--soft);font-size:15px">Ábrala desde el móvil o el ordenador y pruébela como un cliente.</span></p>
+    <p class="note">Maqueta orientativa. Textos, listados de documentación y diseño se ajustarían con la notaría antes de publicar.</p>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <p class="kick">Antes y después</p>
+    <h2>Lo que encuentra hoy quien les busca, y lo que encontraría</h2>
+    <div class="cmp">
+      <div class="now"><h3>Hoy</h3><ul>
+        <li>Fichas en directorios ajenos, con dos direcciones y sin horario.</li>
+        <li>Otras notarías anunciadas junto a la suya.</li>
+        <li>Para saber qué documentación traer hay que llamar por teléfono.</li>
+        <li>Si falta algún documento, a menudo se descubre el mismo día de la firma.</li>
+      </ul></div>
+      <div class="then"><h3>Con su web</h3><ul>
+        <li>Una única fuente oficial: dirección, horario y contacto correctos.</li>
+        <li>Su propio dominio, sin anuncios de terceros.</li>
+        <li>Guía de documentación por trámite, también en inglés.</li>
+        <li>Documentos revisados antes de la cita, enviados de forma segura.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <p class="kick">Y además</p>
+    <h2>Otras mejoras que podríamos implantar</h2>
+    <div class="grid">
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h6l3 8-4 3a18 18 0 0 0 6 6l3-4 8 3v6a3 3 0 0 1-3 3A26 26 0 0 1 9 9a3 3 0 0 1 3-3z"/></svg>
+        <h3>Asistente telefónico</h3>
+        <p>Atiende las llamadas cuando el equipo está en una firma: informa del horario y la documentación de cada trámite, toma el recado y lo deja anotado para devolver la llamada.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 32l2-7a13 13 0 1 1 5 5z"/><path d="M16 17c0 4 3 7 7 7"/></svg>
+        <h3>Avisos automáticos por WhatsApp</h3>
+        <p>Recordatorio de la cita de firma, aviso si falta un documento y mensaje cuando la copia está lista para recoger. Menos llamadas de «¿cómo va lo mío?».</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="4"/><path d="M6 15h28M15 15v19"/></svg>
+        <h3>Gestión interna de expedientes</h3>
+        <p>Un panel para el equipo con el estado de cada expediente: documentación recibida, pendiente, fecha de firma y copias. Todos saben en qué punto está cada cliente.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5l4.5 9 10 1.5-7.2 7 1.7 10L20 27.8 11 32.5l1.7-10-7.2-7 10-1.5z"/></svg>
+        <h3>Ficha de Google al día</h3>
+        <p>Corregir y unificar dirección, horario y enlaces en Google y en los directorios, y responder a las reseñas con un tono cuidado y profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band cta">
+  <div class="wrap ctabox">
+    <div>
+      <p class="kick">Siguiente paso</p>
+      <h2>Se lo enseñamos en persona, en su despacho</h2>
+      <p class="lead"><a href="web/index.html" style="color:var(--ink);font-weight:700">Ver la web completa</a> · Somos una empresa canaria. Podemos pasar por la notaría de lunes a viernes, de 10:00 a 13:00 o de 16:00 a 19:00, o verlo por videollamada, cuando les venga mejor.</p>
+    </div>
+    <div class="contact">
+      <b>Carla Martínez Medina</b><br>Regan Consulting<br>
+      <a href="tel:+34614262545">+34 614 26 25 45</a><br>
+      <a href="mailto:carla@reganconsulting.es">carla@reganconsulting.es</a><br>
+      <a href="https://reganconsulting.es">reganconsulting.es</a>
+    </div>
+  </div>
+</section>
+
+<script>
+const T={
+ compra:{es:"Compraventa de vivienda",en:"Property purchase",d:{es:["DNI o NIE de compradores y vendedores","Nota simple actualizada del Registro","Último recibo del IBI","Certificado de estar al corriente con la comunidad","Certificado de eficiencia energética","Datos de la hipoteca, si la hay"],en:["ID or NIE of buyers and sellers","Up-to-date land registry extract","Latest property tax (IBI) receipt","Community fees clearance certificate","Energy performance certificate","Mortgage details, if any"]}},
+ herencia:{es:"Herencia",en:"Inheritance",d:{es:["Certificado de defunción","Certificado de últimas voluntades","Copia del testamento, si lo hay","DNI de los herederos","Escrituras o datos de los bienes","Saldos bancarios a la fecha del fallecimiento"],en:["Death certificate","Certificate of last wills","Copy of the will, if any","ID of the heirs","Deeds or details of the assets","Bank balances at the date of death"]}},
+ testamento:{es:"Testamento",en:"Will",d:{es:["DNI o pasaporte en vigor","Nombre de los herederos y legatarios","Datos de estado civil e hijos"],en:["Valid ID or passport","Names of heirs and beneficiaries","Marital status and children details"]}},
+ poder:{es:"Poder",en:"Power of attorney",d:{es:["DNI de quien otorga el poder","Nombre completo y DNI del apoderado","Para qué se necesita el poder"],en:["ID of the grantor","Full name and ID of the attorney","What the power is needed for"]}},
+ sociedad:{es:"Constitución de sociedad",en:"Company formation",d:{es:["Certificado de denominación social","DNI de los socios","Certificado del depósito del capital","Estatutos o modelo elegido","NIF provisional, si ya se tiene"],en:["Company name certificate","Partners' ID","Capital deposit certificate","Articles of association","Provisional tax ID, if available"]}}
+};
+let L="es",cur="compra";
+const tram=document.getElementById("tram"),list=document.getElementById("list"),sel=document.getElementById("t"),wa=document.getElementById("wa");
+function drawTram(){tram.innerHTML="";sel.innerHTML="";for(const k in T){const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=T[k][L];b.setAttribute("aria-pressed",k===cur);b.onclick=()=>{cur=k;wa.classList.remove("on");drawTram();drawList()};tram.appendChild(b);const o=document.createElement("option");o.textContent=T[k][L];o.selected=k===cur;sel.appendChild(o)}}
+function drawList(){list.innerHTML="";T[cur].d[L].forEach(x=>{const l=document.createElement("label");l.innerHTML='<input type="checkbox"><span></span>';l.querySelector("span").textContent=x;l.querySelector("input").onchange=upd;list.appendChild(l)});document.getElementById("sideT").textContent=T[cur][L];upd()}
+function upd(){const all=list.querySelectorAll("input"),ok=[...all].filter(i=>i.checked).length;document.getElementById("bar").style.width=(all.length?ok/all.length*100:0)+"%";document.getElementById("cnt").textContent=L==="es"?`${ok} de ${all.length} listos`:`${ok} of ${all.length} ready`;document.getElementById("sideP").textContent=ok===all.length?(L==="es"?"¡Todo listo para la firma!":"All set for signing!"):(L==="es"?"Marque los documentos que ya tiene.":"Tick the documents you already have.")}
+document.getElementById("send").onclick=()=>{const all=list.querySelectorAll("input"),miss=[...all].filter(i=>!i.checked).map(i=>i.nextElementSibling.textContent);wa.innerHTML=L==="es"?("<b>Notaría Gracia Fuentes</b><br>Hemos recibido su documentación. "+(miss.length?"Para la firma nos faltaría: "+miss.join(", ")+". Le avisaremos en cuanto esté todo.":"Está completa: le proponemos fecha de firma en breve.")):("<b>Gracia Fuentes Notary</b><br>We have received your documents. "+(miss.length?"Still missing: "+miss.join(", ")+".":"Everything is complete: we'll propose a signing date shortly."));wa.classList.add("on")};
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.l;document.querySelectorAll(".lang button").forEach(x=>x.setAttribute("aria-pressed",x===b));document.querySelectorAll("[data-es]").forEach(e=>e.textContent=e.dataset[L]);wa.classList.remove("on");drawTram();drawList()});
+drawTram();drawList();
+</script>
+</body>
+</html>
