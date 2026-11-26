@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Propuesta para Ecotres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formal y claro, propuesta de una empresa canaria a un despacho veterano
+   IDEA: el expediente de la comunidad: lo que hemos visto, lo que montamos, cómo empezamos
+   PICTURE: la plataforma en tres pantallas: web, panel de Ecotres y WhatsApp del vecino
+   COLOUR and TYPE: naranja y azul de Ecotres sobre blanco y azul noche; Figtree sólida
+   LAYOUT: portada con pantallas, hallazgos en tabla, cuatro piezas, panel, WhatsApp, fases, contacto */
+:root{color-scheme:light;--or:#f19105;--or2:#d97f00;--bl:#2f6fe4;--bl2:#1d4fb0;--ink:#13233d;--mut:#5b6b82;--soft:#f4f7fc;--warm:#fff6ea;--line:#e2e8f2}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:#fff;color:var(--ink);font:500 16.5px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{margin:0;line-height:1.08;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(30px,4vw,44px)}
+.band{padding:clamp(48px,6vw,96px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:12px;font:700 16px Figtree,sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--bl);outline-offset:2px}
+.b-or{background:var(--or);color:#fff}.b-gh{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.4)}
+.top{background:var(--ink);color:#fff}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;max-width:1180px;margin:0 auto;padding:18px max(5vw,16px);font-weight:700}
+.bar span{color:#c9d4e6;font-weight:600;font-size:14.5px}
+.hero{max-width:1180px;margin:0 auto;padding:clamp(36px,5vw,72px) max(5vw,16px) clamp(56px,6vw,96px)}
+.hero h1{font-size:clamp(38px,5vw,60px);max-width:15em}.hero h1 span{color:var(--or)}
+.hero p{color:#c9d4e6;font-size:19px;margin:20px 0 30px;max-width:40em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(40px,5vw,64px)}
+.scr{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.35);display:flex;flex-direction:column}
+.scr .tb{height:30px;background:#eef2f8;display:flex;gap:6px;align-items:center;padding:0 12px;flex:none}.scr .tb i{width:9px;height:9px;border-radius:50%;background:#c9d2e0}
+.scr .c{padding:18px;flex:1;font-size:14.5px}
+.scr .cap{padding:14px 18px;border-top:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.scr .cap small{color:var(--mut);font-weight:600}
+.lg{color:var(--or);font-weight:800;font-size:19px}
+.s1 h4{font-size:21px;line-height:1.15;margin:12px 0 14px}
+.pill{display:inline-block;background:var(--or);color:#fff;border-radius:9px;padding:7px 12px;font-weight:700;font-size:13px;margin:0 6px 6px 0}
+.r{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:9px 0;gap:8px}
+.r:first-of-type{border-top:0}
+.s3 .c{background:#ece5dd;display:flex;flex-direction:column;gap:8px}
+.m{padding:7px 11px;border-radius:11px;max-width:88%;line-height:1.4}.m.i{background:#fff}.m.o{background:#dcf8c6;align-self:flex-end}
+.tag{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.t-ok{background:#e3f4e8;color:#166534}.t-w{background:#fff1dc;color:#9a5a00}.t-n{background:#e4edff;color:#1d4fb0}.t-r{background:#fde8e8;color:#b42318}
+@media(max-width:900px){.trio{grid-template-columns:1fr;max-width:480px}}
+@media(max-width:560px){.cta .btn{width:100%;justify-content:center}}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.intro p{color:var(--mut);margin:0 0 14px}
+@media(max-width:860px){.intro{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;margin-top:26px}
+th,td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;color:var(--mut);font-weight:700}
+td:first-child{font-weight:700;width:34%}
+td:last-child{color:var(--mut)}
+.pieces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:34px}
+.pc{border-radius:20px;padding:28px;background:var(--soft)}
+.pc:nth-child(1){background:var(--warm)}.pc:nth-child(4){background:#eef3fd}
+.pc .n{width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;font-weight:800;display:grid;place-items:center}
+.pc h3{font-size:24px;margin:14px 0 8px}.pc ul{margin:0;padding-left:20px;color:var(--mut)}.pc li{margin:4px 0}
+.pc a{color:var(--bl2);font-weight:700}
+@media(max-width:860px){.pieces{grid-template-columns:1fr}}
+.dash{background:linear-gradient(135deg,#1d4fb0,#13233d);color:#fff}
+.dash .lead{color:#c9d4e6;max-width:40em;margin:12px 0 30px}
+.app{background:#fff;color:var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.apph{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
+.apph .lg{color:var(--or);font-weight:800;font-size:20px}
+.apph small{color:var(--mut)}
+.kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:20px}
+.kp div{border:1px solid var(--line);border-radius:14px;padding:14px}.kp b{font-size:clamp(22px,3vw,30px);display:block;line-height:1.1}.kp small{color:var(--mut)}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;padding:0 20px 20px}
+.box{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.box h4{margin:0;padding:12px 14px;background:var(--soft);font-size:15px}
+.box .r{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-top:1px solid var(--line);align-items:center;flex-wrap:wrap;font-size:14.5px}
+.box .r small{color:var(--mut);display:block}
+.mor{padding:14px}.mor .row{display:flex;justify-content:space-between;font-size:14px;margin-top:8px}
+.meter{height:10px;background:var(--soft);border-radius:9px;overflow:hidden;margin-top:4px}.meter i{display:block;height:100%;background:var(--or)}
+.note{font-size:13.5px;color:#c9d4e6;margin-top:12px}
+@media(max-width:860px){.kp{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{grid-template-columns:1fr}}
+.wa{display:grid;grid-template-columns:1fr 380px;gap:clamp(24px,4vw,56px);align-items:center}
+.phone{background:#13233d;border-radius:36px;padding:12px;box-shadow:0 30px 60px rgba(19,35,61,.25);max-width:380px;width:100%;justify-self:center}
+.phone .hd{background:#075e54;color:#fff;border-radius:26px 26px 0 0;padding:14px 18px;font-weight:700}.phone .hd small{display:block;font-weight:500;opacity:.8}
+.phone .bd{background:#ece5dd;border-radius:0 0 26px 26px;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:420px;font-size:14.5px}
+.wa ul{color:var(--mut);padding-left:20px}.wa li{margin:6px 0}
+@media(max-width:860px){.wa{grid-template-columns:1fr}}
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:34px}
+.ph{border-top:4px solid var(--or);padding-top:16px}.ph:nth-child(2){border-color:var(--bl)}.ph:nth-child(3){border-color:var(--ink)}.ph:nth-child(4){border-color:#3aa86b}
+.ph b{font-size:19px;display:block;margin-bottom:6px}.ph p{color:var(--mut);margin:0}
+@media(max-width:860px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.phases{grid-template-columns:1fr}}
+.end{background:var(--warm)}
+.end .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.end p{color:var(--mut)}
+.card{background:#fff;border-radius:20px;padding:28px;border:1px solid var(--line)}
+.card p{margin:6px 0;color:var(--ink)}
+@media(max-width:860px){.end .wrap{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#c9d4e6;padding:28px max(5vw,16px);font-size:14px;text-align:center}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{border:0;padding:3px 0;width:auto!important}}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="bar"><span style="color:#fff">Regan Consulting</span><span>Propuesta para Ecotres Gestión y Administración, S.L. · noviembre de 2026</span></div>
+<div class="hero">
+<h1>Una plataforma completa para <span>Ecotres</span>, a la altura de sus 30 años de oficio.</h1>
+<p>Ecotres ya tiene lo más difícil: administradores colegiados, independencia y clientes que se quedan. Le proponemos que la parte digital esté al mismo nivel: una web nueva, un área privada para cada propietario, un panel de gestión para el equipo y WhatsApp trabajando solo.</p>
+<div class="cta"><a class="btn b-or" href="https://propuestas.reganconsulting.es/ecotres/web/">Ver la nueva web en funcionamiento</a><a class="btn b-gh" href="#plataforma">Qué incluye</a></div>
+<div class="trio" aria-label="Vista de la web, el panel de gestión y WhatsApp">
+<div class="scr s1"><div class="tb"><i></i><i></i><i></i></div><div class="c"><div class="lg">Ecotres</div><h4>Su comunidad, bien administrada y siempre a mano.</h4><span class="pill">Pedir presupuesto</span><span class="pill" style="background:var(--bl)">Área de propietarios</span></div><div class="cap">La web<small>Para captar</small></div></div>
+<div class="scr s2"><div class="tb"><i></i><i></i><i></i></div><div class="c"><b>Incidencias de hoy</b>
+<div class="r" style="border-top:0;margin-top:6px"><span>Fuga garaje · Las Arenas</span><span class="tag t-w">Asignada</span></div>
+<div class="r"><span>Ascensor · Altavista</span><span class="tag t-n">Nueva</span></div>
+<div class="r"><span>Luz portal · Jardines</span><span class="tag t-ok">Resuelta</span></div></div><div class="cap">El panel<small>Para el equipo</small></div></div>
+<div class="scr s3"><div class="tb"><i></i><i></i><i></i></div><div class="c"><div class="m i">Su incidencia INC-2418 ya tiene fontanero. Pasa mañana entre 9:00 y 11:00.</div><div class="m o">¡Perfecto, gracias!</div></div><div class="cap">WhatsApp<small>Para el vecino</small></div></div>
+</div>
+</div>
+</div>
+
+<section class="band"><div class="wrap">
+<div class="intro">
+<div><h2>Lo que hemos visto en su web actual</h2></div>
+<div><p>Revisamos ecotres.net como lo haría un propietario que busca administrador. El mensaje de la empresa es bueno y el blog está vivo, pero hay detalles técnicos que restan confianza y uno que conviene corregir cuanto antes.</p></div>
+</div>
+<table class="stack">
+<thead><tr><th>Qué ocurre</th><th>Por qué importa</th></tr></thead>
+<tbody>
+<tr><td>La barra de depuración de Joomla se ve en la parte inferior de la web</td><td>Cualquier visitante puede abrir datos técnicos de la página (petición, sesión, consultas a la base de datos). Es un ajuste pensado solo para pruebas y conviene desactivarlo.</td></tr>
+<tr><td>No aparece la dirección de la oficina</td><td>Resta confianza a quien busca un administrador cercano y perjudica el posicionamiento en Google Maps.</td></tr>
+<tr><td>El correo es @ecotres.com y la web es ecotres.net</td><td>Conviene comprobar que ese buzón recibe bien, porque es el contacto que aparece en toda la web.</td></tr>
+<tr><td>El pie dice «© 2024», hay enlaces del menú que no llevan a ninguna parte y las cifras no cuadran (30 y 31 años)</td><td>Son detalles pequeños, pero dan sensación de web desatendida, justo lo contrario de lo que transmite Ecotres.</td></tr>
+<tr><td>La portada se titula solo «Inicio» y algunas direcciones tienen erratas</td><td>Google muestra ese título en los resultados, y «administrador de fincas Las Palmas» no aparece por ningún lado.</td></tr>
+<tr><td>No hay área privada para propietarios ni WhatsApp</td><td>Recibos, actas e incidencias siguen pasando por teléfono y correo, con el tiempo de oficina que eso supone.</td></tr>
+</tbody></table>
+</div></section>
+
+<section class="band" id="plataforma" style="background:#fff;padding-top:0"><div class="wrap">
+<h2>La plataforma, en cuatro piezas</h2>
+<div class="pieces">
+<div class="pc"><span class="n">1</span><h3>Web nueva</h3><ul><li>Diseño actual con la imagen de Ecotres, rápida y pensada para el móvil</li><li>Presupuesto online para comunidades y alquileres</li><li>Comunicación de incidencias con foto y número de seguimiento</li><li>Dirección, mapa y SEO local para aparecer cuando se busca administrador en Gran Canaria</li><li>Su blog actual, migrado y mejor posicionado</li></ul><p style="margin:14px 0 0"><a href="https://propuestas.reganconsulting.es/ecotres/web/">Pruébela aquí</a></p></div>
+<div class="pc"><span class="n">2</span><h3>Área de propietarios</h3><ul><li>Cada vecino entra con su móvil y ve sus recibos y el estado de sus pagos</li><li>Actas, estatutos, pólizas y cuentas de la comunidad siempre disponibles</li><li>Incidencias de su comunidad y en qué punto está cada una</li><li>Convocatorias, juntas por videollamada y votaciones online</li><li>Certificados de estar al corriente para descargar</li></ul></div>
+<div class="pc"><span class="n">3</span><h3>Panel de gestión para el equipo</h3><ul><li>Todas las comunidades, propietarios y alquileres en un mismo sitio</li><li>Incidencias asignadas a proveedores, con avisos y fotos</li><li>Seguimiento de la morosidad y recordatorios automáticos</li><li>Convocatorias y actas generadas a partir de plantillas</li><li>Pensado para convivir con su programa de contabilidad actual</li></ul></div>
+<div class="pc"><span class="n">4</span><h3>WhatsApp y asistente con IA</h3><ul><li>Convocatorias, avisos de cortes de agua o luz y recordatorios por WhatsApp</li><li>El vecino recibe cada paso de su incidencia sin tener que llamar</li><li>Un asistente que responde a las dudas de siempre a cualquier hora</li><li>Y, si lo desean, un asistente telefónico que atiende cuando la línea está ocupada</li></ul></div>
+</div>
+</div></section>
+
+<section class="band dash"><div class="wrap">
+<h2>Así vería Ecotres su día</h2>
+<p class="lead">Un panel con lo que necesita atención: incidencias abiertas, recibos devueltos y próximas juntas, de todas las comunidades a la vez.</p>
+<div class="app">
+<div class="apph"><span class="lg">Ecotres · Panel</span><small>Jueves, 26 de noviembre</small></div>
+<div class="kp"><div><b>12</b><small>Incidencias abiertas</small></div><div><b>4</b><small>Juntas este mes</small></div><div><b>9</b><small>Recibos devueltos</small></div><div><b>37</b><small>Consultas resueltas por WhatsApp</small></div></div>
+<div class="cols">
+<div class="box"><h4>Incidencias</h4>
+<div class="r"><span><b>Fuga en garaje, plaza 14</b><small>Edificio Las Arenas · con foto</small></span><span class="tag t-w">Fontanero asignado</span></div>
+<div class="r"><span><b>Ascensor parado</b><small>Residencial Altavista · hace 20 min</small></span><span class="tag t-n">Nueva</span></div>
+<div class="r"><span><b>Luz del portal 2</b><small>Jardines del Sur</small></span><span class="tag t-ok">Resuelta</span></div>
+<div class="r"><span><b>Ruidos en local comercial</b><small>Edificio Las Arenas</small></span><span class="tag t-w">En gestión</span></div></div>
+<div class="box"><h4>Morosidad por comunidad</h4><div class="mor">
+<div class="row"><span>Edificio Las Arenas</span><b>3 recibos</b></div><div class="meter"><i style="width:30%"></i></div>
+<div class="row"><span>Residencial Altavista</span><b>5 recibos</b></div><div class="meter"><i style="width:50%"></i></div>
+<div class="row"><span>Jardines del Sur</span><b>1 recibo</b></div><div class="meter"><i style="width:10%"></i></div>
+<p style="font-size:13.5px;color:var(--mut);margin:14px 0 0">Recordatorio por WhatsApp a los 5 días y aviso al administrador si sigue pendiente a los 15.</p></div></div>
+</div>
+</div>
+<p class="note">Comunidades y cifras de ejemplo.</p>
+</div></section>
+
+<section class="band"><div class="wrap wa">
+<div><h2>Menos llamadas a la oficina</h2>
+<p style="color:var(--mut);font-size:18px">Gran parte de las llamadas de un despacho de administración son siempre las mismas: «¿cuándo es la junta?», «¿ya han avisado al del ascensor?», «necesito el certificado para vender». El asistente las resuelve por WhatsApp con la información real de cada comunidad, y lo que necesita a una persona pasa al administrador ya ordenado.</p>
+<ul><li>Registra averías con foto y las deja en el panel</li><li>Envía certificados y documentos del área privada</li><li>Responde con fechas de juntas, cuentas y normas de la comunidad</li><li>Habla con el tono de Ecotres y nunca decide por el administrador</li></ul></div>
+<div class="phone" aria-label="Conversación de ejemplo por WhatsApp"><div class="hd">Ecotres<small>Cuenta de empresa</small></div><div class="bd">
+<div class="m o">Hola, hay agua saliendo del techo del garaje 💧</div>
+<div class="m i">Hola, Laura. Lo siento. ¿Me envía una foto y el número de plaza?</div>
+<div class="m o">Plaza 14 [foto]</div>
+<div class="m i">Registrada como INC-2418 en Edificio Las Arenas. Ya hemos avisado al fontanero y al presidente.</div>
+<div class="m i">Actualización: el fontanero pasa mañana entre 9:00 y 11:00.</div>
+<div class="m o">¡Genial, gracias!</div>
+</div></div>
+</div></section>
+
+<section class="band" style="background:var(--soft)"><div class="wrap">
+<h2>Cómo empezaríamos</h2>
+<div class="phases">
+<div class="ph"><b>1. Auditoría gratuita</b><p>Vemos cómo trabaja hoy el equipo, qué programas usan y dónde se va más tiempo.</p></div>
+<div class="ph"><b>2. Web nueva</b><p>Se publica en su dominio, con el blog migrado y los fallos actuales corregidos.</p></div>
+<div class="ph"><b>3. Área y panel</b><p>Empezamos con una o dos comunidades piloto antes de abrirlo a todas.</p></div>
+<div class="ph"><b>4. WhatsApp e IA</b><p>Avisos automáticos y asistente, con su revisión antes de cada puesta en marcha.</p></div>
+</div>
+</div></section>
+
+<section class="band end"><div class="wrap">
+<div><h2>¿Lo vemos juntos?</h2><p style="font-size:18px">Podemos pasar por su oficina de lunes a viernes, de 10:00 a 13:00 o de 16:00 a 19:00, hacer una videollamada o hablarlo por WhatsApp. En la auditoría le enseñamos todo en funcionamiento y le proponemos solo lo que de verdad le sirva.</p></div>
+<div class="card"><p><b>Carla Martínez Medina</b></p><p>Regan Consulting</p><p>+34 614 26 25 45</p><p>carla@reganconsulting.es</p><p><a href="https://reganconsulting.es/" style="color:var(--bl2);font-weight:700">reganconsulting.es</a></p></div>
+</div></section>
+
+<footer>Regan Consulting · Gran Canaria · Propuesta preparada para Ecotres Gestión y Administración, S.L.</footer>
+<script>{new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})}</script>
+</body>
+</html>

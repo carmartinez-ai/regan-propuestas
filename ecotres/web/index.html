@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ecotres · Administración de fincas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sereno, fiable, cercano: un despacho con 30 años que ya trabaja como una app
+   IDEA: el edificio y su llavero: la web es la puerta, el área de propietarios la llave
+   PICTURE: fachada de edificio canario ilustrada con avisos en vivo flotando
+   COLOUR and TYPE: naranja Ecotres dominante en acentos, azul Ecotres de apoyo, blanco y tinta azul noche; Figtree sólida
+   LAYOUT: web completa: cabecera, hero con edificio, cifras, servicios, presupuesto, incidencias, portal, blog, contacto */
+:root{color-scheme:light;--or:#f19105;--or2:#d97f00;--bl:#2f6fe4;--bl2:#1d4fb0;--ink:#13233d;--mut:#5b6b82;--bg:#fff;--soft:#f4f7fc;--warm:#fff6ea;--line:#e2e8f2}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16.5px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{line-height:1.08;margin:0;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(30px,4vw,44px)}
+.band{padding:clamp(48px,6vw,96px) max(5vw,16px)}
+.wrap{max-width:1200px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;border:0;font:700 16px Figtree,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--bl);outline-offset:2px}
+.b-or{background:var(--or);color:#fff}.b-bl{background:var(--bl);color:#fff}.b-gh{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.demo-flag{background:var(--ink);color:#fff;text-align:center;font-size:13.5px;padding:7px 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:12px max(5vw,16px)}
+.logo{font-weight:800;font-size:28px;color:var(--or);text-decoration:none;position:relative;letter-spacing:-.5px;padding-right:12px}
+.logo i{position:absolute;right:0;top:2px;width:12px;height:12px;border-top:4px solid var(--bl);border-right:4px solid var(--bl)}
+.links{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+.links a{text-decoration:none;font-weight:600;color:var(--ink)}
+.links a:hover{color:var(--or2)}
+@media(max-width:900px){.links{display:none}.nav .btn{margin-left:auto}}
+.hero{background:linear-gradient(180deg,var(--warm),#fff 80%);padding-top:clamp(40px,5vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,60px)}
+.hero h1 span{color:var(--or2)}
+.lead{font-size:19px;color:var(--mut);margin:18px 0 28px;max-width:34em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.pillars{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:clamp(40px,5vw,64px);padding-top:32px;border-top:1px solid var(--line)}
+.pillars div{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start}
+.pillars .pi{grid-row:span 2;width:44px;height:44px;border-radius:12px;background:#fff;box-shadow:0 4px 14px rgba(19,35,61,.08);display:grid;place-items:center}
+.pillars .pi svg{width:22px;height:22px}
+.pillars b{font-size:17px;line-height:1.3}.pillars small{color:var(--mut);font-size:15px;line-height:1.45}
+.visual{display:grid}
+.facade{border-radius:28px;overflow:hidden;aspect-ratio:4/3.4;box-shadow:0 30px 60px rgba(19,35,61,.14)}
+.facade svg{display:block;width:100%;height:100%}
+.status{background:#fff;border-radius:20px;box-shadow:0 20px 44px rgba(19,35,61,.16);margin:-56px 28px 0;position:relative;padding:8px 18px}
+.st{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.st:first-child{border-top:0}
+.st b{display:block;font-size:15px;line-height:1.3}.st small{color:var(--mut);font-size:14px}
+.st .tag{margin-left:auto}
+.dot{width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.pillars{grid-template-columns:1fr;gap:22px}.status{margin:-48px 12px 0;padding:4px 14px}.st .tag{display:none}}
+.stats{background:var(--ink);color:#fff;padding:34px max(5vw,16px)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.stats b{font-size:clamp(32px,4vw,46px);color:var(--or);display:block;line-height:1}
+.stats span{color:#c9d4e6}
+@media(max-width:700px){.stats .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.head p{color:var(--mut);max-width:36em;margin:10px 0 0}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+.card h3{font-size:22px;margin:14px 0 8px}.card p{color:var(--mut);margin:0}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
+.ico svg{width:26px;height:26px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tab{background:var(--soft);border-radius:22px;padding:clamp(22px,3vw,36px)}
+.tab h3{font-size:26px}.tab ul{padding-left:20px;color:var(--mut)}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.tool{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+@media(max-width:860px){.tool{grid-template-columns:1fr}}
+form.panel,.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,32px);box-shadow:0 18px 40px rgba(19,35,61,.07)}
+label{display:block;font-weight:700;font-size:14.5px;margin:14px 0 6px}
+input,select,textarea{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:500 16px Figtree,sans-serif;color:var(--ink);background:#fff}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:600 15px Figtree,sans-serif;cursor:pointer;color:var(--ink)}
+.chips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.ok{display:none;background:#eaf6ee;border-radius:14px;padding:16px;margin-top:16px;color:#14532d}
+.ok.on{display:block}
+.steps{counter-reset:s;list-style:none;padding:0;margin:22px 0 0}
+.steps li{position:relative;padding:0 0 18px 48px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--warm);color:var(--or2);font-weight:800;display:grid;place-items:center}
+.portal{background:linear-gradient(135deg,#1d4fb0,#13233d);color:#fff}
+.portal .head p{color:#c9d4e6}
+.app{display:grid;grid-template-columns:220px 1fr;background:#fff;color:var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.side{background:var(--soft);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+.side .who{font-weight:800;padding:4px 10px 14px}
+.side .who small{display:block;font-weight:600;color:var(--mut)}
+.side button{text-align:left;min-height:44px;border:0;background:none;border-radius:10px;padding:0 12px;font:600 15px Figtree,sans-serif;color:var(--ink);cursor:pointer}
+.side button[aria-selected=true]{background:#fff;color:var(--bl2);box-shadow:0 2px 8px rgba(19,35,61,.08)}
+.main{padding:24px;min-height:430px}
+.main h3{font-size:22px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.kpis div{border:1px solid var(--line);border-radius:14px;padding:12px}
+.kpis b{font-size:24px;display:block}.kpis small{color:var(--mut)}
+.list{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.list div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-top:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.list div:first-child{border-top:0}
+.tag{font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.t-ok{background:#e3f4e8;color:#166534}.t-wait{background:#fff1dc;color:#9a5a00}.t-new{background:#e4edff;color:#1d4fb0}
+.vote{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.bar{height:10px;background:var(--soft);border-radius:9px;overflow:hidden;margin:6px 0 12px}.bar i{display:block;height:100%;background:var(--or)}
+@media(max-width:760px){.app{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:12px}.side .who{display:none}.side button{text-align:center;padding:0 6px;font-size:14px;line-height:1.2}.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpis b{font-size:19px}.main{padding:18px}}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.post{border-radius:18px;border:1px solid var(--line);background:#fff;padding:20px;display:flex;gap:16px;align-items:flex-start;transition:box-shadow .2s}
+.post:hover{box-shadow:0 14px 30px rgba(19,35,61,.08)}
+.post .im{width:52px;height:52px;border-radius:14px;flex:none;display:grid;place-items:center}
+.post .im svg{width:26px;height:26px}
+.post small{color:var(--mut);font-size:14px}.post h3{font-size:18px;line-height:1.3;margin:2px 0 8px}.post .more{color:var(--bl2);font-weight:700;font-size:14.5px}
+@media(max-width:860px){.posts{grid-template-columns:1fr}.tool>form#fInc{order:2}}
+@media(max-width:560px){.post:nth-child(n+4){display:none}.cta .btn,.tab .btn,.contact .btn{width:100%;justify-content:center}.head .btn{display:none}}
+.file{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;color:var(--mut);font-weight:600}
+.file span{background:var(--soft);color:var(--ink);border-radius:10px;padding:8px 14px;font-weight:700}
+.file input{position:absolute;opacity:0;width:1px;height:1px}
+.contact{background:var(--warm)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cinfo p{margin:6px 0;font-size:18px}
+.map{border-radius:24px;min-height:360px;position:relative;overflow:hidden;background:#e9eef6;box-shadow:0 20px 44px rgba(19,35,61,.12)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1}
+.mapfb{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:var(--mut)}.mapfb b{color:var(--ink);font-size:18px}
+.maplink{position:absolute;z-index:2;right:14px;bottom:14px;background:#fff;color:var(--ink);font-weight:700;text-decoration:none;border-radius:12px;padding:10px 16px;box-shadow:0 6px 16px rgba(19,35,61,.18)}
+@media(max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#c9d4e6;padding:40px max(5vw,16px);font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.wa{position:fixed;right:18px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.2);border:0;cursor:pointer}
+.wa svg{width:30px;height:30px}
+.chat{position:fixed;right:18px;bottom:88px;z-index:30;width:min(340px,calc(100vw - 36px));background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.25);overflow:hidden;display:none}
+.chat.on{display:block}
+.chat header{position:static;background:#075e54;color:#fff;padding:12px 16px;border:0;font-weight:700}
+.chat header small{display:block;font-weight:500;opacity:.8}
+.msgs{background:#ece5dd;padding:14px;display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto}
+.m{max-width:85%;padding:8px 12px;border-radius:12px;font-size:14.5px;line-height:1.4}
+.m.in{background:#fff;align-self:flex-start}.m.out{background:#dcf8c6;align-self:flex-end}
+.qr{display:flex;flex-wrap:wrap;gap:6px;padding:10px;background:#fff}
+.qr button{border:1.5px solid #075e54;color:#075e54;background:#fff;border-radius:999px;min-height:38px;padding:0 12px;font:600 14px Figtree,sans-serif;cursor:pointer}
+
+[hidden]{display:none!important}
+[data-page]{display:none}[data-page].show{display:block}
+.links a.on{color:var(--or2)}
+.sub{min-height:calc(100vh - 160px)}.contact.sub{min-height:0}
+.only-home,.only-serv{display:none}.home .only-home{display:inline-flex}.serv .only-serv{display:grid}
+.home .post:nth-child(n+4){display:none}
+a.card.go{text-decoration:none;color:inherit;display:block;transition:transform .2s,box-shadow .2s}
+a.card.go:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(19,35,61,.1)}
+.arrow{display:inline-block;margin-top:16px;font-weight:700;color:var(--bl2)}
+.arrow::after{content:" →"}
+.acc{padding-top:clamp(48px,6vw,88px);padding-bottom:0}
+.lwrap{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.perks{list-style:none;margin:0;padding:0;display:grid;gap:22px}.perks li{color:#c9d4e6;padding-left:22px;border-left:3px solid var(--or)}.perks b{display:block;color:#fff;font-size:18px}
+@media(max-width:860px){.lwrap{grid-template-columns:1fr}}
+.login{background:#fff;color:var(--ink);border-radius:22px;padding:clamp(24px,4vw,36px);box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.login h3{font-size:26px}.login p{color:var(--mut);margin:8px 0 0}.login .small{font-size:14px;margin-top:16px}
+footer{padding:56px max(5vw,16px) 28px}
+.fgrid{display:grid!important;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+footer b{color:#fff;display:block;margin-bottom:8px}footer p{margin:6px 0;line-height:1.7}footer a{color:#c9d4e6;text-decoration:none}footer a:hover{color:#fff}
+footer .logo{color:var(--or)}
+.fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);margin-top:36px!important;padding-top:20px;font-size:13.5px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr}}
+@media(max-width:560px){a.card.go{display:grid;grid-template-columns:48px 1fr;gap:2px 14px;padding:18px}a.card.go .ico{grid-row:span 3}a.card.go h3{margin:0;font-size:19px}a.card.go p{font-size:15px}a.card.go .arrow{margin-top:6px}.home [data-page="inicio servicios"] .grid3{display:none}.home [data-page="inicio servicios"] .head{margin-bottom:0}}
+</style>
+</head>
+<body>
+<div class="demo-flag">Demo preparada por Regan Consulting para Ecotres · los formularios y el área de propietarios funcionan con datos de ejemplo</div>
+<header><nav class="nav" aria-label="Principal">
+<a class="logo" href="#inicio">Ecotres<i></i></a>
+<div class="links"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#presupuesto">Presupuesto</a><a href="#incidencias">Incidencias</a><a href="#blog">Blog</a><a href="#contacto">Contacto</a></div>
+<a class="btn b-bl" href="#portal">Área de propietarios</a>
+</nav></header>
+
+<section class="band hero" data-page="inicio"><div class="wrap">
+<div>
+<h1>Su comunidad, <span>bien administrada</span> y siempre a mano.</h1>
+<p class="lead">Más de 30 años administrando comunidades y alquileres en Gran Canaria. Sin comisiones, sin vínculos con empresas de servicios y con un área privada donde cada propietario ve sus recibos, actas e incidencias desde el móvil.</p>
+<div class="cta"><a class="btn b-or" href="#presupuesto">Pedir presupuesto</a><a class="btn b-gh" href="#incidencias">Comunicar una incidencia</a></div>
+</div>
+<div class="visual">
+<div class="facade" role="img" aria-label="Ilustración de un edificio residencial">
+<svg viewBox="0 0 600 510" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+<linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd59a"/><stop offset=".55" stop-color="#ffe9c8"/><stop offset="1" stop-color="#fff6ea"/></linearGradient>
+<linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f4f9"/></linearGradient>
+<linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd3fa"/><stop offset="1" stop-color="#8fb1ee"/></linearGradient>
+<g id="w"><rect width="58" height="66" rx="3" fill="url(#gl)"/><rect x="27" width="4" height="66" fill="#fff" opacity=".7"/><rect x="-6" y="52" width="70" height="4" fill="#13233d" opacity=".8"/><g stroke="#13233d" stroke-width="2" opacity=".55"><path d="M-4 56v16M8 56v16M20 56v16M32 56v16M44 56v16M56 56v16"/></g><rect x="-6" y="70" width="70" height="4" fill="#13233d" opacity=".8"/></g>
+</defs>
+<rect width="600" height="510" fill="url(#sk)"/>
+<circle cx="470" cy="110" r="56" fill="#f19105" opacity=".9"/>
+<rect x="60" y="210" width="90" height="250" fill="#f6e1c4"/><rect x="460" y="240" width="110" height="220" fill="#f3dcc0"/>
+<rect x="140" y="92" width="300" height="370" fill="url(#wl)"/>
+<rect x="440" y="92" width="44" height="370" fill="#dfe5ef"/>
+<rect x="128" y="76" width="368" height="22" rx="4" fill="#13233d"/>
+<g><use href="#w" x="168" y="122"/><use href="#w" x="261" y="122"/><use href="#w" x="354" y="122"/>
+<use href="#w" x="168" y="212"/><use href="#w" x="261" y="212"/><use href="#w" x="354" y="212"/>
+<use href="#w" x="168" y="302"/><use href="#w" x="354" y="302"/></g>
+<rect x="250" y="372" width="80" height="90" rx="4" fill="#f19105"/><rect x="288" y="372" width="4" height="90" fill="#d97f00"/><rect x="238" y="360" width="104" height="12" rx="3" fill="#2f6fe4"/>
+<rect x="0" y="458" width="600" height="52" fill="#e9dcc8"/><rect x="0" y="458" width="600" height="6" fill="#13233d" opacity=".12"/>
+<path d="M545 460 C540 400 548 350 560 300" stroke="#8a6a4a" stroke-width="10" fill="none" stroke-linecap="round"/>
+<g fill="#2f8f5b"><path d="M560 300 q-50-20-80 10 q40-5 80-10z"/><path d="M560 300 q-20-45-70-40 q40 15 70 40z"/><path d="M560 300 q30-45 75-30 q-45 5-75 30z"/><path d="M560 300 q50-5 60 35 q-25-25-60-35z"/><path d="M560 300 q-5-50 25-70 q-15 35-25 70z"/></g>
+<ellipse cx="90" cy="462" rx="44" ry="8" fill="#13233d" opacity=".1"/><circle cx="90" cy="420" r="40" fill="#3aa86b"/><circle cx="72" cy="408" r="14" fill="#5cc287" opacity=".6"/>
+</svg></div>
+<div class="status" aria-label="Avisos del área de propietarios">
+<div class="st"><span class="dot" style="background:#25a35a">✓</span><span><b>Incidencia resuelta</b><small>Ascensor · portal 2</small></span><span class="tag t-ok">Hoy</span></div>
+<div class="st"><span class="dot" style="background:var(--bl)">€</span><span><b>Recibo de diciembre</b><small>Disponible en su área</small></span><span class="tag t-new">Nuevo</span></div>
+<div class="st"><span class="dot" style="background:var(--or)">J</span><span><b>Junta ordinaria</b><small>Convocatoria enviada por WhatsApp</small></span><span class="tag t-wait">15 dic</span></div>
+</div>
+</div>
+<div class="pillars">
+<div><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#d97f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><b>Compromiso</b><small>La mayoría de clientes llevan más de 10 años con nosotros.</small></div>
+<div><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4fb0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/></svg></span><b>Independencia</b><small>Sin vínculos con otras entidades ni comisiones.</small></div>
+<div><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#d97f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><b>Eficacia</b><small>La tecnología al servicio de una gestión ágil.</small></div>
+<div><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4fb0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/></svg></span><b>Cualificación</b><small>Administradores colegiados, abogados y asesores fiscales.</small></div>
+</div>
+</div></section>
+
+<section class="stats" data-page="inicio" aria-label="Ecotres en cifras"><div class="wrap">
+<div><b>+30</b><span>años de experiencia</span></div>
+<div><b>6</b><span>administradores colegiados</span></div>
+<div><b>12</b><span>profesionales en el equipo</span></div>
+<div><b>157</b><span>clientes</span></div>
+</div></section>
+
+<section class="band acc" data-page="inicio" aria-label="Accesos directos"><div class="wrap">
+<div class="head"><div><h2>¿Qué necesita hoy?</h2><p>Lo más habitual, a un clic.</p></div></div>
+<div class="grid3">
+<a class="card go" href="#presupuesto"><div class="ico" style="background:var(--warm)"><svg viewBox="0 0 24 24" fill="none" stroke="#d97f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg></div><h3>Pedir presupuesto</h3><p>Para su comunidad o sus alquileres, en un minuto y sin compromiso.</p><span class="arrow">Empezar</span></a>
+<a class="card go" href="#incidencias"><div class="ico" style="background:#fde8e8"><svg viewBox="0 0 24 24" fill="none" stroke="#b42318" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></div><h3>Comunicar una incidencia</h3><p>Con foto y número de seguimiento. Le avisamos por WhatsApp de cada paso.</p><span class="arrow">Comunicar</span></a>
+<a class="card go" href="#portal"><div class="ico" style="background:#e4edff"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4fb0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/></svg></div><h3>Área de propietarios</h3><p>Recibos, actas, documentos y votaciones de su comunidad.</p><span class="arrow">Entrar</span></a>
+</div></div></section>
+
+<section class="band" data-page="inicio servicios"><div class="wrap">
+<div class="head"><div><h2>Todo lo que necesita su comunidad</h2><p>Convocatorias, juntas, actas, subvenciones, contratos y pagos, sin ningún coste adicional. Y un solo interlocutor: su administrador colegiado.</p></div><a class="btn b-gh only-home" href="#servicios">Ver todos los servicios</a></div>
+<div class="grid3">
+<div class="card"><div class="ico" style="background:var(--warm)"><svg viewBox="0 0 24 24" fill="none" stroke="#d97f00" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></div><h3>Administración</h3><p>Convocatorias, juntas y actas, subvenciones, contratos, estatutos y pagos a proveedores.</p></div>
+<div class="card"><div class="ico" style="background:#e4edff"><svg viewBox="0 0 24 24" fill="none" stroke="#1d4fb0" stroke-width="2.2" stroke-linecap="round"><path d="M4 19h16"/><path d="M7 15V9M12 15V5M17 15v-3"/></svg></div><h3>Contabilidad</h3><p>Información detallada cada mes, presupuesto anual, plan de reducción de costes y control de la morosidad.</p></div>
+<div class="card"><div class="ico" style="background:#e9f6ee"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M5 7h14"/><path d="M5 7l-3 7h6zM19 7l-3 7h6z"/></svg></div><h3>Jurídico</h3><p>Reclamación a propietarios morosos incluida, contratos, estatutos, reglamentos y asuntos laborales.</p></div>
+</div>
+<div class="split only-serv" style="margin-top:20px">
+<div class="tab"><h3>Comunidades de propietarios</h3><ul><li>Juntas presenciales o por videollamada, con voto online</li><li>Recibos y cuentas visibles para cada vecino</li><li>Incidencias con seguimiento hasta que se resuelven</li></ul><a class="btn b-or" href="#presupuesto">Presupuesto para mi comunidad</a></div>
+<div class="tab" style="background:#eef3fd"><h3>Gestión de alquileres</h3><ul><li>Cobro de rentas y liquidación mensual al propietario</li><li>Contratos, fianzas y renovaciones al día</li><li>Averías comunicadas por el inquilino desde el móvil</li></ul><a class="btn b-bl" href="#presupuesto" data-tipo="alq">Presupuesto de alquileres</a></div>
+</div>
+</div></section>
+
+<section class="band sub" data-page="presupuesto" style="background:var(--soft)"><div class="wrap tool">
+<div><h2>Su presupuesto, en un minuto</h2><p class="lead" style="margin-bottom:0">Cuéntenos cómo es su comunidad y un administrador le envía la propuesta en menos de 24 horas laborables, por correo o por WhatsApp.</p>
+<ol class="steps"><li><b>Rellena el formulario</b><br><span style="color:var(--mut)">Tamaño, servicios y lo que le preocupa.</span></li><li><b>Le llamamos o escribimos</b><br><span style="color:var(--mut)">Sin compromiso y sin letra pequeña.</span></li><li><b>Cambio de administrador sin líos</b><br><span style="color:var(--mut)">Nos ocupamos del traspaso de documentación.</span></li></ol></div>
+<form class="panel" id="fPres" novalidate>
+<label>¿Qué necesita?</label>
+<div class="chips" id="tipo"><button type="button" aria-pressed="true" data-v="com">Comunidad</button><button type="button" aria-pressed="false" data-v="alq">Alquileres</button></div>
+<div class="row"><div><label for="viv">Viviendas</label><input id="viv" type="number" inputmode="numeric" min="1" value="24"></div><div><label for="loc">Locales</label><input id="loc" type="number" inputmode="numeric" min="0" value="2"></div><div><label for="gar">Garajes</label><input id="gar" type="number" inputmode="numeric" min="0" value="18"></div></div>
+<label>La comunidad tiene</label>
+<div class="chips" id="extras"><button type="button" aria-pressed="true">Ascensor</button><button type="button" aria-pressed="false">Piscina</button><button type="button" aria-pressed="false">Zonas verdes</button><button type="button" aria-pressed="true">Conserje</button></div>
+<label for="zona">Municipio</label>
+<select id="zona"><option>Las Palmas de Gran Canaria</option><option>Telde</option><option>Arucas</option><option>Santa Brígida</option><option>San Bartolomé de Tirajana</option><option>Otro</option></select>
+<div class="row" style="grid-template-columns:1fr 1fr"><div><label for="nom">Nombre</label><input id="nom" autocomplete="name" placeholder="Su nombre"></div><div><label for="tel">Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="600 000 000"></div></div>
+<button class="btn b-or" style="margin-top:18px;width:100%;justify-content:center">Solicitar presupuesto</button>
+<div class="ok" id="okPres" role="status"></div>
+</form>
+</div></section>
+
+<section class="band sub" data-page="incidencias"><div class="wrap tool">
+<form class="panel" id="fInc" novalidate>
+<label for="com">Su comunidad</label>
+<select id="com"><option>Edificio Las Arenas · Mesa y López</option><option>Residencial Altavista · Tafira</option><option>Comunidad Jardines del Sur · Telde</option></select>
+<label>¿Qué ocurre?</label>
+<div class="chips" id="cat"><button type="button" aria-pressed="false">Ascensor</button><button type="button" aria-pressed="true">Fuga de agua</button><button type="button" aria-pressed="false">Luz o portero</button><button type="button" aria-pressed="false">Limpieza</button><button type="button" aria-pressed="false">Ruidos o convivencia</button></div>
+<label for="desc">Descripción</label>
+<textarea id="desc">Hay agua saliendo por el techo del garaje, plaza 14.</textarea>
+<label for="foto">Foto (opcional)</label>
+<label class="file" for="foto" style="margin:0"><span>Adjuntar foto</span><em id="fname" style="font-style:normal">Ningún archivo seleccionado</em><input id="foto" type="file" accept="image/*"></label>
+<label class="chips" style="font-weight:600;margin-top:16px;align-items:center"><input type="checkbox" checked style="width:22px;min-height:22px"> Recibir el seguimiento por WhatsApp</label>
+<button class="btn b-bl" style="margin-top:18px;width:100%;justify-content:center">Enviar incidencia</button>
+<div class="ok" id="okInc" role="status"></div>
+</form>
+<div><h2>Una incidencia, de principio a fin</h2><p class="lead" style="margin-bottom:0">Cualquier vecino la comunica en un minuto, con foto. Entra directa al panel de Ecotres, se asigna al proveedor y el vecino recibe cada paso por WhatsApp hasta que queda resuelta.</p>
+<ol class="steps"><li><b>Registrada</b><br><span style="color:var(--mut)">Número de seguimiento al instante.</span></li><li><b>Asignada al proveedor</b><br><span style="color:var(--mut)">Con aviso al vecino y al presidente.</span></li><li><b>Resuelta</b><br><span style="color:var(--mut)">Con foto del trabajo y factura en el área privada.</span></li></ol></div>
+</div></section>
+
+<section class="band portal sub" data-page="portal"><div class="wrap">
+<div class="head"><div><h2>Área de propietarios</h2><p>Recibos, cuentas, actas, documentos, incidencias y votaciones de su comunidad, en el móvil y sin llamar a la oficina.</p></div><button class="btn b-gh logout" type="button" id="logout" hidden style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.35)">Cerrar sesión</button></div>
+<div class="lwrap" id="login"><div class="login"><h3>Acceda a su área</h3><p>Con el correo o el teléfono que tiene registrado en Ecotres.</p>
+<label for="lu">Correo o teléfono</label><input id="lu" value="laura.santana@correo.es" autocomplete="off">
+<label for="lp">Contraseña</label><input id="lp" type="password" value="demo-ecotres" autocomplete="off">
+<button class="btn b-or" type="button" id="enter" style="width:100%;justify-content:center;margin-top:18px">Entrar con la cuenta de ejemplo</button>
+<p class="small">¿Primera vez? Pida su acceso en la oficina y se lo enviamos por WhatsApp.</p></div>
+<ul class="perks"><li><b>Recibos y pagos</b>Consulte y descargue cada recibo y el certificado de estar al corriente.</li><li><b>Actas y documentos</b>Estatutos, pólizas, cuentas y actas, siempre disponibles.</li><li><b>Incidencias</b>Vea en qué punto está cada aviso de su comunidad.</li><li><b>Juntas y votaciones</b>Asista por videollamada y vote desde el móvil.</li></ul></div>
+<div class="app" id="app" hidden>
+<div class="side" role="tablist" aria-label="Secciones del área">
+<div class="who">Laura Santana<small>2.º B · Edificio Las Arenas</small></div>
+<button role="tab" aria-selected="true" data-p="ini">Inicio</button>
+<button role="tab" aria-selected="false" data-p="rec">Recibos</button>
+<button role="tab" aria-selected="false" data-p="inc">Incidencias</button>
+<button role="tab" aria-selected="false" data-p="jun">Juntas y votaciones</button>
+<button role="tab" aria-selected="false" data-p="doc">Documentos</button>
+</div>
+<div class="main" id="pMain" role="tabpanel"></div>
+</div>
+</div></section>
+
+<section class="band" data-page="inicio blog"><div class="wrap">
+<div class="head"><div><h2>Últimas noticias</h2><p>Consejos prácticos para propietarios y comunidades.</p></div><a class="btn b-gh only-home" href="#blog">Ver el blog</a></div>
+<div class="posts" id="posts"></div>
+</div></section>
+
+<section class="band contact sub" data-page="contacto"><div class="wrap">
+<div class="cinfo"><h2>Hablemos de su comunidad</h2>
+<p style="margin-top:20px"><b>Oficina</b><br>C/ Bravo Murillo, 17, bajo · 35003 Las Palmas de Gran Canaria</p>
+<p><b>Teléfono</b><br>928 38 19 48</p>
+<p><b>Correo</b><br>info@ecotres.com</p>
+<div class="cta" style="margin-top:22px"><button class="btn b-or" type="button" id="openWa">Escríbanos por WhatsApp</button><a class="btn b-gh" href="#presupuesto">Pedir presupuesto</a></div></div>
+<div class="map"><iframe title="Ubicación de Ecotres en Google Maps" src="https://www.google.com/maps?q=Calle%20Bravo%20Murillo%2017%2C%20Las%20Palmas%20de%20Gran%20Canaria&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+<div class="mapfb"><b>C/ Bravo Murillo, 17</b><span>35003 Las Palmas de Gran Canaria</span></div>
+<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Calle%20Bravo%20Murillo%2017%2C%20Las%20Palmas%20de%20Gran%20Canaria" target="_blank" rel="noopener">Cómo llegar</a></div>
+</div></section>
+
+<footer><div class="wrap fgrid">
+<div><a class="logo" href="#inicio" style="font-size:24px">Ecotres<i></i></a><p>Administración de fincas colegiada en Gran Canaria desde hace más de 30 años.</p></div>
+<div><b>Contacto</b><p>C/ Bravo Murillo, 17, bajo<br>35003 Las Palmas de Gran Canaria<br>928 38 19 48<br>info@ecotres.com</p></div>
+<div><b>Accesos</b><p><a href="#presupuesto">Pedir presupuesto</a><br><a href="#incidencias">Comunicar una incidencia</a><br><a href="#portal">Área de propietarios</a><br><a href="#contacto">Cómo llegar</a></p></div>
+</div><div class="wrap fbot"><span>© 2026 Ecotres Gestión y Administración, S.L.</span><span>Aviso legal · Privacidad · Cookies</span></div></footer>
+
+<button class="wa" id="wa" aria-label="Abrir WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.3.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></button>
+<div class="chat" id="chat" aria-live="polite"><header>Ecotres<small>Asistente · responde al momento</small></header><div class="msgs" id="msgs"></div><div class="qr" id="qr"></div></div>
+
+<script>
+{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function chipGroup(id,single){$$('#'+id+' button').forEach(b=>b.addEventListener('click',()=>{if(single)$$('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed',single?'true':String(b.getAttribute('aria-pressed')!=='true'))}))}
+$('#foto').addEventListener('change',e=>{$('#fname').textContent=e.target.files[0]?e.target.files[0].name:'Ningún archivo seleccionado'});
+const pages=['inicio','servicios','presupuesto','incidencias','portal','blog','contacto'];
+function route(){let p=location.hash.slice(1);if(!pages.includes(p))p='inicio';$$('[data-page]').forEach(s=>s.classList.toggle('show',s.dataset.page.split(' ').includes(p)));document.body.classList.toggle('home',p==='inicio');document.body.classList.toggle('serv',p==='servicios');$$('.links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+p));window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+$('#enter').addEventListener('click',()=>{$('#login').hidden=true;$('#app').hidden=false;$('#logout').hidden=false});
+$('#logout').addEventListener('click',()=>{$('#login').hidden=false;$('#app').hidden=true;$('#logout').hidden=true});
+chipGroup('tipo',true);chipGroup('extras',false);chipGroup('cat',true);
+$$('[data-tipo=alq]').forEach(a=>a.addEventListener('click',()=>$('#tipo button[data-v=alq]').click()));
+$('#fPres').addEventListener('submit',e=>{e.preventDefault();const n=$('#nom').value.trim()||'Gracias';const t=$('#tipo [aria-pressed=true]').textContent.toLowerCase();const ok=$('#okPres');ok.innerHTML='<b>'+esc(n)+', solicitud recibida.</b><br>Presupuesto de '+esc(t)+' para '+esc($('#viv').value||0)+' viviendas en '+esc($('#zona').value)+'. Le escribimos por WhatsApp en menos de 24 horas laborables.';ok.classList.add('on')});
+$('#fInc').addEventListener('submit',e=>{e.preventDefault();const id='INC-'+(2400+Math.floor(Math.random()*500));const c=$('#cat [aria-pressed=true]');const ok=$('#okInc');ok.innerHTML='<b>Incidencia '+id+' registrada.</b><br>'+esc(c?c.textContent:'Incidencia')+' en '+esc($('#com').value)+'. Le avisaremos por WhatsApp cuando se asigne al proveedor.';ok.classList.add('on')});
+const panes={
+ini:`<h3>Hola, Laura</h3><div class="kpis"><div><b>Al día</b><small>Sus recibos</small></div><div><b>1</b><small>Incidencia abierta</small></div><div><b>15 dic</b><small>Próxima junta</small></div></div><div class="list"><div><span>Fuga en garaje, plaza 14</span><span class="tag t-wait">Fontanero asignado</span></div><div><span>Convocatoria junta ordinaria 2026</span><span class="tag t-new">Nueva</span></div><div><span>Cuentas de noviembre publicadas</span><span class="tag t-ok">Disponible</span></div></div>`,
+rec:`<h3>Recibos</h3><div class="list"><div><span>Diciembre 2026 · cuota ordinaria</span><span class="tag t-new">Domiciliado</span></div><div><span>Noviembre 2026 · cuota ordinaria</span><span class="tag t-ok">Pagado</span></div><div><span>Derrama impermeabilización · 2/4</span><span class="tag t-ok">Pagado</span></div><div><span>Octubre 2026 · cuota ordinaria</span><span class="tag t-ok">Pagado</span></div></div><p style="color:var(--mut);font-size:14px;margin-top:12px">Descargue cada recibo o el certificado de estar al corriente, por ejemplo para vender o alquilar.</p>`,
+inc:`<h3>Incidencias de la comunidad</h3><div class="list"><div><span><b>Fuga en garaje, plaza 14</b><br><small>Comunicada hoy · con foto</small></span><span class="tag t-wait">Asignada</span></div><div><span><b>Luz del portal 2</b><br><small>Hace 6 días</small></span><span class="tag t-ok">Resuelta</span></div><div><span><b>Puerta del garaje hace ruido</b><br><small>Hace 3 semanas</small></span><span class="tag t-ok">Resuelta</span></div></div><a class="btn b-bl" style="margin-top:14px" href="#incidencias">Comunicar una incidencia</a>`,
+jun:`<h3>Juntas y votaciones</h3><div class="list"><div><span><b>Junta ordinaria 2026</b><br><small>15 de diciembre · en el portal y por videollamada</small></span><span class="tag t-new">Convocada</span></div></div><p style="margin:16px 0 4px"><b>Votación abierta:</b> pintura de la fachada</p><small style="color:var(--mut)">Han votado 31 de 48 propietarios</small><div class="bar"><i style="width:65%"></i></div><div class="vote"><button class="btn b-or" type="button" data-vote>A favor</button><button class="btn b-gh" type="button" data-vote>En contra</button><button class="btn b-gh" type="button" data-vote>Abstención</button></div><p id="voted" style="color:#166534;font-weight:700"></p>`,
+doc:`<h3>Documentos</h3><div class="list"><div><span>Acta junta ordinaria 2025</span><span class="tag t-ok">PDF</span></div><div><span>Estatutos de la comunidad</span><span class="tag t-ok">PDF</span></div><div><span>Póliza del seguro del edificio</span><span class="tag t-ok">PDF</span></div><div><span>Presupuesto anual 2026</span><span class="tag t-ok">PDF</span></div><div><span>Certificado de la inspección del ascensor</span><span class="tag t-ok">PDF</span></div></div>`};
+function showPane(k){$$('.side button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.p===k)));$('#pMain').innerHTML=panes[k];$$('[data-vote]').forEach(b=>b.addEventListener('click',()=>{$('#voted').textContent='Voto registrado: '+b.textContent+'. Recibirá el resultado por WhatsApp.'}))}
+$$('.side button').forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.p)));showPane('ini');
+const posts=[["Morosidad en la comunidad: cómo actuar","#fff1dc","#d97f00","M12 3v18M7 8h7a3 3 0 0 1 0 6H8"],["Seguro de hogar: qué cubre y qué no","#e4edff","#1d4fb0","M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"],["La IA en la administración de fincas","#e9f6ee","#166534","M9 3h6v4H9zM5 9h14v10H5zM9 13h.01M15 13h.01"],["Ciberdelincuencia: protéjase de estafas","#fde8e8","#b42318","M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4"],["Mantenimiento preventivo del edificio","#fff1dc","#d97f00","M14 7l3-3 3 3-3 3M4 20l9-9"],["Uso de las zonas comunes","#e4edff","#1d4fb0","M4 20h16M6 20V10l6-5 6 5v10"]];
+$('#posts').innerHTML=posts.map(p=>`<article class="post"><div class="im" style="background:${p[1]}"><svg viewBox="0 0 24 24" fill="none" stroke="${p[2]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${p[3]}"/></svg></div><div><small>Blog Ecotres</small><h3>${esc(p[0])}</h3><span class="more">Leer artículo</span></div></article>`).join('');
+const flow={start:{a:'Hola, soy el asistente de Ecotres. ¿En qué le ayudo?',q:['Comunicar una avería','Pedir un certificado','Fecha de la próxima junta','Presupuesto para mi comunidad']},
+'Comunicar una avería':{a:'Dígame la dirección y qué ocurre, y puede mandar una foto. Queda registrada y le aviso por aquí de cada paso.',q:['Volver']},
+'Pedir un certificado':{a:'¿Me confirma su vivienda? Le preparo el certificado de estar al corriente y se lo dejo en su área de propietarios.',q:['Volver']},
+'Fecha de la próxima junta':{a:'La junta ordinaria de su comunidad es el 15 de diciembre. Puede asistir en persona o por videollamada.',q:['Volver']},
+'Presupuesto para mi comunidad':{a:'¡Claro! ¿Cuántas viviendas tiene su comunidad? Un administrador le contesta en menos de 24 horas laborables.',q:['Volver']}};
+function say(k){const s=flow[k]||flow.start;const m=$('#msgs');m.insertAdjacentHTML('beforeend','<div class="m in">'+esc(s.a)+'</div>');m.scrollTop=m.scrollHeight;$('#qr').innerHTML=s.q.map(q=>'<button type="button">'+esc(q)+'</button>').join('');$$('#qr button').forEach(b=>b.addEventListener('click',()=>{const t=b.textContent;if(t!=='Volver')m.insertAdjacentHTML('beforeend','<div class="m out">'+esc(t)+'</div>');say(t==='Volver'?'start':t)}))}
+function toggleChat(){const c=$('#chat');c.classList.toggle('on');if(c.classList.contains('on')&&!$('#msgs').children.length)say('start')}
+$('#wa').addEventListener('click',toggleChat);$('#openWa').addEventListener('click',()=>{if(!$('#chat').classList.contains('on'))toggleChat()});
+}
+</script>
+</body>
+</html>
