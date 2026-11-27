@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consignaciones Ortiz · Ship's Agents in Las Palmas &amp; Tenerife</title>
+<meta name="description" content="Family-run ship's agency in Las Palmas de Gran Canaria and Tenerife since 1984. Port calls, bunkers, crew changes, spares and 24 h customs clearance.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: serious, maritime, 24/7 reliability
+   IDEA: a port-operations board — live calls, milestones, clear dispatch
+   PICTURE: layered harbour scene with a bulk carrier at Las Palmas
+   COLOUR and TYPE: Ortiz blue on navy and white, Manrope bold
+   LAYOUT: full website, sticky nav, hash-routed pages */
+:root{--blue:#0a64f0;--blue-d:#0748b3;--navy:#071a33;--navy2:#0d2747;--ink:#0b1626;--grey:#5f6670;--line:#dfe5ee;--bg:#f4f7fb;--ok:#14a36b;--warn:#a76f00;--bad:#d6453d}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Manrope,Arial,sans-serif;font-weight:500;color:var(--ink);background:#fff;line-height:1.55;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.band{padding:84px 0}
+.alt{background:var(--bg)}
+.dark{background:var(--navy);color:#fff}
+.kicker{font-size:14px;font-weight:800;color:var(--blue)}
+.dark .kicker{color:#7fb2ff}
+h2{font-size:clamp(28px,3.6vw,42px);margin-top:8px}
+.lead{font-size:18px;color:#3a4658;max-width:720px;margin-top:14px}
+.dark .lead{color:#cfe0ff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:10px;font:800 15px Manrope,Arial,sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:var(--blue-d)}
+.btn-o{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid #7fb2ff;outline-offset:2px}
+
+/* demo ribbon */
+.ribbon{background:#0b1626;color:#cfe0ff;font-size:13px;font-weight:700;text-align:center;padding:7px 16px}
+.ribbon a{color:#fff}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:78px;max-width:1320px}
+.logo{flex:none}
+.logo img{height:58px;width:auto;display:block}
+nav.main{display:flex;gap:4px;align-items:center}
+nav.main a{font-size:14.5px;font-weight:700;text-decoration:none;color:#364152;padding:10px 10px;border-radius:8px;white-space:nowrap}
+nav.main a:hover{background:var(--bg)}
+nav.main a.on{color:var(--blue)}
+.hright{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:9px;overflow:hidden}
+.lang button{border:0;background:#fff;min-height:38px;padding:0 11px;font:800 13px Manrope,sans-serif;color:var(--grey);cursor:pointer}
+.lang button.on{background:var(--navy);color:#fff}
+.duty{display:flex;flex-direction:column;line-height:1.15;text-align:right;font-size:12px;font-weight:700;color:var(--grey);white-space:nowrap}
+.hright{flex:none}
+@media (max-width:1380px){.duty{display:none}}
+.duty b{font-size:15px;color:var(--navy)}
+.burger{display:none;border:1.5px solid var(--line);background:#fff;border-radius:9px;width:44px;height:44px;cursor:pointer;font-size:20px}
+
+/* pages */
+.page{display:none}.page.on{display:block}
+
+/* hero */
+.hero{background:linear-gradient(180deg,#081d3a 0%,#0c3672 65%,#0f4a95 100%);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:30px}
+.hero h1{font-size:clamp(36px,5vw,58px)}
+.hero p{font-size:18.5px;color:#cfe0ff;margin-top:18px;max-width:560px}
+.hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{font-size:13.5px;font-weight:700;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.board{background:#fff;color:var(--ink);border-radius:18px;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);overflow:hidden}
+.board .bh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-size:13px;font-weight:800;color:var(--grey)}
+.pulse{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--ok);margin-right:8px;animation:p 1.8s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(20,163,107,.55)}70%{box-shadow:0 0 0 9px rgba(20,163,107,0)}100%{box-shadow:0 0 0 0 rgba(20,163,107,0)}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none}html{scroll-behavior:auto}}
+.brow{display:grid;grid-template-columns:1.4fr .8fr 1fr;gap:10px;align-items:center;padding:13px 20px;border-top:1px solid #eef1f5;font-size:14.5px;font-weight:700}
+.brow:first-of-type{border-top:0}
+.brow small{display:block;font-size:12px;color:var(--grey);font-weight:600}
+.st{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px;white-space:nowrap;justify-self:end}
+.st-ok{background:#e3f6ee;color:var(--ok)}.st-b{background:#e5efff;color:var(--blue)}.st-w{background:#fdf2dc;color:var(--warn)}.st-n{background:#eef1f5;color:var(--grey)}
+.sea{display:block;width:100%;height:auto;margin-top:10px}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.stats div{padding:26px 24px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--blue);white-space:nowrap}
+.stats span{font-size:14px;color:var(--grey);font-weight:600}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:36px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.card .ic{width:44px;height:44px;border-radius:12px;background:#e8f0ff;display:grid;place-items:center;margin-bottom:14px}
+.card .ic.emo{font-size:22px;line-height:1}
+.card .ic svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:19px;margin-bottom:6px}
+.card p{font-size:15px;color:#4b5563}
+.dark .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+.dark .card p{color:#cfe0ff}
+.dark .card .ic{background:rgba(127,178,255,.15)}.dark .card .ic svg{stroke:#7fb2ff}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.motto{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.2;border-left:5px solid var(--blue);padding-left:22px}
+.motto small{display:block;font-size:14px;color:var(--grey);font-weight:700;margin-top:10px}
+.checks{list-style:none;margin-top:20px}
+.checks li{display:flex;gap:12px;padding:10px 0;font-size:16px;border-top:1px solid var(--line)}
+.checks li:first-child{border-top:0}
+.checks li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:2px}
+
+.cta{background:linear-gradient(120deg,var(--blue),#0748b3);color:#fff;border-radius:22px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta h3{font-size:clamp(24px,3vw,32px)}
+.cta p{color:#dce9ff;margin-top:8px}
+
+/* page head */
+.phead{background:linear-gradient(180deg,#081d3a,#0c3672);color:#fff;padding:64px 0 56px}
+.phead h1{font-size:clamp(32px,4.4vw,48px);margin-top:8px}
+.phead p{color:#cfe0ff;font-size:18px;max-width:700px;margin-top:12px}
+.phead .kicker{color:#7fb2ff}
+
+/* services list */
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.svc .card{display:flex;gap:16px;align-items:flex-start}
+.svc .card .ic{flex:0 0 44px;margin:0}
+.filter{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 22px}
+.filter button{min-height:40px;padding:0 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:700 14px Manrope,sans-serif;cursor:pointer;color:#364152}
+.filter button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* ports */
+.port{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.port .pic{height:210px;position:relative}
+.port .pic svg{position:absolute;inset:0;width:100%;height:100%}
+.port .body{padding:24px}
+.port h3{font-size:24px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.facts div{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:14px;font-weight:600;color:#3a4658}
+.facts b{display:block;font-size:12.5px;color:var(--grey);font-weight:800;margin-bottom:2px}
+
+/* forms */
+.formwrap{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 20px 50px -34px rgba(7,26,51,.4)}
+.panel h3{font-size:21px}
+.steps{display:flex;gap:8px;margin:18px 0 6px}
+.steps span{flex:1;height:5px;border-radius:9px;background:var(--line)}
+.steps span.on{background:var(--blue)}
+.fstep{display:none}.fstep.on{display:block}
+label{display:block;font-size:14px;font-weight:800;color:#364152;margin:16px 0 6px}
+label small{font-weight:600;color:var(--grey)}
+input,select,textarea{width:100%;min-height:46px;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font:600 16px Manrope,sans-serif;color:var(--ink);background:#fff}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{margin:0;font-size:14px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;min-height:42px;display:flex;gap:8px;align-items:center;cursor:pointer}
+.pills input{width:18px;min-height:0;height:18px;accent-color:var(--blue)}
+.pills label:has(input:checked){border-color:var(--blue);background:#eef4ff;color:var(--blue-d)}
+.fnav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
+.err{color:var(--bad);font-size:13.5px;font-weight:700;margin-top:8px;display:none}
+.done{display:none;text-align:center;padding:16px 4px}
+.done .tick{width:64px;height:64px;border-radius:50%;background:#e3f6ee;display:grid;place-items:center;margin:0 auto 16px}
+.done h3{font-size:24px}
+.done p{color:#4b5563;margin-top:8px}
+.ref{display:inline-block;margin-top:14px;font-weight:800;font-size:18px;background:var(--bg);padding:8px 16px;border-radius:10px;letter-spacing:.02em}
+.side h4{font-size:17px;margin-bottom:10px}
+.side .card{margin-bottom:14px}
+.side p{font-size:14.5px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;font-size:14px;color:var(--grey);font-weight:700;cursor:pointer;position:relative}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;min-height:0}
+.files{font-size:13.5px;margin-top:8px;color:#364152;font-weight:700}
+
+/* portal */
+.login{max-width:440px;margin:0 auto}
+.app{display:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -40px rgba(7,26,51,.45)}
+.app.on{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:620px}
+.aside{background:var(--navy);color:#cfe0ff;padding:22px 14px;display:flex;flex-direction:column;gap:4px}
+.aside .who{color:#fff;font-weight:800;padding:0 10px 16px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:10px}
+.aside .who small{display:block;color:#9fb6d9;font-weight:600;font-size:12.5px}
+.aside button{all:unset;cursor:pointer;padding:11px 12px;border-radius:9px;font-size:14.5px;font-weight:700}
+.aside button.on,.aside button:hover{background:rgba(255,255,255,.1);color:#fff}
+.aside .out{margin-top:auto;color:#9fb6d9}
+.amain{padding:26px 28px;background:var(--bg)}
+.calls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px}
+.callc{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit}
+.callc.on{border-color:var(--blue);box-shadow:0 0 0 3px rgba(10,100,240,.12)}
+.callc b{display:block;font-size:15.5px}
+.callc small{color:var(--grey);font-weight:600;font-size:13px}
+.vh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.vh h3{font-size:22px}
+.vh p{color:var(--grey);font-size:14px;font-weight:600}
+.tl{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 10px}
+.tl div{text-align:center;position:relative;font-size:12.5px;font-weight:700;color:var(--grey);padding:0 4px}
+.tl div::before{content:"";display:block;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #c7d0dc;margin:0 auto 8px;position:relative;z-index:2}
+.tl div::after{content:"";position:absolute;top:7px;left:-50%;width:100%;height:3px;background:#c7d0dc;z-index:1}
+.tl div:first-child::after{display:none}
+.tl .d::before{background:var(--blue);border-color:var(--blue)}.tl .d::after,.tl .n::after{background:var(--blue)}
+.tl .n::before{border-color:var(--blue);box-shadow:0 0 0 5px rgba(10,100,240,.15)}
+.tl b{display:block;color:var(--ink);font-size:13px}
+.c3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.mini h4{font-size:13px;color:var(--grey);margin-bottom:10px}
+.mini .r{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:6px 0;border-top:1px solid #eef1f5}
+.mini .r:first-of-type{border-top:0}
+.doc{display:flex;align-items:center;gap:9px}
+.doc i{width:22px;height:27px;border-radius:4px;background:#e5efff;position:relative;flex:0 0 22px}
+.doc i::after{content:"PDF";position:absolute;bottom:3px;left:2px;font-size:7px;font-style:normal;font-weight:800;color:var(--blue)}
+.dl{font-size:12.5px;font-weight:800;color:var(--blue);background:none;border:0;cursor:pointer;font-family:inherit}
+.chat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
+.msgs{display:flex;flex-direction:column;gap:10px;max-height:230px;overflow:auto;margin-bottom:12px}
+.m{max-width:78%;padding:10px 13px;border-radius:12px;font-size:14px}
+.m small{display:block;font-size:11.5px;font-weight:800;color:var(--grey);margin-bottom:2px}
+.m.them{background:var(--bg)}
+.m.me{background:#e5efff;align-self:flex-end}
+.send{display:flex;gap:8px}
+.notif{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #eef1f5;font-size:14.5px;font-weight:700}
+.sw{width:44px;height:26px;border-radius:99px;background:#c7d0dc;position:relative;border:0;cursor:pointer;flex:0 0 44px}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:var(--ok)}.sw.on::after{left:21px}
+.pview{display:none}.pview.on{display:block}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14.5px}
+th,td{text-align:left;padding:12px 14px;border-top:1px solid #eef1f5}
+th{background:#f8fafc;font-size:13px;color:var(--grey);border-top:0}
+
+/* about / contact */
+.timeline{list-style:none;margin-top:30px;border-left:3px solid var(--line);padding-left:26px}
+.timeline li{position:relative;padding-bottom:26px}
+.timeline li::before{content:"";position:absolute;left:-35px;top:3px;width:15px;height:15px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+.timeline b{font-size:18px;display:block}
+.timeline p{color:#4b5563;font-size:15.5px}
+.cinfo .card{margin-bottom:14px}
+.cinfo b{display:block;font-size:13px;color:var(--grey);font-weight:800}
+.cinfo .v{font-size:18px;font-weight:800;margin-top:2px;white-space:nowrap}
+.map{height:240px;border-radius:16px;overflow:hidden;border:1px solid var(--line);position:relative;background:#dfe9f5}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+.gal figure{border-radius:14px;overflow:hidden;background:#0b2f60;aspect-ratio:4/3;position:relative}
+.gal svg{width:100%;height:100%;display:block}
+.gal figcaption{position:absolute;left:12px;bottom:10px;color:#fff;font-size:13.5px;font-weight:800;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+/* footer */
+footer{background:#06142a;color:#9fb6d9;padding:56px 0 26px;font-size:14.5px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+footer a{display:block;text-decoration:none;padding:3px 0}
+footer a:hover{color:#fff}
+.flogo{background:#fff;border-radius:12px;padding:8px 12px;display:inline-block;margin-bottom:14px}
+.flogo img{height:44px;display:block}
+.legal{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+
+/* assistant */
+.fab{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.fab .open{width:60px;height:60px;border-radius:50%;background:var(--blue);border:0;cursor:pointer;box-shadow:0 12px 30px rgba(10,100,240,.45);display:grid;place-items:center}
+.bot{width:min(360px,calc(100vw - 40px));background:#fff;border-radius:18px;box-shadow:0 30px 70px rgba(7,26,51,.35);overflow:hidden;display:none}
+.bot.on{display:block}
+.bot .bh{background:var(--navy);color:#fff;padding:14px 16px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.bot .bh small{display:block;font-weight:600;color:#9fb6d9;font-size:12.5px}
+.bot .bh button{background:none;border:0;color:#fff;font-size:22px;cursor:pointer;width:36px;height:36px}
+.bot .msgs{padding:14px;max-height:300px;min-height:200px;margin:0}
+.qs{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.qs button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font:700 13px Manrope,sans-serif;cursor:pointer;color:#364152}
+.bot form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+
+@media (max-width:1180px){
+  nav.main{display:none;position:absolute;top:78px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:10px 16px 16px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.2)}
+  nav.main.open{display:flex}
+  .burger{display:block}
+  .duty{display:none}
+}
+@media (max-width:860px){
+  .hero .wrap,.split,.formwrap,.grid2{grid-template-columns:1fr}
+  .grid3,.svc,.c3,.calls,.gal{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .app.on{grid-template-columns:1fr}
+  .aside{flex-direction:row;overflow-x:auto;padding:10px}
+  .aside .who{display:none}.aside .out{margin:0}
+  .aside button{white-space:nowrap}
+  .tl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
+  .tl div:nth-child(4)::after{display:none}
+  .band{padding:60px 0}
+}
+@media (max-width:560px){
+  .g2,.g3,.facts{grid-template-columns:1fr}
+  .brow{grid-template-columns:1fr auto}.brow .eta{display:none}
+  .logo img{height:46px}
+  footer .cols{grid-template-columns:1fr}
+  .cta{padding:30px}
+  .amain{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon" data-es="Demo de la nueva web preparada por Regan Consulting · los buques y datos de ejemplo son ficticios">Demo of the new website prepared by Regan Consulting · sample vessels and data are fictitious</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Consignaciones Ortiz"><img src="data:image/png;base64,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" alt="Consignaciones Ortiz" width="300" height="120"></a>
+    <nav class="main" id="nav">
+      <a href="#home" data-es="Inicio">Home</a>
+      <a href="#services" data-es="Servicios">Services</a>
+      <a href="#ports" data-es="Puertos">Ports</a>
+      <a href="#about" data-es="La agencia">About us</a>
+      <a href="#media" data-es="Galería">Media</a>
+      <a href="#request" data-es="Solicitar escala">Port call request</a>
+      <a href="#portal" data-es="Portal de clientes">Owners' portal</a>
+      <a href="#contact" data-es="Contacto">Contact</a>
+    </nav>
+    <div class="hright">
+      <div class="duty"><span data-es="Guardia 24 h">24 h duty line</span><b>+34 928 463 183</b></div>
+      <div class="lang" role="group" aria-label="Language"><button class="on" data-l="en">EN</button><button data-l="es">ES</button></div>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="page" id="p-home">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="kicker" style="color:#7fb2ff" data-es="Consignatarios de buques en Las Palmas y Tenerife desde 1984">Ship's agents in Las Palmas &amp; Tenerife since 1984</div>
+        <h1 style="margin-top:12px" data-es="Buque atendido cuanto antes, descanso cuanto antes.">The soonest ship served, the soonest we rest.</h1>
+        <p data-es="Agencia familiar con servicio 24 horas todo el año. Asistencia completa y despacho rápido para buques en viaje de armador o en time charter.">A family-run agency working 24 hours a day, all year round. Full assistance and quick dispatch for your ships, whether on owner's voyage or time charter.</p>
+        <div class="btns">
+          <a class="btn btn-p" href="#request" data-es="Solicitar escala →">Request a port call →</a>
+          <a class="btn btn-g" href="#portal" data-es="Portal de clientes">Owners' portal</a>
+        </div>
+        <div class="chips">
+          <span class="chip" data-es="Operaciones 24/7">24/7 operations</span>
+          <span class="chip" data-es="Aduanas en aeropuerto">Airport customs office</span>
+          <span class="chip" data-es="Oficina en Tenerife">Tenerife branch</span>
+        </div>
+      </div>
+      <div class="board" aria-label="Live port calls">
+        <div class="bh"><span><span class="pulse"></span><span data-es="Hoy en puerto">Today in port</span></span><span>LPA · TFE</span></div>
+        <div id="board"></div>
+      </div>
+    </div>
+    <svg class="sea" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 240 40, 480 100, 720 70 S 1200 40, 1440 70 L1440 150 L0 150Z" fill="#fff" opacity=".35"/><path d="M0 95 C 260 70, 520 120, 760 95 S 1220 70, 1440 98 L1440 150 L0 150Z" fill="#fff"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div><b>1984</b><span data-es="Atendiendo buques desde">Serving ships since</span></div>
+      <div><b>24/7</b><span data-es="Todo el año, festivos incluidos">All year round, holidays included</span></div>
+      <div><b>2 h</b><span data-es="Despacho de mercancía tras el aterrizaje">Goods handled after landing</span></div>
+      <div><b>LPA · TFE</b><span data-es="Oficinas en ambos puertos">Offices in both ports</span></div>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap">
+      <div class="kicker" data-es="Lo que hacemos">What we do</div>
+      <h2 data-es="Todo lo que su buque necesita en puerto">Everything your vessel needs in port</h2>
+      <p class="lead" data-es="Las Palmas y Tenerife están en plena ruta norte-sur del Atlántico. Coordinamos cada servicio para que su buque entre, opere y salga sin perder tiempo.">Las Palmas and Tenerife sit right on the North–South Atlantic route. We coordinate every service so your ship gets in, works and sails without losing time.</p>
+      <div class="grid3" id="homeServices"></div>
+      <div style="margin-top:26px"><a class="btn btn-o" href="#services" data-es="Ver todos los servicios">See all services</a></div>
+    </div>
+  </div>
+  <div class="band alt">
+    <div class="wrap split">
+      <div>
+        <div class="kicker" data-es="Una agencia familiar">A family firm</div>
+        <h2 data-es="Más de cuarenta años al lado del capitán">Four decades alongside the Master</h2>
+        <p class="lead" data-es="Fundada en 1984 por José María Ortiz A., con la experiencia de los mejores años de los transbordos pesqueros en Las Palmas. Seguimos trabajando igual: atendiendo personalmente cada necesidad del cliente.">Founded in 1984 by Mr José María Ortiz A., drawing on the best years of fishing transhipments in Las Palmas. We still work the same way: personally attending to every requirement of our customers.</p>
+        <ul class="checks">
+          <li data-es="Atención personal de un equipo que conoce el puerto">Personal service from a team that knows the port</li>
+          <li data-es="Oficina de aduanas en el aeropuerto abierta 24 h">Customs office at Las Palmas airport open 24 h</li>
+          <li data-es="Delegación en Tenerife con agencia de aduanas propia">Tenerife branch with its own customs agency</li>
+        </ul>
+      </div>
+      <div class="motto"><span data-es="«Buque atendido cuanto antes, descanso cuanto antes.»">“The soonest ship served, the soonest we rest.”</span><small data-es="Nuestra regla desde 1984">Our rule since 1984</small></div>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap">
+      <div class="cta">
+        <div><h3 data-es="¿Su buque llega pronto a Canarias?">Is your vessel calling at the Canaries soon?</h3><p data-es="Envíenos los datos de la escala y le respondemos con la proforma.">Send us the call details and we will come back with a proforma DA.</p></div>
+        <a class="btn" style="background:#fff;color:var(--blue-d)" href="#request" data-es="Solicitar escala">Request a port call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="page" id="p-services">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Servicios">Services</div><h1 data-es="Servicios portuarios en Las Palmas y Tenerife">Port services in Las Palmas &amp; Tenerife</h1><p data-es="Coordinados las 24 horas con el capitán, el práctico y los proveedores.">Coordinated around the clock with the Master, the pilots and suppliers.</p></div></div>
+  <div class="band"><div class="wrap">
+    <div class="filter" id="filter">
+      <button class="on" data-f="all" data-es="Todos">All</button>
+      <button data-f="nav" data-es="Maniobra">Port &amp; manoeuvre</button>
+      <button data-f="sup" data-es="Suministros">Supplies</button>
+      <button data-f="crew" data-es="Tripulación y aduanas">Crew &amp; customs</button>
+      <button data-f="tech" data-es="Técnico y medio ambiente">Technical &amp; environment</button>
+    </div>
+    <div class="svc" id="svcList"></div>
+  </div></div>
+</section>
+
+<!-- PORTS -->
+<section class="page" id="p-ports">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Puertos">Ports</div><h1 data-es="Dos puertos, una misma forma de trabajar">Two ports, one way of working</h1><p data-es="Oficina principal en Las Palmas de Gran Canaria y delegación en Tenerife.">Head office in Las Palmas de Gran Canaria and a branch office in Tenerife.</p></div></div>
+  <div class="band"><div class="wrap grid2" style="margin-top:0">
+    <article class="port">
+      <div class="pic"><svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="210" fill="#0c3672"/><circle cx="480" cy="55" r="30" fill="#f5c451"/><path d="M0 120 L90 96 L170 108 L260 84 L330 100 L420 80 L600 104 L600 210 L0 210Z" fill="#0a2852"/><g transform="translate(110,104)"><rect y="20" width="300" height="34" rx="4" fill="#e23b2e"/><rect y="12" width="300" height="12" fill="#11161f"/><rect x="10" y="-8" width="50" height="22" fill="#f4f4f4"/><g fill="#e8b21c"><rect x="100" y="-8" width="7" height="22"/><rect x="160" y="-8" width="7" height="22"/><rect x="220" y="-8" width="7" height="22"/></g></g><path d="M0 160 C 120 150, 240 170, 360 160 S 520 150, 600 160 L600 210 L0 210Z" fill="#0f4a95"/></svg></div>
+      <div class="body">
+        <h3>Las Palmas de Gran Canaria</h3>
+        <p style="color:#4b5563;margin-top:8px" data-es="Uno de los grandes puertos de suministro de combustible de España, con astilleros, buceo homologado y todos los servicios las 24 horas.">One of Spain's leading bunkering ports, with shipyards, certified divers and every service available 24 hours a day.</p>
+        <div class="facts">
+          <div><b data-es="Practicaje">Pilotage</b><span data-es="Obligatorio &gt; 500 GT, 24 h">Compulsory &gt; 500 GT, 24 h</span></div>
+          <div><b data-es="Remolque">Tugs</b><span data-es="4 unidades, 24 h">4 units, 24 h</span></div>
+          <div><b data-es="Combustible">Bunkers</b><span data-es="Por tubería o gabarra">Ex-pipe or by barge</span></div>
+          <div><b data-es="Varada">Drydock</b><span data-es="Syncrolift y gradas">Syncrolift and slipways</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="port">
+      <div class="pic"><svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="210" fill="#123f7e"/><path d="M180 120 L330 20 L470 120Z" fill="#284f86"/><path d="M300 40 L330 20 L360 40 L345 46 L330 38 L315 46Z" fill="#e9eef6"/><path d="M0 128 L600 120 L600 210 L0 210Z" fill="#0a2852"/><g transform="translate(70,112)"><rect y="16" width="220" height="30" rx="4" fill="#1d3a66"/><rect y="10" width="220" height="10" fill="#e9eef6"/><rect x="150" y="-14" width="56" height="26" fill="#f4f4f4"/></g><path d="M0 165 C 140 155, 280 175, 420 165 S 560 158, 600 165 L600 210 L0 210Z" fill="#0f4a95"/></svg></div>
+      <div class="body">
+        <h3>Santa Cruz de Tenerife</h3>
+        <p style="color:#4b5563;margin-top:8px" data-es="Delegación con larga experiencia asistiendo a los buques de nuestros clientes y agencia de aduanas en el aeropuerto.">A branch office with long experience assisting our customers' ships, and its own customs agency at the airport.</p>
+        <div class="facts">
+          <div><b data-es="Agencia">Agency</b><span data-es="Armador y fletador">Owners' &amp; charterers'</span></div>
+          <div><b data-es="Aduanas">Customs</b><span data-es="Agencia en aeropuerto">Airport customs agency</span></div>
+          <div><b data-es="Tripulación">Crew</b><span data-es="Relevos y visados">Changes and visas</span></div>
+          <div><b data-es="Suministros">Supplies</b><span data-es="Repuestos y provisiones">Spares and provisions</span></div>
+        </div>
+      </div>
+    </article>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="p-about">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="La agencia">About us</div><h1 data-es="Una empresa familiar, de guardia todo el año">A family firm, on duty all year round</h1></div></div>
+  <div class="band"><div class="wrap split" style="align-items:start">
+    <div>
+      <p class="lead" style="margin-top:0" data-es="Nuestra agencia la fundó José María Ortiz A., director general, en septiembre de 1984. Antes había sido jefe de operaciones de Camilo Martinón Navarro, S.L. durante la mejor época de los transbordos pesqueros en Las Palmas (1960-1984).">Our ship's agency was founded by Mr José María Ortiz A., General Manager, in September 1984. He had previously been OPS Manager of Camilo Martinón Navarro, S.L. during Las Palmas' best period of fishing transhipments (1960–1984).</p>
+      <p class="lead" data-es="Desde entonces hemos crecido como empresa familiar, atendiendo personalmente a cada cliente en todo lo que necesita su buque.">Since then we have grown as a family firm, personally assisting each customer with everything their ship requires.</p>
+      <ol class="timeline">
+        <li><b>1960–1984</b><p data-es="Experiencia en operaciones durante el auge de los transbordos pesqueros en Las Palmas.">Operations experience during the peak of fishing transhipments in Las Palmas.</p></li>
+        <li><b>1984</b><p data-es="José María Ortiz A. funda Consignaciones Ortiz en Las Palmas.">José María Ortiz A. founds Consignaciones Ortiz in Las Palmas.</p></li>
+        <li><b data-es="Hoy">Today</b><p data-es="Oficinas en Las Palmas y Tenerife, aduanas en ambos aeropuertos y servicio 24 horas.">Offices in Las Palmas and Tenerife, customs at both airports and a 24-hour service.</p></li>
+      </ol>
+    </div>
+    <div class="grid2" style="margin-top:0;grid-template-columns:1fr">
+      <div class="card"><div class="ic emo" aria-hidden="true">🕐</div><h3 data-es="24 horas, festivos incluidos">24 hours, holidays included</h3><p data-es="Siempre hay un agente de guardia para su buque.">There is always a duty agent for your ship.</p></div>
+      <div class="card"><div class="ic emo" aria-hidden="true">⏱️</div><h3 data-es="Despacho rápido">Quick dispatch</h3><p data-es="En viaje de armador o en time charter, asistencia completa y salida sin demoras.">On owner's voyage or time charter, full assistance and no delays on departure.</p></div>
+      <div class="card"><div class="ic emo" aria-hidden="true">🤝</div><h3 data-es="Trato familiar">Family hand</h3><p data-es="Hablará siempre con las mismas personas, que conocen su buque y su compañía.">You always deal with the same people, who know your ship and your company.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- MEDIA -->
+<section class="page" id="p-media">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Galería">Media</div><h1 data-es="Nuestro día a día en puerto">Our day-to-day in port</h1><p data-es="En la web final, aquí irían sus propias fotos de buques y operaciones.">On the final site, this gallery shows your own photos of ships and operations.</p></div></div>
+  <div class="band"><div class="wrap"><div class="gal" id="gal"></div></div></div>
+</section>
+
+<!-- REQUEST -->
+<section class="page" id="p-request">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Solicitar escala">Port call request</div><h1 data-es="Pida su escala en dos minutos">Request a port call in two minutes</h1><p data-es="Su solicitud llega al momento al agente de guardia, y recibirá la confirmación con un número de referencia.">Your request reaches the duty agent instantly, and you receive a confirmation with a reference number.</p></div></div>
+  <div class="band"><div class="wrap formwrap">
+    <form class="panel" id="reqForm" novalidate>
+      <div id="reqSteps">
+        <h3 id="stepTitle">1 · Vessel</h3>
+        <div class="steps"><span class="on"></span><span></span><span></span></div>
+        <div class="fstep on" data-s="1">
+          <div class="g2">
+            <div><label for="v1"><span data-es="Nombre del buque">Vessel name</span> *</label><input id="v1" required placeholder="MV ..."></div>
+            <div><label for="v2">IMO *</label><input id="v2" required inputmode="numeric" placeholder="7 digits"></div>
+          </div>
+          <div class="g3">
+            <div><label for="v3" data-es="Tipo">Type</label><select id="v3"><option>Bulk carrier</option><option>Tanker</option><option>Container</option><option>Reefer</option><option>Fishing vessel</option><option>Offshore / supply</option><option>Other</option></select></div>
+            <div><label for="v4">GT</label><input id="v4" inputmode="numeric"></div>
+            <div><label for="v5" data-es="Bandera">Flag</label><input id="v5"></div>
+          </div>
+        </div>
+        <div class="fstep" data-s="2">
+          <div class="g2">
+            <div><label for="c1" data-es="Puerto">Port</label><select id="c1"><option>Las Palmas</option><option>Santa Cruz de Tenerife</option></select></div>
+            <div><label for="c2">ETA *</label><input id="c2" type="datetime-local" required></div>
+          </div>
+          <label data-es="Servicios necesarios">Services required</label>
+          <div class="pills" id="pills"></div>
+          <label for="c3"><span data-es="Observaciones">Remarks</span> <small data-es="(cantidades, grados de combustible, nº de tripulantes…)">(quantities, fuel grades, crew numbers…)</small></label>
+          <textarea id="c3"></textarea>
+          <label data-es="Documentos del buque">Vessel documents</label>
+          <div class="drop"><input type="file" id="files" multiple><span data-es="Arrastre aquí Q88, crew list o certificados, o haga clic">Drop Q88, crew list or certificates here, or click</span></div>
+          <div class="files" id="fileList"></div>
+        </div>
+        <div class="fstep" data-s="3">
+          <div class="g2">
+            <div><label for="k1"><span data-es="Compañía">Company</span> *</label><input id="k1" required></div>
+            <div><label for="k2" data-es="Persona de contacto">Contact person</label><input id="k2"></div>
+          </div>
+          <div class="g2">
+            <div><label for="k3">Email *</label><input id="k3" type="email" required></div>
+            <div><label for="k4" data-es="Teléfono / WhatsApp">Phone / WhatsApp</label><input id="k4" type="tel"></div>
+          </div>
+          <div class="g2">
+            <div><label for="k5" data-es="Actuamos por cuenta de">Appointed by</label><select id="k5"><option>Owners</option><option>Charterers</option><option>Operators</option><option>Protective agency</option></select></div>
+            <div><label for="k6" data-es="Idioma de respuesta">Reply language</label><select id="k6"><option>English</option><option>Español</option></select></div>
+          </div>
+        </div>
+        <div class="err" id="err" data-es="Revise los campos marcados con *.">Please complete the fields marked with *.</div>
+        <div class="fnav"><button type="button" class="btn btn-o" id="back" style="visibility:hidden" data-es="← Atrás">← Back</button><button type="button" class="btn btn-p" id="next" data-es="Siguiente →">Next →</button></div>
+      </div>
+      <div class="done" id="done">
+        <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14a36b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h3 data-es="Solicitud recibida">Request received</h3>
+        <p data-es="El agente de guardia ya tiene su solicitud y le enviará la proforma en breve. Hemos mandado una copia a su correo.">Our duty agent has your request and will send you a proforma DA shortly. A copy has been sent to your email.</p>
+        <div class="ref" id="refNo"></div>
+        <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn btn-p" href="#portal" data-es="Seguirla en el portal">Track it in the portal</a><button type="button" class="btn btn-o" id="again" data-es="Nueva solicitud">New request</button></div>
+      </div>
+    </form>
+    <aside class="side">
+      <div class="card"><h4 data-es="¿Qué pasa después?">What happens next?</h4><ul class="checks" style="margin-top:4px">
+        <li data-es="Aviso inmediato al agente de guardia">Duty agent notified instantly</li>
+        <li data-es="Proforma (PDA) en su correo">Proforma DA sent to your inbox</li>
+        <li data-es="Seguimiento en tiempo real en el portal">Real-time tracking in the portal</li>
+      </ul></div>
+      <div class="card"><h4 data-es="¿Urgente?">Urgent?</h4><p data-es="Llámenos a cualquier hora:">Call us at any time:</p><p style="font-size:20px;font-weight:800;margin-top:4px;white-space:nowrap">+34 928 463 183</p></div>
+    </aside>
+  </div></div>
+</section>
+
+<!-- PORTAL -->
+<section class="page" id="p-portal">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Portal de clientes">Owners' portal</div><h1 data-es="Su escala, en tiempo real">Your port call, in real time</h1><p data-es="Hitos, servicios, documentos y mensajes de cada buque, sin tener que llamar ni escribir.">Milestones, services, documents and messages for each vessel, without having to call or email.</p></div></div>
+  <div class="band alt"><div class="wrap">
+    <form class="panel login" id="login">
+      <h3 data-es="Acceso de clientes">Customer login</h3>
+      <p style="color:var(--grey);font-size:14.5px;margin-top:6px" data-es="Demo: los datos ya están rellenos, solo pulse Entrar.">Demo: details are prefilled, just press Sign in.</p>
+      <label for="u">Email</label><input id="u" type="email" value="ops@atlanticshipping.example">
+      <label for="pw" data-es="Contraseña">Password</label><input id="pw" type="password" value="demo-demo">
+      <button class="btn btn-p" style="width:100%;margin-top:20px" data-es="Entrar">Sign in</button>
+    </form>
+    <div class="app" id="app">
+      <div class="aside">
+        <div class="who">Atlantic Shipping Ltd.<small>ops@atlanticshipping.example</small></div>
+        <button class="on" data-v="calls" data-es="Escalas activas">Active port calls</button>
+        <button data-v="docs" data-es="Documentos">Documents</button>
+        <button data-v="hist" data-es="Historial">Call history</button>
+        <button data-v="notif" data-es="Avisos">Notifications</button>
+        <button class="out" id="logout" data-es="Salir">Sign out</button>
+      </div>
+      <div class="amain">
+        <div class="pview on" id="v-calls">
+          <h3 style="font-size:20px" data-es="Escalas activas">Active port calls</h3>
+          <div class="calls" id="calls"></div>
+          <div id="callDetail"></div>
+        </div>
+        <div class="pview" id="v-docs">
+          <h3 style="font-size:20px;margin-bottom:14px" data-es="Documentos">Documents</h3>
+          <table class="stack"><thead><tr><th data-es="Documento">Document</th><th data-es="Buque">Vessel</th><th data-es="Fecha">Date</th><th></th></tr></thead><tbody id="docRows"></tbody></table>
+        </div>
+        <div class="pview" id="v-hist">
+          <h3 style="font-size:20px;margin-bottom:14px" data-es="Historial de escalas">Call history</h3>
+          <table class="stack"><thead><tr><th data-es="Buque">Vessel</th><th data-es="Puerto">Port</th><th data-es="Llegada">Arrived</th><th data-es="Salida">Sailed</th><th data-es="Estado">Status</th></tr></thead><tbody id="histRows"></tbody></table>
+        </div>
+        <div class="pview" id="v-notif">
+          <h3 style="font-size:20px;margin-bottom:14px" data-es="Avisos automáticos">Automatic notifications</h3>
+          <div class="mini" id="notifs"></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="p-contact">
+  <div class="phead"><div class="wrap"><div class="kicker" data-es="Contacto">Contact</div><h1 data-es="Hablemos de su próxima escala">Let's talk about your next call</h1></div></div>
+  <div class="band"><div class="wrap formwrap">
+    <div>
+      <form class="panel" id="cForm" novalidate>
+        <h3 data-es="Escríbanos">Send us a message</h3>
+        <div class="g2"><div><label for="n1"><span data-es="Nombre">Name</span> *</label><input id="n1" required></div><div><label for="n2" data-es="Compañía">Company</label><input id="n2"></div></div>
+        <div class="g2"><div><label for="n3">Email *</label><input id="n3" type="email" required></div><div><label for="n4" data-es="Teléfono">Telephone</label><input id="n4" type="tel"></div></div>
+        <label for="n5"><span data-es="Mensaje">Message</span> *</label><textarea id="n5" required></textarea>
+        <div class="err" id="cerr" data-es="Revise los campos marcados con *.">Please complete the fields marked with *.</div>
+        <button class="btn btn-p" style="margin-top:18px" data-es="Enviar mensaje">Send message</button>
+        <div class="done" id="cdone" style="padding-top:20px"><div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14a36b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3 data-es="Mensaje enviado">Message sent</h3><p data-es="Le contestaremos lo antes posible.">We will get back to you as soon as possible.</p></div>
+      </form>
+    </div>
+    <div class="cinfo">
+      <div class="card"><b data-es="Teléfono 24 h">Telephone 24 h</b><div class="v">+34 928 463 183</div></div>
+      <div class="card"><b>Fax</b><div class="v">+34 928 460 469</div></div>
+      <div class="card"><b>Email</b><div class="v" style="font-size:16px">info@consignacionesortiz.com</div></div>
+      <div class="card"><b data-es="Dirección">Address</b><div style="font-weight:700;margin-top:4px">C/ Sao Paulo, 14 – 2º, Of. 2 (El Sebadal)<br>35008 Las Palmas de Gran Canaria</div></div>
+      <div class="map" aria-label="Map"><svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="240" fill="#e6edf6"/><path d="M260 0 L400 0 L400 240 L300 240 C 290 180, 330 120, 280 60 Z" fill="#b9d3f0"/><g stroke="#fff" stroke-width="8" fill="none"><path d="M0 70 H260"/><path d="M0 150 H290"/><path d="M90 0 V240"/><path d="M190 0 V240"/></g><g stroke="#fff" stroke-width="4" fill="none"><path d="M0 110 H270"/><path d="M140 0 V240"/><path d="M40 0 V240"/></g><path d="M262 40 h40 v12 h-40z M268 120 h44 v12 h-44z" fill="#90b7e6"/><g transform="translate(165,128)"><path d="M0 -34 C -15 -34 -22 -22 -22 -14 C -22 2 0 18 0 18 C 0 18 22 2 22 -14 C 22 -22 15 -34 0 -34Z" fill="#0a64f0"/><circle cy="-14" r="7" fill="#fff"/></g><text x="200" y="168" font-family="Manrope,Arial" font-size="13" font-weight="800" fill="#071a33">C/ Sao Paulo, 14</text></svg></div>
+    </div>
+  </div></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="flogo"><img src="data:image/png;base64,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" alt="Consignaciones Ortiz"></div><p data-es="Consignatarios de buques, logística portuaria y aduanas en Las Palmas y Tenerife desde 1984.">Ship's agents, port logistics and customs in Las Palmas &amp; Tenerife since 1984.</p></div>
+      <div><h4 data-es="Agencia">Agency</h4><a href="#about" data-es="La agencia">About us</a><a href="#ports" data-es="Puertos">Ports</a><a href="#media" data-es="Galería">Media</a></div>
+      <div><h4 data-es="Clientes">Customers</h4><a href="#services" data-es="Servicios">Services</a><a href="#request" data-es="Solicitar escala">Port call request</a><a href="#portal" data-es="Portal de clientes">Owners' portal</a></div>
+      <div><h4 data-es="Contacto">Contact</h4><span style="display:block;white-space:nowrap">+34 928 463 183</span><span style="display:block">info@consignacionesortiz.com</span><span style="display:block">C/ Sao Paulo, 14 · Las Palmas</span></div>
+    </div>
+    <div class="legal"><span>© 2026 Consignaciones Ortiz, S.L.</span><span data-es="Aviso legal · Privacidad · Cookies">Legal notice · Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+<div class="fab">
+  <div class="bot" id="bot" role="dialog" aria-label="Assistant">
+    <div class="bh"><div><span data-es="Asistente Ortiz">Ortiz assistant</span><small data-es="Responde al momento, 24 h">Instant replies, 24 h</small></div><button id="botClose" aria-label="Close">×</button></div>
+    <div class="msgs" id="botMsgs"></div>
+    <div class="qs" id="qs"></div>
+    <form id="botForm"><input id="botIn" placeholder="Type your question…" aria-label="Question"><button class="btn btn-p" style="padding:0 14px" aria-label="Send">➤</button></form>
+  </div>
+  <button class="open" id="botOpen" aria-label="Open assistant"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></button>
+</div>
+
+<script>
+{
+const L = {lang:'en'};
+const t = (en,es)=> L.lang==='es'?es:en;
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ICON = {pilot:'🧭',tug:'🚢',rope:'⚓',fuel:'⛽',drop:'💧',oil:'🛢️',recycle:'♻️',crew:'👥',box:'📦',boat:'🚤',wrench:'🛠️',diver:'🤿'};
+const ic = k => `<div class="ic emo" aria-hidden="true">${ICON[k]}</div>`;
+
+const SERVICES = [
+ {k:'pilot',f:'nav',en:['Pilots','Compulsory for all ships over 500 GT, 24 hrs daily, to berth or anchorage north or south of the breakwater.'],es:['Prácticos','Obligatorio para buques de más de 500 GT, 24 h al día, a muelle o fondeo al norte o sur del dique.']},
+ {k:'rope',f:'nav',en:['Mooring','Linesmen working 24 hrs inside the port, coordinated with the pilot\'s instructions.'],es:['Amarre','Amarradores 24 h dentro del puerto, coordinados con las instrucciones del práctico.']},
+ {k:'tug',f:'nav',en:['Tugs','Four units working 24 hrs, coordinated with the Master and pilot. The ship\'s safety comes first.'],es:['Remolcadores','Cuatro unidades 24 h, coordinadas con el capitán y el práctico. La seguridad del buque, lo primero.']},
+ {k:'boat',f:'nav',en:['Motorboats','Available 24 hrs for stores, drums, provisions and crew transfers.'],es:['Lanchas','Disponibles 24 h para pertrechos, bidones, provisiones y traslado de tripulación.']},
+ {k:'fuel',f:'sup',en:['Bunkers','Las Palmas is the 2nd port in Spain in bunker supply: several fuel grades, ex-pipe or by barge, 24 hrs.'],es:['Combustible','Las Palmas es el 2º puerto de España en suministro de combustible: varios grados, por tubería o gabarra, 24 h.']},
+ {k:'oil',f:'sup',en:['Lub oil','Supplied in drums or by barge from the main brands, alongside or at anchorage.'],es:['Lubricantes','Suministro en bidones o gabarra de las principales marcas, en muelle o fondeo.']},
+ {k:'drop',f:'sup',en:['Fresh water','24 hrs alongside or by water barge.'],es:['Agua dulce','24 h en muelle o mediante gabarra de agua.']},
+ {k:'crew',f:'crew',en:['Crew changes','Visas obtained quickly with crew particulars and flight details. Hotels and transfers arranged.'],es:['Cambios de tripulación','Visados en poco tiempo con los datos de la tripulación y los vuelos. Hotel y traslados incluidos.']},
+ {k:'box',f:'crew',en:['Spares & customs','Customs office at Las Palmas airport open 24 hrs, holidays included: goods handled 2 hrs after landing.'],es:['Repuestos y aduanas','Oficina de aduanas en el aeropuerto de Las Palmas 24 h, festivos incluidos: mercancía despachada 2 h tras el aterrizaje.']},
+ {k:'recycle',f:'tech',en:['Sludge & garbage (MARPOL)','Discharge ex-pipe or by barge according to EU regulations; MARPOL certificate issued to the Master.'],es:['Lodos y basuras (MARPOL)','Descarga por tubería o gabarra según la normativa europea; certificado MARPOL para el capitán.']},
+ {k:'wrench',f:'tech',en:['Drydocking & repairs','Reliable shipyards with Syncrolift platform and slipways, plus repairs afloat.'],es:['Varada y reparaciones','Astilleros de confianza con plataforma Syncrolift y gradas, y reparaciones a flote.']},
+ {k:'diver',f:'tech',en:['Divers','Certified diving companies for underwater cleaning and inspections inside the port.'],es:['Buzos','Empresas de buceo homologadas para limpieza e inspecciones submarinas dentro del puerto.']}
+];
+
+const BOARD = [
+ ['Bulk carrier','Granelero','Las Palmas · Berth 12','Las Palmas · Muelle 12','All fast','st-ok'],
+ ['Tanker','Petrolero','Las Palmas · Anchorage','Las Palmas · Fondeo','Bunkering','st-b'],
+ ['Reefer','Frigorífico','Tenerife','Tenerife','Expected','st-w'],
+ ['Fishing vessel','Pesquero','Las Palmas · Berth 5','Las Palmas · Muelle 5','Crew change','st-b'],
+ ['Container ship','Portacontenedores','Las Palmas','Las Palmas','Sailed','st-n']
+];
+const BOARD_ES = {'All fast':'Atracado','Bunkering':'Suministrando','Expected':'Previsto','Crew change':'Relevo','Sailed':'Salió'};
+
+const CALLS = [
+ {v:'MV Atlantic Dawn',imo:'9412345',type:'Bulk carrier',port:'Las Palmas, Berth 12',stage:3,
+  ms:[['ETA','02 Dec 06:30'],['NOR tendered','06:42'],['All fast','08:15'],['Bunkering','in progress'],['Crew change','14:00'],['ETD','18:00']],
+  sv:[['VLSFO 450 MT','Ongoing','st-b'],['Crew change (3)','14:00','st-w'],['Fresh water 120 m³','Done','st-ok']],
+  msg:'Vessel all fast at Berth 12. Bunker barge alongside, pumping started 08:50. Crew change confirmed for 14:00, visas cleared.'},
+ {v:'MT Nordic Star',imo:'9387654',type:'Tanker',port:'Las Palmas, Anchorage',stage:2,
+  ms:[['ETA','02 Dec 05:00'],['NOR tendered','05:20'],['Bunkering','in progress'],['Sludge','planned'],['Docs','pending'],['ETD','15:00']],
+  sv:[['MGO 180 MT','Ongoing','st-b'],['Sludge 12 m³','Planned','st-w'],['Provisions','Done','st-ok']],
+  msg:'Barge alongside at anchorage. Sludge truck booked after bunkering. MARPOL certificate will be uploaded here.'},
+ {v:'MV Cabo Verde',imo:'9501122',type:'Reefer',port:'Santa Cruz de Tenerife',stage:0,
+  ms:[['ETA','03 Dec 06:30'],['NOR tendered','—'],['All fast','—'],['Spares','airport'],['Crew change','—'],['ETD','03 Dec 20:00']],
+  sv:[['Spares (2 boxes)','At airport','st-w'],['Fresh water','Requested','st-n'],['Pilot booked','Confirmed','st-ok']],
+  msg:'Proforma DA sent. Spares landed at Tenerife North airport, customs clearance in progress.'}
+];
+let curCall = 0;
+
+function renderBoard(){
+  document.getElementById('board').innerHTML = BOARD.map(r=>`<div class="brow"><div>${esc(t(r[0],r[1]))}<small>${esc(t(r[2],r[3]))}</small></div><div class="eta" style="font-size:13px;color:var(--grey)"></div><span class="st ${r[5]}">${esc(L.lang==='es'?BOARD_ES[r[4]]:r[4])}</span></div>`).join('') + `<div class="brow" style="grid-template-columns:1fr;font-size:13px;color:var(--grey);background:#f8fafc">${esc(t('Vessel names and details are visible only to each owner in the portal.','Los nombres y datos de cada buque solo los ve su armador en el portal.'))}</div>`;
+}
+function renderServices(f='all'){
+  const card = s => { const d = s[L.lang]; return `<div class="card">${ic(s.k)}<div><h3>${esc(d[0])}</h3><p>${esc(d[1])}</p></div></div>`; };
+  document.getElementById('svcList').innerHTML = SERVICES.filter(s=>f==='all'||s.f===f).map(card).join('');
+  document.getElementById('homeServices').innerHTML = SERVICES.filter((s,i)=>[4,7,8,0,10,9].includes(i)).map(s=>{const d=s[L.lang];return `<div class="card">${ic(s.k)}<h3>${esc(d[0])}</h3><p>${esc(d[1])}</p></div>`}).join('');
+}
+function renderPills(){
+  const keep = [...document.querySelectorAll('#pills input:checked')].map(i=>i.value);
+  const items = [['Bunkers','Combustible'],['Lub oil','Lubricantes'],['Fresh water','Agua'],['Crew change','Relevo de tripulación'],['Spares / customs','Repuestos / aduanas'],['Provisions','Provisiones'],['Sludge / garbage','Lodos / basuras'],['Repairs / divers','Reparaciones / buzos']];
+  document.getElementById('pills').innerHTML = items.map((x,i)=>`<label><input type="checkbox" value="${i}" ${keep.includes(String(i))?'checked':''}>${esc(t(x[0],x[1]))}</label>`).join('');
+}
+function renderGallery(){
+  const caps=[['Bulk carrier alongside','Granelero atracado'],['Bunkering at anchorage','Suministro en fondeo'],['Crew change launch','Lancha de relevo'],['Night operations','Operaciones nocturnas'],['Tenerife branch','Delegación de Tenerife'],['Shipyard','Astillero']];
+  const sky=['#0c3672','#123f7e','#0a2852','#06142a','#1a4d8f','#0d2747'];
+  document.getElementById('gal').innerHTML = caps.map((c,i)=>`<figure><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="${sky[i]}"/>${i===3?'<circle cx="320" cy="60" r="18" fill="#e9eef6"/>':'<circle cx="320" cy="70" r="26" fill="#f5c451" opacity=".85"/>'}<path d="M0 170 L80 150 L160 162 L240 140 L320 152 L400 138 L400 300 L0 300Z" fill="#0a2852"/><g transform="translate(${50+i*8},${150-i*2})"><rect y="20" width="${220-i*10}" height="30" rx="4" fill="${i%2?'#1d3a66':'#e23b2e'}"/><rect y="12" width="${220-i*10}" height="10" fill="#11161f"/><rect x="10" y="-8" width="40" height="20" fill="#f4f4f4"/></g><path d="M0 220 C 100 210, 200 230, 300 220 S 380 212, 400 220 L400 300 L0 300Z" fill="#0f4a95"/></svg><figcaption>${esc(t(c[0],c[1]))}</figcaption></figure>`).join('');
+}
+function renderCalls(){
+  document.getElementById('calls').innerHTML = CALLS.map((c,i)=>`<button class="callc ${i===curCall?'on':''}" data-i="${i}"><b>${esc(c.v)}</b><small>${esc(c.port)}</small></button>`).join('');
+  const c = CALLS[curCall];
+  const tl = c.ms.map((m,i)=>`<div class="${i<c.stage?'d':i===c.stage?'n':''}"><b>${esc(m[0])}</b>${esc(m[1])}</div>`).join('');
+  document.getElementById('callDetail').innerHTML = `
+   <div class="vh"><div><h3>${esc(c.v)}</h3><p>IMO ${esc(c.imo)} · ${esc(c.type)} · ${esc(c.port)}</p></div><span class="st ${c.stage?'st-ok':'st-w'}" style="font-size:13px;padding:6px 12px">${c.stage?esc(t('Operations in progress','Operaciones en curso')):esc(t('Expected','Prevista'))}</span></div>
+   <div class="tl">${tl}</div>
+   <div class="c3">
+     <div class="mini"><h4>${esc(t('Services','Servicios'))}</h4>${c.sv.map(s=>`<div class="r"><span>${esc(s[0])}</span><span class="st ${s[2]}">${esc(s[1])}</span></div>`).join('')}</div>
+     <div class="mini"><h4>${esc(t('Documents','Documentos'))}</h4>${['Proforma DA','Statement of Facts','Bunker delivery note'].map(d=>`<div class="r"><span class="doc"><i></i>${esc(d)}</span><button class="dl" type="button">${esc(t('View','Ver'))}</button></div>`).join('')}</div>
+     <div class="mini"><h4>${esc(t('Agent on duty','Agente de guardia'))}</h4><div class="r"><span>Las Palmas</span><span>24 h</span></div><div class="r"><span>+34 928 463 183</span></div><div class="r"><span>${esc(t('Avg. reply','Respuesta media'))}</span><span class="st st-ok">&lt; 15 min</span></div></div>
+   </div>
+   <div class="chat"><h4 style="font-size:15px;margin-bottom:10px">${esc(t('Messages with the agency','Mensajes con la agencia'))}</h4><div class="msgs" id="callMsgs"><div class="m them"><small>Duty agent · 09:05</small>${esc(c.msg)}</div></div><form class="send" id="callSend"><input id="callIn" placeholder="${esc(t('Write to the agent…','Escriba al agente…'))}"><button class="btn btn-p">${esc(t('Send','Enviar'))}</button></form></div>`;
+}
+function renderTables(){
+  const docs=[['Proforma DA','MV Atlantic Dawn','01 Dec 2026'],['Statement of Facts','MT Nordic Star','02 Dec 2026'],['MARPOL certificate','MV Baltic Trader','30 Nov 2026'],['Final DA','MV Baltic Trader','30 Nov 2026'],['Crew list','MV Atlantic Dawn','01 Dec 2026']];
+  document.getElementById('docRows').innerHTML = docs.map(d=>`<tr><td><span class="doc"><i></i>${esc(d[0])}</span></td><td>${esc(d[1])}</td><td style="white-space:nowrap">${esc(d[2])}</td><td><button class="dl" type="button">${esc(t('Download','Descargar'))}</button></td></tr>`).join('');
+  const h=[['MV Baltic Trader','Las Palmas','29 Nov','30 Nov',t('Closed','Cerrada')],['MV Atlantic Hope','Tenerife','21 Nov','22 Nov',t('Closed','Cerrada')],['MT Nordic Wind','Las Palmas','14 Nov','15 Nov',t('Closed','Cerrada')],['FV Ocean Pride','Las Palmas','02 Nov','05 Nov',t('Closed','Cerrada')]];
+  document.getElementById('histRows').innerHTML = h.map(r=>`<tr>${r.map((c,i)=>`<td${i>1&&i<4?' style="white-space:nowrap"':''}>${i===4?`<span class="st st-n" style="justify-self:start">${esc(c)}</span>`:esc(c)}</td>`).join('')}</tr>`).join('');
+  const n=[[t('ETA and arrival confirmed','ETA y llegada confirmadas'),1],[t('All fast / commenced operations','Atraque e inicio de operaciones'),1],[t('Bunkering completed','Fin de suministro'),1],[t('ETD and departure','ETD y salida'),1],[t('Final DA ready','Cuenta final disponible'),1],[t('Daily summary by email','Resumen diario por correo'),0]];
+  document.getElementById('notifs').innerHTML = n.map((x,i)=>`<div class="notif"><span>${esc(x[0])}<small style="display:block;color:var(--grey);font-weight:600">Email + WhatsApp</small></span><button type="button" class="sw ${x[1]?'on':''}" aria-label="toggle" data-n="${i}"></button></div>`).join('');
+}
+
+/* i18n */
+const i18nEls = [...document.querySelectorAll('[data-es]')];
+i18nEls.forEach(el=>el.dataset.en = el.innerHTML);
+function setLang(l){
+  L.lang=l; document.documentElement.lang=l;
+  i18nEls.forEach(el=>el.innerHTML = l==='es'?el.dataset.es:el.dataset.en);
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  document.getElementById('botIn').placeholder = t('Type your question…','Escriba su pregunta…');
+  renderBoard(); renderServices(document.querySelector('#filter .on')?.dataset.f||'all'); renderPills(); renderGallery(); renderCalls(); renderTables(); renderQs(); stepTitle();
+  try{localStorage.setItem('co-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+
+/* routing */
+const PAGES=['home','services','ports','about','media','request','portal','contact'];
+function route(){
+  const h=(location.hash||'#home').slice(1); const p=PAGES.includes(h)?h:'home';
+  document.querySelectorAll('.page').forEach(s=>s.classList.toggle('on',s.id==='p-'+p));
+  document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+p));
+  document.getElementById('nav').classList.remove('open');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+document.getElementById('burger').addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));
+
+/* services filter */
+document.getElementById('filter').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#filter button').forEach(x=>x.classList.toggle('on',x===b));renderServices(b.dataset.f)});
+
+/* request form */
+let step=1;
+const titles={1:['1 · Vessel','1 · Buque'],2:['2 · Port call','2 · Escala'],3:['3 · Your details','3 · Sus datos']};
+function stepTitle(){document.getElementById('stepTitle').textContent=t(...titles[step]);document.getElementById('next').textContent=step<3?t('Next →','Siguiente →'):t('Send request','Enviar solicitud');document.getElementById('back').textContent=t('← Back','← Atrás')}
+function showStep(){document.querySelectorAll('.fstep').forEach(f=>f.classList.toggle('on',+f.dataset.s===step));document.querySelectorAll('.steps span').forEach((s,i)=>s.classList.toggle('on',i<step));document.getElementById('back').style.visibility=step>1?'visible':'hidden';stepTitle()}
+function valid(){const req=[...document.querySelectorAll(`.fstep[data-s="${step}"] [required]`)];let ok=true;req.forEach(i=>{const bad=!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value));i.style.borderColor=bad?'var(--bad)':'';if(bad)ok=false});document.getElementById('err').style.display=ok?'none':'block';return ok}
+document.getElementById('next').addEventListener('click',()=>{if(!valid())return;if(step<3){step++;showStep()}else{document.getElementById('reqSteps').style.display='none';document.getElementById('done').style.display='block';const port=document.getElementById('c1').value.startsWith('Las')?'LPA':'TFE';document.getElementById('refNo').textContent=`PC-${port}-${new Date().getFullYear()}-${String(Math.floor(1000+Math.random()*9000))}`;
+  const v=document.getElementById('v1').value.trim()||'Your vessel'; CALLS.unshift({v,imo:document.getElementById('v2').value.trim(),type:document.getElementById('v3').value,port:document.getElementById('c1').value,stage:0,ms:[['ETA',document.getElementById('c2').value.replace('T',' ')],['NOR tendered','—'],['All fast','—'],['Operations','—'],['Docs','—'],['ETD','—']],sv:[...document.querySelectorAll('#pills input:checked')].map(i=>[document.querySelectorAll('#pills label')[i.value].textContent,t('Requested','Solicitado'),'st-n']).slice(0,4).concat([[t('Proforma DA','Proforma'),t('Preparing','Preparando'),'st-w']]),msg:t('Request received. Our duty agent is preparing your proforma DA.','Solicitud recibida. El agente de guardia está preparando su proforma.')});curCall=0;renderCalls();}});
+document.getElementById('back').addEventListener('click',()=>{step--;showStep()});
+document.getElementById('again').addEventListener('click',()=>{document.getElementById('reqForm').reset();step=1;showStep();document.getElementById('reqSteps').style.display='block';document.getElementById('done').style.display='none';setEta()});
+document.getElementById('files').addEventListener('change',e=>{document.getElementById('fileList').textContent=[...e.target.files].map(f=>f.name).join(' · ')});
+function setEta(){const d=new Date(Date.now()+864e5*3);d.setHours(6,30,0,0);const p=n=>String(n).padStart(2,'0');document.getElementById('c2').value=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T06:30`}
+
+/* portal */
+document.getElementById('login').addEventListener('submit',e=>{e.preventDefault();document.getElementById('login').style.display='none';document.getElementById('app').classList.add('on')});
+document.getElementById('logout').addEventListener('click',()=>{document.getElementById('app').classList.remove('on');document.getElementById('login').style.display='block'});
+document.querySelector('.aside').addEventListener('click',e=>{const b=e.target.closest('button[data-v]');if(!b)return;document.querySelectorAll('.aside button[data-v]').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pview').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v))});
+document.getElementById('calls').addEventListener('click',e=>{const b=e.target.closest('.callc');if(!b)return;curCall=+b.dataset.i;renderCalls()});
+document.getElementById('callDetail').addEventListener('submit',e=>{if(e.target.id!=='callSend')return;e.preventDefault();const i=document.getElementById('callIn');if(!i.value.trim())return;const box=document.getElementById('callMsgs');box.insertAdjacentHTML('beforeend',`<div class="m me"><small>${esc(t('You','Usted'))}</small>${esc(i.value)}</div>`);i.value='';setTimeout(()=>{box.insertAdjacentHTML('beforeend',`<div class="m them"><small>Duty agent</small>${esc(t('Noted, thank you. We will confirm shortly.','Recibido, gracias. Le confirmamos en breve.'))}</div>`);box.scrollTop=box.scrollHeight},900);box.scrollTop=box.scrollHeight});
+document.getElementById('notifs').addEventListener('click',e=>{const b=e.target.closest('.sw');if(b)b.classList.toggle('on')});
+
+/* contact */
+document.getElementById('cForm').addEventListener('submit',e=>{e.preventDefault();const req=[...e.target.querySelectorAll('[required]')];let ok=true;req.forEach(i=>{const bad=!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value));i.style.borderColor=bad?'var(--bad)':'';if(bad)ok=false});document.getElementById('cerr').style.display=ok?'none':'block';if(ok){[...e.target.children].forEach(c=>{if(c.id!=='cdone')c.style.display='none'});document.getElementById('cdone').style.display='block'}});
+
+/* assistant */
+const KB=[
+ {q:['crew','tripul','relevo','visa'],en:'Yes, we handle crew changes 24/7, Sundays and holidays included. Send us crew particulars and flight details and the duty agent will arrange visas, hotel and transfers.',es:'Sí, gestionamos relevos de tripulación 24/7, también domingos y festivos. Envíenos los datos de la tripulación y los vuelos y el agente de guardia se encarga de visados, hotel y traslados.'},
+ {q:['bunker','fuel','combust','gasoil','mgo','vlsfo'],en:'Las Palmas is the 2nd port in Spain in bunker supply. Several grades are available ex-pipe or by barge, 24 hrs. Tell us grade, quantity and ETA and we will arrange it.',es:'Las Palmas es el 2º puerto de España en suministro de combustible. Hay varios grados por tubería o gabarra, 24 h. Indíquenos grado, cantidad y ETA y lo organizamos.'},
+ {q:['spare','repuesto','custom','aduana','airport','aeropuerto'],en:'Our customs office at Las Palmas airport is open 24 hrs, holidays included. Spares are usually cleared and handled about 2 hrs after landing.',es:'Nuestra oficina de aduanas en el aeropuerto de Las Palmas abre 24 h, festivos incluidos. Los repuestos se despachan normalmente unas 2 h después del aterrizaje.'},
+ {q:['proforma','pda','cost','price','precio','coste','da'],en:'We will send you a proforma DA as soon as we have the vessel details and services. You can request it here: Port call request.',es:'Le enviamos la proforma en cuanto tengamos los datos del buque y los servicios. Puede pedirla aquí: Solicitar escala.'},
+ {q:['tenerife','santa cruz'],en:'Yes, we have a branch office in Tenerife with long experience and its own customs agency at the airport.',es:'Sí, tenemos delegación en Tenerife, con larga experiencia y agencia de aduanas propia en el aeropuerto.'}
+];
+const QS=[['Crew change this Sunday?','¿Relevo este domingo?'],['Bunkers in Las Palmas','Combustible en Las Palmas'],['Spares by air','Repuestos por avión'],['Request a proforma','Pedir proforma']];
+const botMsgs=document.getElementById('botMsgs');
+function say(who,txt){botMsgs.insertAdjacentHTML('beforeend',`<div class="m ${who==='me'?'me':'them'}">${esc(txt)}</div>`);botMsgs.scrollTop=botMsgs.scrollHeight}
+function answer(q){const s=q.toLowerCase();const hit=KB.find(k=>k.q.some(w=>s.includes(w)));setTimeout(()=>say('bot',hit?hit[L.lang]:t('Thanks for your message. I have passed it to our duty agent, who will reply shortly. For urgent matters call +34 928 463 183.','Gracias por su mensaje. Se lo paso al agente de guardia, que le responderá enseguida. Para urgencias llame al +34 928 463 183.')),650)}
+function renderQs(){document.getElementById('qs').innerHTML=QS.map(q=>`<button type="button">${esc(t(q[0],q[1]))}</button>`).join('');if(!botMsgs.children.length||botMsgs.dataset.fresh==='1'){botMsgs.innerHTML='';say('bot',t('Hello! I am the Ortiz assistant. Ask me about port calls, bunkers, crew changes or spares, in any language.','¡Hola! Soy el asistente de Ortiz. Pregúnteme por escalas, combustible, relevos o repuestos, en cualquier idioma.'));botMsgs.dataset.fresh='1'}}
+document.getElementById('qs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;botMsgs.dataset.fresh='0';say('me',b.textContent);answer(b.textContent)});
+document.getElementById('botForm').addEventListener('submit',e=>{e.preventDefault();const i=document.getElementById('botIn');if(!i.value.trim())return;botMsgs.dataset.fresh='0';say('me',i.value);answer(i.value);i.value=''});
+document.getElementById('botOpen').addEventListener('click',()=>document.getElementById('bot').classList.toggle('on'));
+document.getElementById('botClose').addEventListener('click',()=>document.getElementById('bot').classList.remove('on'));
+
+/* init */
+let saved='en';try{saved=localStorage.getItem('co-lang')||'en'}catch(e){}
+setEta(); setLang(saved==='es'?'es':'en'); showStep(); route();
+}
+</script>
+</body>
+</html>

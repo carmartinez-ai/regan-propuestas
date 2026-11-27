@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta para Consignaciones Ortiz · Regan Consulting</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0a64f0; --blue-d:#0748b3; --navy:#071a33; --navy-2:#0d2747;
+  --grey:#5f6670; --line:#dfe5ee; --bg:#f4f7fb; --ok:#14a36b; --warn:#e8a317; --bad:#d6453d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,Arial,sans-serif;font-weight:500;color:var(--navy);background:#fff;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,3.6vw,40px)}
+.eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.lead{font-size:18px;color:#364152;max-width:720px}
+section{padding:88px 0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.brand small{font-weight:600;color:var(--grey)}
+.topbar nav a{font-size:14px;font-weight:700;text-decoration:none;margin-left:22px;color:#364152}
+.topbar nav a:hover{color:var(--blue)}
+
+/* wordmark */
+.wm{display:inline-flex;align-items:flex-end;gap:2px;font-weight:700;color:#6b6b6b;letter-spacing:-.01em;position:relative}
+.wm b{color:var(--blue);font-weight:800;font-style:italic;font-size:1.5em;line-height:.9}
+.wm svg{position:absolute;right:-6px;top:-16px}
+
+/* hero */
+.hero{background:linear-gradient(180deg,#0a1f3d 0%,#0d3770 70%,#0f4a95 100%);color:#fff;padding:96px 0 0;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(36px,5.4vw,62px);max-width:860px}
+.hero h1 span{color:#7fb2ff}
+.hero p{font-size:19px;color:#cfe0ff;max-width:690px;margin-top:20px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.sea{display:block;width:100%;margin-top:40px}
+
+/* diagnosis */
+.diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:40px}
+.dcard{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff;position:relative}
+.dcard .tag{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;display:inline-block;margin-bottom:12px}
+.t-bad{background:#fde8e6;color:var(--bad)} .t-warn{background:#fdf2dc;color:#a76f00}
+.dcard h3{font-size:18px;margin-bottom:6px}
+.dcard p{font-size:15px;color:#4b5563}
+.callout{margin-top:26px;background:#fff6f5;border:1px solid #f6c9c4;border-radius:16px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.callout strong{color:var(--bad)}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#f1f3f7;padding:2px 6px;border-radius:5px}
+
+/* browser frame */
+.browser{border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(7,26,51,.35),0 0 0 1px rgba(7,26,51,.08);background:#fff;margin-top:42px}
+.bbar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#eef2f7;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px}.dots i{width:11px;height:11px;border-radius:50%;background:#cfd6e0;display:block}
+.url{flex:1;background:#fff;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#364152;display:flex;align-items:center;gap:8px}
+.url .lock{color:var(--ok)}
+
+/* mock site */
+.ms-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid var(--line)}
+.ms-nav ul{display:flex;gap:24px;list-style:none;font-size:14px;font-weight:700;color:#364152}
+.lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:12.5px;font-weight:800}
+.lang button{border:0;background:#fff;padding:6px 10px;cursor:pointer;font:inherit;color:var(--grey)}
+.lang button.on{background:var(--navy);color:#fff}
+.ms-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:0;min-height:420px}
+.ms-hero .l{padding:54px 40px;background:linear-gradient(160deg,#071a33,#0b3a78);color:#fff;display:flex;flex-direction:column;justify-content:center}
+.ms-hero .l h3{font-size:clamp(26px,3.2vw,40px)}
+.ms-hero .l p{color:#cfe0ff;margin-top:14px;font-size:16px;max-width:460px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:10px;font-weight:800;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:var(--blue-d)}
+.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.ms-hero .r{background:#0b2f60;position:relative;overflow:hidden}
+.live{position:absolute;left:22px;right:22px;bottom:22px;background:#fff;border-radius:14px;padding:16px 18px;color:var(--navy);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.live .h{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:6px;box-shadow:0 0 0 0 rgba(20,163,107,.6);animation:p 1.8s infinite}
+@keyframes p{70%{box-shadow:0 0 0 9px rgba(20,163,107,0)}100%{box-shadow:0 0 0 0 rgba(20,163,107,0)}}
+.live .row{display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:7px 0;border-top:1px solid #eef1f5}
+.live .row:first-of-type{border-top:0}
+.st{font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px}
+.st-ok{background:#e3f6ee;color:var(--ok)}.st-b{background:#e5efff;color:var(--blue)}.st-w{background:#fdf2dc;color:#a76f00}
+.ms-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.ms-strip div{padding:22px 26px;border-right:1px solid var(--line)}
+.ms-strip div:last-child{border-right:0}
+.ms-strip b{display:block;font-size:26px;font-weight:800;color:var(--blue)}
+.ms-strip span{font-size:13.5px;color:var(--grey);font-weight:600}
+.ms-sv{padding:42px 32px;background:var(--bg)}
+.ms-sv h4{font-size:22px;font-weight:800;margin-bottom:18px}
+.svgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.sv .ic{width:38px;height:38px;border-radius:10px;background:#e8f0ff;display:grid;place-items:center;margin-bottom:10px}
+.sv b{display:block;font-size:15.5px;font-weight:800}
+.sv span{font-size:13.5px;color:var(--grey)}
+
+/* two col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 20px 50px -30px rgba(7,26,51,.35)}
+.panel h4{font-size:19px;font-weight:800;margin-bottom:4px}
+.panel .sub{font-size:14px;color:var(--grey);margin-bottom:18px}
+label{display:block;font-size:12.5px;font-weight:800;color:#364152;margin:12px 0 5px;text-transform:uppercase;letter-spacing:.05em}
+input,select{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-weight:600;color:var(--navy);background:#fff}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.checks label{margin:0;text-transform:none;letter-spacing:0;font-size:13.5px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.checks input{width:auto;accent-color:var(--blue)}
+.ok-msg{display:none;margin-top:16px;background:#e9f8f1;border:1px solid #b6e6cf;color:#0b6b45;border-radius:12px;padding:14px 16px;font-size:14.5px;font-weight:700}
+.feat{list-style:none;margin-top:22px}
+.feat li{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15.5px}
+.feat li:first-child{border-top:0}
+.feat .n{flex:0 0 28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+
+/* portal */
+.portal{display:grid;grid-template-columns:230px 1fr;min-height:470px}
+.side{background:var(--navy);color:#cfe0ff;padding:22px 16px;font-size:14px;font-weight:700}
+.side .it{padding:10px 12px;border-radius:9px;margin-bottom:4px;cursor:default}
+.side .it.on{background:rgba(255,255,255,.1);color:#fff}
+.main{padding:26px 28px;background:var(--bg)}
+.vhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.vhead h4{font-size:22px;font-weight:800}
+.vhead p{font-size:14px;color:var(--grey);font-weight:600}
+.tl{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:26px 0 22px;position:relative}
+.tl div{text-align:center;position:relative;font-size:12.5px;font-weight:700;color:var(--grey)}
+.tl div::before{content:"";display:block;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #c7d0dc;margin:0 auto 8px;position:relative;z-index:2}
+.tl div::after{content:"";position:absolute;top:7px;left:-50%;width:100%;height:3px;background:#c7d0dc;z-index:1}
+.tl div:first-child::after{display:none}
+.tl .done::before{background:var(--blue);border-color:var(--blue)}
+.tl .done::after{background:var(--blue)}
+.tl .now::before{border-color:var(--blue);box-shadow:0 0 0 5px rgba(10,100,240,.15)}
+.tl .now::after{background:var(--blue)}
+.tl b{display:block;color:var(--navy);font-size:13px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mini h5{font-size:12px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.mini .r{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;padding:4px 0}
+.doc{display:flex;align-items:center;gap:8px}
+.doc i{width:22px;height:26px;border-radius:4px;background:#e5efff;display:inline-block;position:relative}
+.doc i::after{content:"PDF";position:absolute;bottom:3px;left:2px;font-size:7px;font-style:normal;font-weight:800;color:var(--blue)}
+.msg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;margin-top:12px;display:flex;gap:10px}
+.msg .av{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;flex:0 0 30px}
+
+/* extras */
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:40px}
+.ex{border-radius:18px;padding:26px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+.ex .ic{width:46px;height:46px;border-radius:12px;background:var(--navy);display:grid;place-items:center;margin-bottom:16px}
+.ex h3{font-size:20px;margin-bottom:8px}
+.ex p{font-size:15px;color:#4b5563}
+.bubble{margin-top:16px;background:var(--bg);border-radius:12px;padding:12px 14px;font-size:13.5px;font-weight:600}
+.bubble .q{color:var(--grey)}.bubble .a{margin-top:6px}
+
+/* steps */
+.dark{background:var(--navy);color:#fff}
+.dark .lead{color:#cfe0ff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.step{border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:26px;background:rgba(255,255,255,.04)}
+.step .num{font-size:40px;font-weight:800;color:#7fb2ff}
+.step h3{font-size:20px;margin:6px 0 8px}
+.step p{color:#cfe0ff;font-size:15px}
+.cta{margin-top:46px;display:flex;flex-wrap:wrap;gap:12px}
+footer{padding:28px 0;font-size:13.5px;color:var(--grey);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (max-width:900px){
+  .ms-hero,.two,.portal{grid-template-columns:1fr}
+  .ms-hero .r{min-height:300px}
+  .svgrid,.cards3,.steps{grid-template-columns:1fr}
+  .ms-strip{grid-template-columns:1fr 1fr}
+  .ms-strip div:nth-child(2){border-right:0}
+  .side{display:none}
+  .tl{grid-template-columns:repeat(3,1fr);row-gap:18px}
+  .tl div:nth-child(4)::after{display:none}
+  .ms-nav ul,.topbar nav{display:none}
+  section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">Regan Consulting <small>· Propuesta para Consignaciones Ortiz</small></div>
+  <nav><a href="#diagnostico">Diagnóstico</a><a href="#web">Nueva web</a><a href="#portal">Portal de escalas</a><a href="#mas">Más mejoras</a><a href="#pasos">Siguientes pasos</a></nav>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#7fb2ff">Propuesta para Consignaciones Ortiz, S.L.</div>
+    <h1 style="margin-top:14px">Atienden buques las 24 horas desde 1984. <span>Su web debería trabajar igual.</span></h1>
+    <p>Hemos preparado una idea de cómo podría ser la presencia digital de Consignaciones Ortiz: una web moderna y bilingüe, un formulario de solicitud de escala que de verdad llegue a su bandeja y un portal donde armadores y fletadores sigan cada escala sin tener que llamar.</p>
+    <div class="meta">
+      <span class="chip">⚓ Las Palmas y Tenerife</span>
+      <span class="chip">🕐 Servicio 24 h, todo el año</span>
+      <span class="chip">🌍 Clientes internacionales</span>
+    </div>
+    <div style="margin-top:28px"><a class="btn btn-p" href="web/">Ver la demo completa de la web →</a></div>
+  </div>
+  <svg class="sea" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <g transform="translate(760,40)">
+      <rect x="40" y="70" width="430" height="58" rx="6" fill="#e23b2e"/>
+      <rect x="40" y="58" width="430" height="22" fill="#11161f"/>
+      <path d="M470 58 L520 58 L500 128 L470 128 Z" fill="#11161f"/>
+      <path d="M470 80 L512 80 L500 128 L470 128 Z" fill="#e23b2e"/>
+      <path d="M40 58 L10 58 L28 128 L40 128 Z" fill="#11161f"/>
+      <rect x="40" y="24" width="72" height="34" fill="#f4f4f4"/>
+      <rect x="58" y="6" width="38" height="20" fill="#f4f4f4"/>
+      <rect x="70" y="-8" width="10" height="16" fill="#e8b21c"/>
+      <g fill="#e8b21c">
+        <rect x="160" y="18" width="10" height="40"/><rect x="250" y="18" width="10" height="40"/><rect x="340" y="18" width="10" height="40"/><rect x="420" y="18" width="10" height="40"/>
+      </g>
+      <g stroke="#e8b21c" stroke-width="4"><line x1="165" y1="22" x2="210" y2="44"/><line x1="255" y1="22" x2="300" y2="44"/><line x1="345" y1="22" x2="390" y2="44"/></g>
+    </g>
+    <path d="M0 150 C 240 130, 480 170, 720 150 S 1200 130, 1440 150 L1440 220 L0 220 Z" fill="#ffffff"/>
+    <path d="M0 165 C 240 150, 520 185, 760 165 S 1220 150, 1440 168 L1440 220 L0 220 Z" fill="#ffffff" opacity=".6"/>
+  </svg>
+</header>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <div class="eyebrow">Lo que hemos visto en consignacionesortiz.com</div>
+    <h2 style="margin-top:10px">Una web que se quedó en 2010</h2>
+    <p class="lead" style="margin-top:14px">La trayectoria de la agencia es impecable; la web no le hace justicia. Estos son los puntos que nos han llamado la atención al revisarla:</p>
+
+    <div class="callout">
+      <div style="font-size:26px">⚠️</div>
+      <div><strong>El formulario de «Contact Us» no envía nada.</strong> En el código de la página la instrucción de envío está desactivada (<code>&lt;!--action="send_form.php"…--&gt;</code>), así que cuando un armador o fletador rellena sus datos y pulsa «Send Message», el mensaje no llega a ninguna parte. Es muy probable que se estén perdiendo solicitudes sin que nadie lo sepa.</div>
+    </div>
+
+    <div class="diag">
+      <div class="dcard"><span class="tag t-bad">Seguridad</span><h3>Sin conexión segura</h3><p>La web solo funciona por <code>http://</code>. Chrome y Safari la marcan como «No segura», algo que un cliente corporativo extranjero nota enseguida.</p></div>
+      <div class="dcard"><span class="tag t-bad">Móvil</span><h3>No se adapta al móvil</h3><p>No está preparada para pantallas pequeñas, justo donde capitanes y operadores consultan a cualquier hora.</p></div>
+      <div class="dcard"><span class="tag t-warn">Tecnología</span><h3>Componentes obsoletos</h3><p>Usa una versión de jQuery de 2010 y conserva el botón de Google+, una red social que Google cerró en 2019.</p></div>
+      <div class="dcard"><span class="tag t-warn">Visibilidad</span><h3>Poco visible en Google</h3><p>No tiene descripción para buscadores ni versión en español: quien busca «consignatario Las Palmas» difícilmente llega a ustedes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="web" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="eyebrow">Solución principal · 1</div>
+    <h2 style="margin-top:10px">Así podría verse su nueva web</h2>
+    <p class="lead" style="margin-top:14px">Con su logotipo y su azul de siempre, segura, rápida en el móvil y en inglés y español. Pensada para que un armador entienda en diez segundos qué hacen, dónde y cómo pedirles una escala.</p>
+    <div style="margin-top:22px"><a class="btn btn-p" href="web/">Ver la demo completa de la web →</a></div>
+
+    <div class="browser">
+      <div class="bbar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><span class="lock">🔒</span>https://www.consignacionesortiz.com</div></div>
+      <div class="ms-nav">
+        <img src="data:image/png;base64,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" alt="Consignaciones Ortiz" width="200" height="80" style="display:block;height:64px;width:auto">
+        <ul><li>Services</li><li>Ports</li><li>Port call request</li><li>Owners' portal</li><li>Contact</li></ul>
+        <div class="lang"><button class="on" data-l="en">EN</button><button data-l="es">ES</button></div>
+      </div>
+      <div class="ms-hero">
+        <div class="l">
+          <div class="eyebrow" style="color:#7fb2ff" data-en="Ship's agents · Las Palmas &amp; Tenerife" data-es="Consignatarios de buques · Las Palmas y Tenerife">Ship's agents · Las Palmas &amp; Tenerife</div>
+          <h3 style="margin-top:12px" data-en="The soonest ship served, the soonest we rest." data-es="Buque atendido cuanto antes, descanso cuanto antes.">The soonest ship served, the soonest we rest.</h3>
+          <p data-en="Family-run agency since 1984. Port calls, bunkers, crew changes, spares and 24 h customs clearance at Las Palmas airport." data-es="Agencia familiar desde 1984. Escalas, combustible, cambios de tripulación, repuestos y despacho de aduanas 24 h en el aeropuerto de Las Palmas.">Family-run agency since 1984. Port calls, bunkers, crew changes, spares and 24 h customs clearance at Las Palmas airport.</p>
+          <div class="btns">
+            <a class="btn btn-p" href="#solicitud" data-en="Request a port call →" data-es="Solicitar escala →">Request a port call →</a>
+            <a class="btn btn-g" href="#portal" data-en="Owners' portal" data-es="Portal de armadores">Owners' portal</a>
+          </div>
+        </div>
+        <div class="r">
+          <svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="400" height="300" fill="#0b2f60"/>
+            <circle cx="320" cy="60" r="34" fill="#f5c451" opacity=".9"/>
+            <path d="M0 170 L60 150 L120 162 L200 138 L260 150 L320 132 L400 146 L400 300 L0 300Z" fill="#0a2852"/>
+            <g transform="translate(70,150)"><rect x="0" y="22" width="230" height="30" rx="4" fill="#e23b2e"/><rect x="0" y="14" width="230" height="12" fill="#11161f"/><rect x="8" y="-4" width="40" height="18" fill="#f4f4f4"/><g fill="#e8b21c"><rect x="80" y="-6" width="6" height="20"/><rect x="130" y="-6" width="6" height="20"/><rect x="180" y="-6" width="6" height="20"/></g></g>
+            <path d="M0 205 C 80 195, 160 215, 240 205 S 360 195, 400 205 L400 300 L0 300Z" fill="#0d4a95"/>
+          </svg>
+          <div class="live">
+            <div class="h"><span><span class="pulse"></span><span data-en="Today in port" data-es="Hoy en puerto">Today in port</span></span><span>LPA · TFE</span></div>
+            <div class="row"><span>Bulk carrier · Berth 12</span><span class="st st-ok">All fast</span></div>
+            <div class="row"><span>Tanker · Anchorage</span><span class="st st-b">Bunkering</span></div>
+            <div class="row"><span>Reefer · Tenerife</span><span class="st st-w">Expected</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ms-strip">
+        <div><b>1984</b><span data-en="Serving ships since" data-es="Atendiendo buques desde">Serving ships since</span></div>
+        <div><b>24/7</b><span data-en="Operations, all year round" data-es="Operaciones todo el año">Operations, all year round</span></div>
+        <div><b>2 h</b><span data-en="Airport customs clearance" data-es="Despacho aduanero en aeropuerto">Airport customs clearance</span></div>
+        <div><b>LPA · TFE</b><span data-en="Offices in both ports" data-es="Oficinas en ambos puertos">Offices in both ports</span></div>
+      </div>
+      <div class="ms-sv">
+        <h4 data-en="Everything your vessel needs in port" data-es="Todo lo que su buque necesita en puerto">Everything your vessel needs in port</h4>
+        <div class="svgrid">
+          <div class="sv"><div class="ic">⛽</div><b data-en="Bunkers &amp; lubes" data-es="Combustible y lubricantes">Bunkers &amp; lubes</b><span data-en="Ex-pipe or by barge, 24 h" data-es="Por tubería o gabarra, 24 h">Ex-pipe or by barge, 24 h</span></div>
+          <div class="sv"><div class="ic">👥</div><b data-en="Crew changes" data-es="Cambios de tripulación">Crew changes</b><span data-en="Visas, flights, hotels, transfers" data-es="Visados, vuelos, hotel y traslados">Visas, flights, hotels, transfers</span></div>
+          <div class="sv"><div class="ic">📦</div><b data-en="Spares &amp; customs" data-es="Repuestos y aduanas">Spares &amp; customs</b><span data-en="Cleared 2 h after landing" data-es="Despachados 2 h tras el aterrizaje">Cleared 2 h after landing</span></div>
+          <div class="sv"><div class="ic">🧭</div><b data-en="Pilots, tugs &amp; mooring" data-es="Prácticos, remolque y amarre">Pilots, tugs &amp; mooring</b><span data-en="Coordinated with the Master" data-es="Coordinados con el capitán">Coordinated with the Master</span></div>
+          <div class="sv"><div class="ic">🛠️</div><b data-en="Drydock &amp; repairs" data-es="Varada y reparaciones">Drydock &amp; repairs</b><span data-en="Shipyards and afloat repairs" data-es="Astilleros y reparaciones a flote">Shipyards and afloat repairs</span></div>
+          <div class="sv"><div class="ic">♻️</div><b data-en="MARPOL &amp; waste" data-es="MARPOL y residuos">MARPOL &amp; waste</b><span data-en="Sludge, garbage, certificates" data-es="Lodos, basuras y certificados">Sludge, garbage, certificates</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solicitud">
+  <div class="wrap two">
+    <div>
+      <div class="eyebrow">Solución principal · 2</div>
+      <h2 style="margin-top:10px">Una solicitud de escala que sí llega</h2>
+      <p class="lead" style="margin-top:14px">En lugar de un formulario genérico que hoy no envía, uno pensado para su trabajo: el cliente indica buque, puerto, ETA y servicios, y ustedes lo reciben ordenado en el correo, en el móvil de guardia y en su panel.</p>
+      <ul class="feat">
+        <li><span class="n">1</span><span>Aviso inmediato a la persona de guardia, también de madrugada o en festivo.</span></li>
+        <li><span class="n">2</span><span>Respuesta automática al cliente en su idioma, con número de referencia.</span></li>
+        <li><span class="n">3</span><span>Los datos pasan directamente a la ficha de la escala, sin copiar a mano.</span></li>
+        <li><span class="n">4</span><span>Opción de adjuntar documentos del buque (Q88, crew list, etc.).</span></li>
+      </ul>
+    </div>
+    <form class="panel" id="pcform" onsubmit="return sendReq(event)">
+      <h4>Port call request</h4>
+      <div class="sub">Pruébelo: así lo vería un armador.</div>
+      <div class="g2">
+        <div><label>Vessel name</label><input required value="MV Atlantic Dawn"></div>
+        <div><label>IMO</label><input value="9412345"></div>
+      </div>
+      <div class="g2">
+        <div><label>Port</label><select><option>Las Palmas</option><option>Santa Cruz de Tenerife</option></select></div>
+        <div><label>ETA</label><input type="datetime-local" value="2026-12-03T06:30"></div>
+      </div>
+      <label>Services required</label>
+      <div class="checks">
+        <label><input type="checkbox" checked> Bunkers</label>
+        <label><input type="checkbox" checked> Crew change</label>
+        <label><input type="checkbox"> Spares</label>
+        <label><input type="checkbox"> Fresh water</label>
+        <label><input type="checkbox"> Sludge</label>
+        <label><input type="checkbox"> Repairs</label>
+      </div>
+      <div class="g2">
+        <div><label>Company</label><input value="Atlantic Shipping Ltd."></div>
+        <div><label>Email</label><input type="email" value="ops@atlanticshipping.example"></div>
+      </div>
+      <button class="btn btn-p" style="margin-top:18px;width:100%;justify-content:center">Send request</button>
+      <div class="ok-msg" id="okmsg">✓ Request received · Ref. <span id="ref"></span><br><span style="font-weight:600">Our duty agent has been notified and will send you a proforma DA shortly.</span></div>
+    </form>
+  </div>
+</section>
+
+<section id="portal" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="eyebrow">Solución principal · 3</div>
+    <h2 style="margin-top:10px">Portal de escalas para armadores y fletadores</h2>
+    <p class="lead" style="margin-top:14px">Cada cliente entra con su usuario y ve en tiempo real cómo va su buque: hitos de la escala, servicios contratados, documentos y mensajes. Menos llamadas y correos de «¿cómo vamos?», y una imagen de agencia de primer nivel.</p>
+
+    <div class="browser">
+      <div class="bbar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><span class="lock">🔒</span>portal.consignacionesortiz.com</div></div>
+      <div class="portal">
+        <div class="side">
+          <div style="color:#fff;font-weight:800;margin:0 12px 18px">Owners' portal</div>
+          <div class="it on">⚓ Active port calls</div>
+          <div class="it">📁 Documents</div>
+          <div class="it">🧾 Disbursements</div>
+          <div class="it">💬 Messages</div>
+          <div class="it">🕘 Call history</div>
+        </div>
+        <div class="main">
+          <div class="vhead">
+            <div><h4>MV Atlantic Dawn</h4><p>IMO 9412345 · Bulk carrier · Las Palmas, Berth 12</p></div>
+            <span class="st st-ok" style="font-size:13px;padding:6px 12px">● Operations in progress</span>
+          </div>
+          <div class="tl">
+            <div class="done"><b>ETA</b>02 Dec 06:30</div>
+            <div class="done"><b>NOR tendered</b>06:42</div>
+            <div class="done"><b>All fast</b>08:15</div>
+            <div class="now"><b>Bunkering</b>in progress</div>
+            <div><b>Crew change</b>14:00</div>
+            <div><b>ETD</b>18:00</div>
+          </div>
+          <div class="cards3">
+            <div class="mini"><h5>Services</h5>
+              <div class="r"><span>VLSFO 450 MT</span><span class="st st-b">Ongoing</span></div>
+              <div class="r"><span>Crew change (3)</span><span class="st st-w">14:00</span></div>
+              <div class="r"><span>Fresh water</span><span class="st st-ok">Done</span></div>
+            </div>
+            <div class="mini"><h5>Documents</h5>
+              <div class="r doc"><span class="doc"><i></i>Proforma DA</span></div>
+              <div class="r doc"><span class="doc"><i></i>Statement of Facts</span></div>
+              <div class="r doc"><span class="doc"><i></i>Bunker delivery note</span></div>
+            </div>
+            <div class="mini"><h5>Notifications</h5>
+              <div class="r"><span>Email + WhatsApp</span><span class="st st-ok">On</span></div>
+              <div class="r"><span>Each milestone</span><span class="st st-ok">On</span></div>
+              <div class="r"><span>Final DA ready</span><span class="st st-ok">On</span></div>
+            </div>
+          </div>
+          <div class="msg"><div class="av">CO</div><div><b>Duty agent · 09:05</b><br>Vessel all fast at Berth 12. Bunker barge alongside, pumping started 08:50. Crew change confirmed for 14:00, visas cleared.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mas">
+  <div class="wrap">
+    <div class="eyebrow">Otras mejoras que se pueden implantar</div>
+    <h2 style="margin-top:10px">Y alrededor, todo lo que ahorra horas al equipo</h2>
+    <p class="lead" style="margin-top:14px">Se pueden ir sumando por fases, según lo que más les ayude en el día a día.</p>
+    <div class="extras">
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 4h16v12H7l-3 3z"/></svg></div>
+        <h3>Avisos automáticos de cada escala</h3>
+        <p>ETA, atraque, inicio y fin de operaciones o salida: el armador recibe cada hito por correo o WhatsApp sin que nadie tenga que redactarlo.</p>
+      </div>
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Asistente con IA 24 h, en varios idiomas</h3>
+        <p>Responde al momento las consultas habituales en la web o por WhatsApp y pasa al agente de guardia las que necesitan una persona.</p>
+        <div class="bubble"><div class="q">“Can we do a crew change in Las Palmas this Sunday?”</div><div class="a">“Yes, crew changes are handled 24/7, including Sundays. Please share crew particulars and flight details and our duty agent will confirm…”</div></div>
+      </div>
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div>
+        <h3>Asistente telefónico</h3>
+        <p>Atiende cuando la línea está ocupada o fuera de horario de oficina, en inglés o español, toma los datos del buque y avisa al instante a quien esté de guardia.</p>
+      </div>
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Gestión de escalas y facturación</h3>
+        <p>Del proforma DA a la cuenta final y la factura en un mismo sitio, con proveedores, costes y cobros pendientes de cada escala a la vista.</p>
+      </div>
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div>
+        <h3>CRM de armadores y fletadores</h3>
+        <p>Historial de cada cliente y de cada buque, contactos, escalas anteriores y recordatorios para no perder ninguna oportunidad.</p>
+      </div>
+      <div class="ex">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div>
+        <h3>Reseñas y presencia en Google</h3>
+        <p>Ficha de Google cuidada y un sistema sencillo para que los clientes satisfechos dejen su valoración, que pesa mucho al elegir agencia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos" class="dark">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#7fb2ff">Cómo trabajamos</div>
+    <h2 style="margin-top:10px">Sin compromiso, y empezando por escucharles</h2>
+    <p class="lead" style="margin-top:14px">Regan Consulting es una empresa canaria que crea webs, plataformas de gestión y automatizaciones para negocios de las islas.</p>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Auditoría gratuita</h3><p>Vemos cómo trabajan hoy, qué les quita más tiempo y dónde se escapan solicitudes.</p></div>
+      <div class="step"><div class="num">02</div><h3>Solución a medida</h3><p>Proponemos solo lo que de verdad les sirva y lo montamos por fases, sin interrumpir la operativa.</p></div>
+      <div class="step"><div class="num">03</div><h3>Acompañamiento</h3><p>Formamos al equipo, ajustamos lo que haga falta y seguimos a su lado después del lanzamiento.</p></div>
+    </div>
+    <div class="cta">
+      <a class="btn btn-p" href="mailto:carla@reganconsulting.es?subject=Consignaciones%20Ortiz%20%C2%B7%20Propuesta">Escribir a Carla</a>
+      <a class="btn btn-g" href="https://wa.me/34614262545">WhatsApp · +34 614 26 25 45</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Propuesta preparada por <a href="https://reganconsulting.es">Regan Consulting</a> para Consignaciones Ortiz, S.L. · Las Palmas de Gran Canaria</span><span>Los buques, datos y documentos mostrados son ficticios, solo de ejemplo.</span></div></footer>
+
+<script>
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{
+  const l=b.dataset.l;
+  document.querySelectorAll('.lang button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('[data-'+l+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+l)});
+}));
+function sendReq(e){
+  e.preventDefault();
+  document.getElementById('ref').textContent='PC-LPA-'+(1000+Math.floor(Math.random()*9000));
+  document.getElementById('okmsg').style.display='block';
+  return false;
+}
+</script>
+</body>
+</html>
