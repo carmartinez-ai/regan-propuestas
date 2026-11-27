@@ -18,93 +18,99 @@
 --navy:#15213a;--line:light-dark(#dcd4c6,#2c3547)}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-weight:800;line-height:1.1;text-wrap:balance;margin:0}
+h1,h2,h3{font-weight:700;line-height:1.12;letter-spacing:-.01em;text-wrap:balance;margin:0}
 h1{font-size:clamp(34px,5vw,52px)}h2{font-size:clamp(27px,3.5vw,40px)}h3{font-size:19px;line-height:1.25}
 p{margin:0}
 .band{padding:clamp(36px,5vw,72px) max(5vw,16px)}
 .wrap{max-width:1180px;margin:0 auto}
-.kick{color:var(--brass);font-weight:700;font-size:15px;margin-bottom:12px}
+.kick{color:var(--brass);font-weight:700;font-size:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px}.kick::before{content:"";width:28px;height:2px;background:currentColor}
 .lead{font-size:17px;color:var(--soft);max-width:62ch;margin-top:16px}
 .hero{background:var(--navy);color:#f3efe8}
 .hero .kick{color:#d6b06a}.hero .lead{color:#c9cfdb}
 .hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
 .stat{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.stat div{background:#22304d;border-radius:14px;padding:14px 18px}
+.stat div{background:#22304d;border-radius:4px;padding:14px 18px}
 .stat b{display:block;font-size:26px;color:#e6c47f;white-space:nowrap}
 .stat span{font-size:13px;color:#c2c9d6}
-.diag{background:#f3efe8;color:#15213a;border-radius:18px;padding:24px;box-shadow:0 20px 50px #0007}
+.diag{background:#f3efe8;color:#15213a;border-radius:4px;padding:24px;box-shadow:0 20px 50px #0007}
 .diag h3{margin-bottom:12px}
 .diag ul{list-style:none;margin:0;padding:0}
 .diag li{margin:11px 0;padding-left:28px;position:relative;font-size:15px}
 .diag li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;border:3px solid #a8823f}
 /* maqueta */
-.frame{margin-top:32px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px #15213a33;background:#faf8f4;color:#15213a}
+.frame{margin-top:32px;border-radius:4px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px #15213a33;background:#fff;color:#15213a}
 .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#e4ddd0}
 .bar i{width:11px;height:11px;border-radius:50%;background:#c5baa8}
-.url{flex:1;background:#faf8f4;border-radius:8px;padding:5px 12px;font-size:13px;color:#5d6577;margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.url{flex:1;background:#faf8f4;border-radius:4px;padding:5px 12px;font-size:13px;color:#5d6577;margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px clamp(16px,3vw,36px);flex-wrap:wrap;border-bottom:1px solid #e4ddd0}
 .logo{display:flex;gap:12px;align-items:center;font-weight:800;font-size:17px;line-height:1.2}
-.plate{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#c9a45c,#8e6b2c);color:#15213a;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.plate{width:42px;height:42px;border-radius:2px;background:#15213a;color:#d6b06a;border:1px solid #a8823f;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
 .logo small{display:block;font-weight:600;font-size:12px;color:#94712f}
 .nav nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;font-weight:600;color:#5d6577}
-.lang{display:flex;border:1.5px solid #15213a;border-radius:999px;overflow:hidden}
+.lang{display:flex;border:1.5px solid #15213a;border-radius:4px;overflow:hidden}
 .lang button{border:0;background:transparent;font:700 13px Manrope,sans-serif;padding:7px 12px;cursor:pointer;color:#15213a;min-height:36px}
 .lang button[aria-pressed=true]{background:#15213a;color:#f3efe8}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:0;font:700 15px Manrope,sans-serif;cursor:pointer;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:4px;border:0;font:700 15px Manrope,sans-serif;cursor:pointer;text-decoration:none}
 .btn.dark{background:#15213a;color:#f3efe8}.btn.brass{background:#a8823f;color:#fff}.btn.line{background:transparent;border:2px solid #15213a;color:#15213a}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a8823f;outline-offset:2px}
 .mh{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;padding:clamp(22px,3vw,44px) clamp(16px,3vw,36px) 36px;align-items:center}
 .mh h2{font-size:clamp(30px,4vw,46px)}
 .mh p{color:#5d6577;margin:14px 0 22px;font-size:17px}
-.facade{aspect-ratio:4/5;border-radius:18px;background:repeating-linear-gradient(0deg,#d9d2c5 0 58px,#cfc7b8 58px 60px),#d9d2c5;position:relative;overflow:hidden;box-shadow:0 24px 50px #15213a30}
-.facade::after{content:"";position:absolute;right:0;top:0;bottom:0;width:22%;background:#6e2a22}
-.brassplate{position:absolute;left:12%;top:20%;width:56%;padding:18px 14px;border-radius:6px;background:linear-gradient(135deg,#e0c27f,#a8823f 60%,#c9a45c);color:#2a2112;text-align:center;box-shadow:0 8px 18px #0004}
-.brassplate b{display:block;font-size:13px;letter-spacing:3px}
-.brassplate span{display:block;font-size:17px;font-weight:800;margin-top:6px;line-height:1.2}
-.brassplate small{display:block;font-size:11px;margin-top:8px;font-weight:700}
+.mh{background:#15213a;color:#fff}
+.mh h2{color:#fff}.mh p{color:#c9cfdb!important}
+.mh .btn.line{border-color:#fff;color:#fff}
+.ficha{background:#fff;color:#15213a;border-radius:4px;border-top:4px solid #a8823f;box-shadow:0 24px 50px #0007;padding:22px}
+.ficha h4{margin:0 0 14px;font-size:14px;color:#94712f}
+.ficha dl{margin:0;display:grid;gap:12px}
+.ficha dt{font-size:12px;color:#5d6577;font-weight:600}.ficha dd{margin:2px 0 0;font-weight:700;font-size:15px}
+.ficha .st{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;margin-top:3px}.ficha .st i{width:8px;height:8px;border-radius:50%;background:#2f7a50}
+.ficha .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.ficha .acts span{min-height:40px;display:grid;place-items:center;border-radius:4px;font-weight:700;font-size:14px}
+.mapmini{margin-top:10px;border:1px solid #e4ddd0;border-radius:4px;height:110px;background:linear-gradient(90deg,transparent 47%,#d4cab9 47% 53%,transparent 53%),linear-gradient(0deg,transparent 44%,#d4cab9 44% 50%,transparent 50%),#f4f2ee;position:relative}
+.mapmini::after{content:"";position:absolute;left:calc(50% - 9px);top:calc(47% - 22px);width:18px;height:18px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#6e2a22}
 .info{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:#5d6577}
-.info span{background:#fff;border:1px solid #e4ddd0;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.info span{background:#fff;border:1px solid #e4ddd0;border-radius:4px;padding:6px 12px;white-space:nowrap}
 .sec{padding:28px clamp(16px,3vw,36px);border-top:1px solid #e4ddd0}
 .sec h3{font-size:22px;margin-bottom:6px}
 .sec .sub{color:#5d6577;font-size:15px;margin-bottom:16px}
 .tram{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.chip{min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid #d4cab9;background:#fff;font:600 15px Manrope,sans-serif;color:#15213a;cursor:pointer}
+.chip{min-height:44px;padding:0 16px;border-radius:4px;border:1.5px solid #d4cab9;background:#fff;font:600 15px Manrope,sans-serif;color:#15213a;cursor:pointer}
 .chip[aria-pressed=true]{background:#15213a;color:#f3efe8;border-color:#15213a}
 .docs{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:20px}
-.list{background:#fff;border:1px solid #e4ddd0;border-radius:16px;padding:20px}
+.list{background:#fff;border:1px solid #e4ddd0;border-radius:4px;padding:20px}
 .list label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eee7dc;cursor:pointer;font-size:15px}
 .list label:last-child{border-bottom:0}
 .list input{width:20px;height:20px;margin-top:2px;accent-color:#15213a;flex:none}
-.side{background:#15213a;color:#f3efe8;border-radius:16px;padding:20px;align-self:start}
+.side{background:#15213a;color:#f3efe8;border-radius:4px;padding:20px;align-self:start}
 .side h4{margin:0 0 8px;font-size:17px}
 .side p{color:#c9cfdb;font-size:14px}
 .prog{height:8px;border-radius:9px;background:#2c3a5a;margin:16px 0 8px;overflow:hidden}
 .prog i{display:block;height:100%;width:0;background:#d6b06a;transition:width .3s}
 .side .btn{margin-top:14px;width:100%}
-.wa{margin-top:14px;background:#e6f0e9;border-radius:14px 14px 14px 4px;padding:14px;font-size:14px;color:#1d3a2a;display:none}
+.wa{margin-top:14px;background:#e6f0e9;border-radius:4px 14px 14px 4px;padding:14px;font-size:14px;color:#1d3a2a;display:none}
 .wa.on{display:block}
 .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .form label{font-weight:700;font-size:14px;display:block;margin-bottom:6px}
-input[type=text],select{width:100%;min-height:46px;border-radius:12px;border:1.5px solid #d4cab9;padding:0 14px;font:16px Manrope,sans-serif;background:#fff;color:#15213a}
-.drop{border:2px dashed #b9ad98;border-radius:14px;padding:18px;text-align:center;color:#5d6577;font-size:14px;margin-top:12px;background:#fff}
+input[type=text],select{width:100%;min-height:46px;border-radius:4px;border:1.5px solid #d4cab9;padding:0 14px;font:16px Manrope,sans-serif;background:#fff;color:#15213a}
+.drop{border:2px dashed #b9ad98;border-radius:4px;padding:18px;text-align:center;color:#5d6577;font-size:14px;margin-top:12px;background:#fff}
 .drop b{color:#15213a}
 .foot{background:#15213a;color:#c9cfdb;padding:22px clamp(16px,3vw,36px);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
 .note{font-size:13px;color:var(--soft);margin-top:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px}
 .card svg{width:40px;height:40px;margin-bottom:14px}
 .card p{color:var(--soft);margin-top:8px;font-size:15px}
 .cmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:28px}
-.cmp > div{border-radius:18px;padding:22px;border:1px solid var(--line);background:var(--card)}
+.cmp > div{border-radius:4px;padding:22px;border:1px solid var(--line);background:var(--card)}
 .cmp h3{margin-bottom:12px}
 .cmp ul{margin:0;padding-left:20px;color:var(--soft)}
 .cmp li{margin:8px 0}
 .cmp .now h3{color:#a3332a}.cmp .then h3{color:var(--brass)}
 .cta{background:var(--stone)}
 .ctabox{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:28px;align-items:center}
-.contact{background:var(--card);border-radius:18px;padding:22px;border:1px solid var(--line);font-size:15px}
+.contact{background:var(--card);border-radius:4px;padding:22px;border:1px solid var(--line);font-size:15px}
 .contact a{color:var(--ink);font-weight:700}
-@media(max-width:860px){.hgrid,.mh,.docs,.ctabox,.cmp{grid-template-columns:minmax(0,1fr)}.facade{max-width:320px;margin:0 auto;width:100%}}
+@media(max-width:860px){.hgrid,.mh,.docs,.ctabox,.cmp{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.nav nav{display:none}}
 @media(prefers-reduced-motion:no-preference){.frame{animation:up .7s ease-out both}@keyframes up{from{opacity:0;transform:translateY(24px)}}}
 </style>
@@ -157,14 +163,16 @@ input[type=text],select{width:100%;min-height:46px;border-radius:12px;border:1.5
             <a class="btn brass" href="#cita" data-es="Solicitar cita" data-en="Book an appointment">Solicitar cita</a>
             <a class="btn line" href="#docs" data-es="¿Qué documentación traigo?" data-en="What should I bring?">¿Qué documentación traigo?</a>
           </div>
-          <div class="info">
-            <span>C. Torres, 2 · 35002</span>
-            <span data-es="L–V · 9:00–14:00 y 16:00–19:00" data-en="Mon–Fri · 9:00–14:00 & 16:00–19:00">L–V · 9:00–14:00 y 16:00–19:00</span>
-            <span>928 09 09 90</span>
-          </div>
         </div>
-        <div class="facade" aria-hidden="true">
-          <div class="brassplate"><b>NOTARÍA</b><span>David Gracia Fuentes</span><small>NOTARIO</small></div>
+        <div class="ficha">
+          <h4>Notaría David Gracia Fuentes</h4>
+          <dl>
+            <div><dt data-es="Dirección" data-en="Address">Dirección</dt><dd>C. Torres, 2 · 35002 Las Palmas de Gran Canaria</dd></div>
+            <div><dt data-es="Horario" data-en="Opening hours">Horario</dt><dd data-es="Lunes a viernes · 9:00–14:00 y 16:00–19:00" data-en="Monday to Friday · 9:00–14:00 & 16:00–19:00">Lunes a viernes · 9:00–14:00 y 16:00–19:00</dd><span class="st"><i></i><span data-es="Abierto ahora" data-en="Open now">Abierto ahora</span></span></div>
+            <div><dt data-es="Teléfono" data-en="Phone">Teléfono</dt><dd>928 09 09 90</dd></div>
+          </dl>
+          <div class="mapmini" aria-hidden="true"></div>
+          <div class="acts"><span style="background:#15213a;color:#fff" data-es="Llamar" data-en="Call">Llamar</span><span style="border:2px solid #15213a" data-es="Cómo llegar" data-en="Directions">Cómo llegar</span></div>
         </div>
       </div>
 
